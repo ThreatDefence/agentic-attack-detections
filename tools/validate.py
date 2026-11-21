@@ -54,7 +54,7 @@ def check_sigma():
 def check_sentinel():
     ids = []
     for p in sorted(ROOT.glob("*/**/sentinel/analytics/*.yaml")):
-        d = yaml.safe_load(p.read_text())
+        d = yaml.safe_load(p.read_text(encoding="utf-8"))
         for k in ("id", "name", "severity", "query", "queryFrequency", "queryPeriod", "tactics", "kind"):
             if k not in d:
                 err(f"{p.name}: missing {k}")
@@ -63,7 +63,7 @@ def check_sentinel():
         err("duplicate Sentinel analytics ids")
     hunts = sorted(ROOT.glob("*/**/sentinel/hunting/*.kql"))
     for p in hunts:
-        if not re.search(r"^\s*[A-Za-z_(]", "\n".join(l for l in p.read_text().splitlines() if not l.startswith("//")), re.M):
+        if not re.search(r"^\s*[A-Za-z_(]", "\n".join(l for l in p.read_text(encoding="utf-8").splitlines() if not l.startswith("//")), re.M):
             err(f"{p.name}: no query body")
     print(f"sentinel: {len(hunts)} hunts")
 
@@ -71,12 +71,12 @@ def check_sentinel():
 def check_elastic():
     ids = []
     for p in sorted(ROOT.glob("frameworks/*/elastic/rules/*.toml")):
-        d = tomllib.loads(p.read_text())
+        d = tomllib.loads(p.read_text(encoding="utf-8"))
         ids.append(d["rule"]["rule_id"])
     if len(ids) != len(set(ids)):
         err("duplicate Elastic rule_id")
     for p in sorted(ROOT.glob("frameworks/*/elastic/esql/*.esql")):
-        body = [l for l in p.read_text().splitlines() if l.strip() and not l.startswith("//")]
+        body = [l for l in p.read_text(encoding="utf-8").splitlines() if l.strip() and not l.startswith("//")]
         if not body or not body[0].upper().startswith("FROM"):
             err(f"{p.name}: ES|QL must start with FROM")
     print(f"elastic: {len(ids)} rules")
@@ -86,7 +86,7 @@ def check_splunk():
     for p in sorted(ROOT.glob("frameworks/*/splunk/default/*.conf")):
         cp = configparser.RawConfigParser(strict=False, interpolation=None)
         cp.optionxform = str
-        cp.read_string(re.sub(r"\\\n", " ", p.read_text()))
+        cp.read_string(re.sub(r"\\\n", " ", p.read_text(encoding="utf-8")))
         if p.name == "savedsearches.conf":
             for s in cp.sections():
                 if cp.get(s, "disabled", fallback="0").strip() != "1":
@@ -97,7 +97,7 @@ def check_splunk():
 def check_suricata():
     sids = []
     for p in sorted(ROOT.glob("*/**/suricata/*.rules")):
-        sids += re.findall(r"\bsid:(\d+);", p.read_text())
+        sids += re.findall(r"\bsid:(\d+);", p.read_text(encoding="utf-8"))
     dup = {s for s in sids if sids.count(s) > 1}
     if dup:
         err(f"duplicate suricata sids {sorted(dup)}")
@@ -130,7 +130,7 @@ def check_zeek():
 
 def check_osquery():
     for p in sorted(ROOT.glob("frameworks/*/osquery/*.conf")):
-        json.loads(p.read_text())
+        json.loads(p.read_text(encoding="utf-8"))
     print("osquery: json ok")
 
 

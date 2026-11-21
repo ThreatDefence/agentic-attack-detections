@@ -1,0 +1,2 @@
+# Shell scripts stay LF on every checkout: bash on Linux and WSL fails on CRLF.
+*.sh text eol=lf
