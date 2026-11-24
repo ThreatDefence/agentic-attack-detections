@@ -63,8 +63,7 @@
             "groupByAlertDetails": [],
             "groupByCustomDetails": []
           }
-        },
-        "templateVersion": "2.1.0"
+        }
       }
     },
     {
@@ -107,8 +106,7 @@
             "groupByAlertDetails": [],
             "groupByCustomDetails": []
           }
-        },
-        "templateVersion": "1.0.0"
+        }
       }
     },
     {

@@ -138,7 +138,8 @@ def analytics_rule(path, framework):
         "incidentConfiguration": {"createIncident": True, "groupingConfiguration": {
             "enabled": False, "reopenClosedIncident": False, "lookbackDuration": "PT5H",
             "matchingMethod": "AllEntities", "groupByEntities": [], "groupByAlertDetails": [], "groupByCustomDetails": []}},
-        "templateVersion": str(d.get("version", "1.0.0")),
+        # No templateVersion: Sentinel only accepts it next to alertRuleTemplateName (a Content Hub template), and a
+        # rule saved with it alone cannot be edited or enabled in the portal (#23).
     }
     if d.get("entityMappings"):
         props["entityMappings"] = d["entityMappings"]
@@ -293,6 +294,8 @@ def validate(rules, hunts, wl):
             elif not TECHNIQUE_TACTICS[t] & set(p["tactics"]):
                 errors.append(f"{src}: technique {t} needs one of the tactics {sorted(TECHNIQUE_TACTICS[t])}; "
                               "Microsoft Sentinel refuses the rule otherwise")
+        if p.get("templateVersion") and not p.get("alertRuleTemplateName"):
+            errors.append(f"{src}: templateVersion without alertRuleTemplateName; the rule could not be enabled in the portal")
         if not p["query"].strip():
             errors.append(f"{src}: empty query")
         if len(p["query"]) > 10000:
