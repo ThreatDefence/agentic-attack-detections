@@ -8,6 +8,7 @@ Writes:
     agentic-attack-detections.rules              every Suricata rule in one file (behaviors, then each framework)
     agentic-attack-detections-yara.zip           the YARA rules, one file per framework
     agentic-attack-detections-stix2.1.json       the STIX 2.1 bundle
+    agentic-attack-detections.ndjson             every rule as one Kibana Security import (generated/elastic_ndjson/)
     agentic-attack-detections-indicators.zip     iocs/indicators.csv and everything under feeds/
     agentic-attack-detections-waf.zip            everything under waf/
     agentic-attack-detections-sentinel.json      the Microsoft Sentinel ARM template with everything (deploy/sentinel/)
@@ -136,6 +137,9 @@ def main():
 
     (out / f"{NAME}-stix2.1.json").write_bytes((ROOT / "feeds" / "stix2.1-bundle.json").read_bytes())
     print(f"{NAME}-stix2.1.json: copied from feeds/stix2.1-bundle.json")
+
+    (out / f"{NAME}.ndjson").write_bytes((ROOT / "generated" / "elastic_ndjson" / f"{NAME}.ndjson").read_bytes())
+    print(f"{NAME}.ndjson: copied from generated/elastic_ndjson/")
 
     indicators = [("iocs/indicators.csv", (ROOT / "iocs" / "indicators.csv").read_bytes())] + tree(ROOT / "feeds")
     print(f"{NAME}-indicators.zip: {write_zip(out / f'{NAME}-indicators.zip', indicators, version)} files")

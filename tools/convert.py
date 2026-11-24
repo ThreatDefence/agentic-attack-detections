@@ -37,6 +37,29 @@ def write(path, text):
     path.write_text(text, encoding="utf-8")
 
 
+def ecs():
+    from sigma.pipelines.elasticsearch.windows import ecs_windows
+
+    # ecs_windows only maps Windows rules. Linux and product-less process rules get the same ECS process fields.
+    from sigma.processing.conditions import LogsourceCondition
+    from sigma.processing.pipeline import ProcessingItem
+    from sigma.processing.transformations import FieldMappingTransformation
+    process_fields = {"CommandLine": "process.command_line", "Image": "process.executable", "ParentImage": "process.parent.executable",
+                      "ParentCommandLine": "process.parent.command_line", "User": "user.name", "CurrentDirectory": "process.working_directory"}
+    network_fields = {
+        "dns_query": {"QueryName": "dns.question.name"},
+        "proxy": {"c-uri": "url.original", "c-useragent": "user_agent.original", "cs-host": "url.domain"},
+        "webserver": {"cs-uri-stem": "url.path", "cs-uri-query": "url.query", "cs-user-agent": "user_agent.original"},
+    }
+    network_pipeline = ProcessingPipeline(name="ECS DNS, proxy and web server fields", priority=30, items=[
+        ProcessingItem(identifier=f"ecs_{category}_fields", transformation=FieldMappingTransformation(fields),
+                       rule_conditions=[LogsourceCondition(category=category)])
+        for category, fields in network_fields.items()])
+    return ecs_windows() + ProcessingPipeline(name="ECS process fields for non-Windows rules", priority=30, items=[
+        ProcessingItem(identifier="ecs_process_fields", transformation=FieldMappingTransformation(process_fields),
+                       rule_conditions=[LogsourceCondition(category="process_creation")])]) + network_pipeline
+
+
 def pipelines():
     """Return {backend_name: (backend_class, [(pipeline_label, pipeline_or_None), ...])}."""
     from sigma.backends.splunk import SplunkBackend
@@ -46,27 +69,6 @@ def pipelines():
     from sigma.pipelines.sentinelasim import sentinel_asim_pipeline
     from sigma.pipelines.azuremonitor import azure_monitor_pipeline
     from sigma.pipelines.splunk import splunk_windows_pipeline
-    from sigma.pipelines.elasticsearch.windows import ecs_windows
-
-    def ecs():
-        # ecs_windows only maps Windows rules. Linux and product-less process rules get the same ECS process fields.
-        from sigma.processing.conditions import LogsourceCondition
-        from sigma.processing.pipeline import ProcessingItem
-        from sigma.processing.transformations import FieldMappingTransformation
-        process_fields = {"CommandLine": "process.command_line", "Image": "process.executable", "ParentImage": "process.parent.executable",
-                          "ParentCommandLine": "process.parent.command_line", "User": "user.name", "CurrentDirectory": "process.working_directory"}
-        network_fields = {
-            "dns_query": {"QueryName": "dns.question.name"},
-            "proxy": {"c-uri": "url.original", "c-useragent": "user_agent.original", "cs-host": "url.domain"},
-            "webserver": {"cs-uri-stem": "url.path", "cs-uri-query": "url.query", "cs-user-agent": "user_agent.original"},
-        }
-        network_pipeline = ProcessingPipeline(name="ECS DNS, proxy and web server fields", priority=30, items=[
-            ProcessingItem(identifier=f"ecs_{category}_fields", transformation=FieldMappingTransformation(fields),
-                           rule_conditions=[LogsourceCondition(category=category)])
-            for category, fields in network_fields.items()])
-        return ecs_windows() + ProcessingPipeline(name="ECS process fields for non-Windows rules", priority=30, items=[
-            ProcessingItem(identifier="ecs_process_fields", transformation=FieldMappingTransformation(process_fields),
-                           rule_conditions=[LogsourceCondition(category="process_creation")])]) + network_pipeline
 
     return {
         "splunk": (SplunkBackend, [("splunk_windows", splunk_windows_pipeline()), ("raw fields", None)]),
