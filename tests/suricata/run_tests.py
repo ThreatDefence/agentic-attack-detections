@@ -118,6 +118,26 @@ def define_cases(work):
     http("renamed artex console page (title ending)", [3800081], get("/"), client="int",
          response=ok('<html><head><title>NightOwl — Autonomous Penetration Testing Console</title>'
                      '<script src="/_next/static/chunks/main.js"></script></head></html>'))
+    http("stock artex console page with the full title fires once", [3800040], get("/"), client="int",
+         response=ok('<html><head><title>ARTEX — Autonomous Penetration Testing Console</title>'
+                     '<script src="/_next/static/chunks/main.js"></script></head></html>'))
+    http("stock artex console page, Chinese title, fires once", [3800040], get("/"), client="int",
+         response=ok('<html><head><title>ARTEX — 自主渗透测试控制台</title>'
+                     '<script src="/_next/static/chunks/main.js"></script></head></html>'))
+    http("ScopeWeaver console fires only its own rule", [3800041], get("/"), client="int",
+         response=ok('<html><head><title>ScopeWeaver — Autonomous Penetration Testing Console</title>'
+                     '<script src="/_next/static/chunks/main.js"></script></head></html>'))
+    http("renamed artex console page (title ending, lower case)", [3800081], get("/"), client="int",
+         response=ok('<html><head><title>NKW — Autonomous penetration testing console</title>'
+                     '<script src="/_next/static/chunks/main.js"></script></head></html>'))
+    http("renamed artex console page (Chinese title ending)", [3800082], get("/"), client="int",
+         response=ok('<html><head><title>AntiFox — 自主渗透测试控制台</title>'
+                     '<script src="/_next/static/chunks/main.js"></script></head></html>'))
+    http("near miss: Chinese title ending without the Next.js build", [], get("/"), client="int",
+         response=ok('<html><head><title>AntiFox — 自主渗透测试控制台</title></head></html>'))
+    http("renamed artex console page (Korean title ending)", [3800083], get("/"), client="int",
+         response=ok('<html><head><title>NOVA: 자율 침투 테스트 콘솔</title>'
+                     '<script src="/_next/static/chunks/main.js"></script></head></html>'))
     http("near miss: a Next.js console that is not a renamed artex build", [], get("/"), client="int",
          response=ok('<html><head><title>NightOwl — Autonomous Scanning Console</title>'
                      '<script src="/_next/static/chunks/main.js"></script></head></html>'))
@@ -248,6 +268,8 @@ def define_cases(work):
     http("hermes dashboard title", [3806011], get("/"), client="int", port=9119, response=ok("<html><head><title>Hermes Agent - Dashboard</title></head></html>"))
     http("hermes sign-in page", [3806013], get("/login"), client="int", port=9119,
          response=ok("<html><head><title>Sign in — Hermes Agent</title></head></html>"))
+    http("hermes sign-in page in Chinese", [3806013], get("/login"), client="int", port=9119,
+         response=ok("<html><head><title>登录 — Hermes Agent</title></head></html>"))
     http("near miss: another product's sign-in page", [], get("/login"), client="int", port=9119,
          response=ok("<html><head><title>Sign in — Acme Portal</title></head></html>"))
     http("hermes results folder", [3806012], get("/hermes-results/call_00_EE5atKwDPZemr8R1wc1f4466.txt", ua="curl/8.5.0"))
