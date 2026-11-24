@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.11.1, unreleased
+
+- Sentinel templates: analytics rules no longer carry `templateVersion`. Microsoft Sentinel accepts it only together with `alertRuleTemplateName`, so a deployed rule could not be enabled or edited in the portal ("'templateVersion' can only be used if 'alertRuleTemplateName' is not empty"). Redeploy a template to fix rules already in a workspace; `tools/build_sentinel.py --check` now fails on the combination. Reported in #23.
+
 ## 2.11.0, November 24, 2026
 
 One-step deployment to Microsoft Sentinel, one Splunk app for every framework, Zeek scripts for CyberStrikeAI and HexStrike, and a shared behavior for agents writing to container registries.
