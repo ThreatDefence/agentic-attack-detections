@@ -115,6 +115,12 @@ def define_cases(work):
          response=ok('<html><head><title>ScopeWeaver</title><script src="/_next/static/chunks/main.js"></script></head></html>'))
     http("renamed artex console page (LUCK)", [3800043], get("/"), client="int",
          response=ok('<html><head><title>LUCK - console</title><script src="/_next/static/chunks/main.js"></script></head></html>'))
+    http("renamed artex console page (title ending)", [3800081], get("/"), client="int",
+         response=ok('<html><head><title>NightOwl — Autonomous Penetration Testing Console</title>'
+                     '<script src="/_next/static/chunks/main.js"></script></head></html>'))
+    http("near miss: a Next.js console that is not a renamed artex build", [], get("/"), client="int",
+         response=ok('<html><head><title>NightOwl — Autonomous Scanning Console</title>'
+                     '<script src="/_next/static/chunks/main.js"></script></head></html>'))
     http("artex basic auth realm", [3800042], get("/"), client="int",
          response=ok("", "401 Unauthorized", headers='WWW-Authenticate: Basic realm="ARTEX"\r\n'))
     for name, dns_sid, sni_sid in [("nginxmysql.com", 3800060, 3800061), ("cdn.nginxmysql.com", 3800060, 3800061),
@@ -240,6 +246,10 @@ def define_cases(work):
     http("hermes webui server header", [3806010], get("/"), client="int", port=8878,
          response=ok("", "401 Unauthorized", headers='Server: HermesWebUI\r\nWWW-Authenticate: Basic realm="Hermes WebUI"\r\n'))
     http("hermes dashboard title", [3806011], get("/"), client="int", port=9119, response=ok("<html><head><title>Hermes Agent - Dashboard</title></head></html>"))
+    http("hermes sign-in page", [3806013], get("/login"), client="int", port=9119,
+         response=ok("<html><head><title>Sign in — Hermes Agent</title></head></html>"))
+    http("near miss: another product's sign-in page", [], get("/login"), client="int", port=9119,
+         response=ok("<html><head><title>Sign in — Acme Portal</title></head></html>"))
     http("hermes results folder", [3806012], get("/hermes-results/call_00_EE5atKwDPZemr8R1wc1f4466.txt", ua="curl/8.5.0"))
     http("near miss: ordinary container create", [], post("/containers/create?name=web", '{"Image":"nginx"}', ua="docker/27.0", host="10.2.0.5:2375"), port=2375)
 
