@@ -1,0 +1,31 @@
+{
+ "description": "7 rules from https://github.com/ThreatDefence/agentic-attack-detections",
+ "domain": "enterprise-attack",
+ "gradient": {
+  "colors": [
+   "#ffe9e9",
+   "#dc2626"
+  ],
+  "maxValue": 1,
+  "minValue": 0
+ },
+ "hideDisabled": false,
+ "legendItems": [],
+ "name": "agent-zero",
+ "selectTechniquesAcrossTactics": true,
+ "showTacticsRow": false,
+ "techniques": [
+  {
+   "comment": "Agent Zero Container, UI or Tunnel Started",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1059"
+  }
+ ],
+ "versions": {
+  "attack": "17",
+  "layer": "4.5",
+  "navigator": "5.1.0"
+ }
+}

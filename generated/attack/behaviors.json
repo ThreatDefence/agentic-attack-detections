@@ -1,0 +1,66 @@
+{
+ "description": "6 rules from https://github.com/ThreatDefence/agentic-attack-detections",
+ "domain": "enterprise-attack",
+ "gradient": {
+  "colors": [
+   "#ffe9e9",
+   "#dc2626"
+  ],
+  "maxValue": 3,
+  "minValue": 0
+ },
+ "hideDisabled": false,
+ "legendItems": [],
+ "name": "behaviors",
+ "selectTechniquesAcrossTactics": true,
+ "showTacticsRow": false,
+ "techniques": [
+  {
+   "comment": "AI Agent CLI Starts an Attack Tool",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1046"
+  },
+  {
+   "comment": "AI Agent CLI Starts an Attack Tool",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1059"
+  },
+  {
+   "comment": "AI Agent Client Calling a Chinese Model API or Model Gateway",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1071.001"
+  },
+  {
+   "comment": "Attack Agent Write Test on a Container Registry; DNS Query for an Out-of-Band Testing Domain; WSUS Administration or Sync API Requested",
+   "enabled": true,
+   "score": 3,
+   "showSubtechniques": true,
+   "techniqueID": "T1190"
+  },
+  {
+   "comment": "Attack Agent Write Test on a Container Registry",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1525"
+  },
+  {
+   "comment": "AI Agent Page Reader User Agent in Web Server Logs",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1594"
+  }
+ ],
+ "versions": {
+  "attack": "17",
+  "layer": "4.5",
+  "navigator": "5.1.0"
+ }
+}

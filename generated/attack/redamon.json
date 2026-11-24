@@ -1,0 +1,59 @@
+{
+ "description": "17 rules from https://github.com/ThreatDefence/agentic-attack-detections",
+ "domain": "enterprise-attack",
+ "gradient": {
+  "colors": [
+   "#ffe9e9",
+   "#dc2626"
+  ],
+  "maxValue": 1,
+  "minValue": 0
+ },
+ "hideDisabled": false,
+ "legendItems": [],
+ "name": "redamon",
+ "selectTechniquesAcrossTactics": true,
+ "showTacticsRow": false,
+ "techniques": [
+  {
+   "comment": "RedAmon Stack or Reverse Shell Tunnel on a Host",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1059"
+  },
+  {
+   "comment": "RedAmon User Agent or Canary in Web Logs",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1190"
+  },
+  {
+   "comment": "RedAmon Stack or Reverse Shell Tunnel on a Host",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1572"
+  },
+  {
+   "comment": "RedAmon Ownership Check Lookup",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1590.002"
+  },
+  {
+   "comment": "RedAmon User Agent or Canary in Web Logs",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1595.002"
+  }
+ ],
+ "versions": {
+  "attack": "17",
+  "layer": "4.5",
+  "navigator": "5.1.0"
+ }
+}
