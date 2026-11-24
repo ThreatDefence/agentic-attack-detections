@@ -1,0 +1,52 @@
+{
+ "description": "33 rules from https://github.com/ThreatDefence/agentic-attack-detections",
+ "domain": "enterprise-attack",
+ "gradient": {
+  "colors": [
+   "#ffe9e9",
+   "#dc2626"
+  ],
+  "maxValue": 2,
+  "minValue": 0
+ },
+ "hideDisabled": false,
+ "legendItems": [],
+ "name": "pentagi",
+ "selectTechniquesAcrossTactics": true,
+ "showTacticsRow": false,
+ "techniques": [
+  {
+   "comment": "PentAGI agent command wrapper on a host; PentAGI update check from your network",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1046"
+  },
+  {
+   "comment": "PentAGI Agent Command Wrapper; PentAGI agent command wrapper on a host",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1059.004"
+  },
+  {
+   "comment": "PentAGI Console API Requested Through a Proxy; PentAGI update check from your network",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1071.001"
+  },
+  {
+   "comment": "DNS Query for the PentAGI Update Service",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1071.004"
+  }
+ ],
+ "versions": {
+  "attack": "17",
+  "layer": "4.5",
+  "navigator": "5.1.0"
+ }
+}

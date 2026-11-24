@@ -1,0 +1,38 @@
+{
+ "description": "23 rules from https://github.com/ThreatDefence/agentic-attack-detections",
+ "domain": "enterprise-attack",
+ "gradient": {
+  "colors": [
+   "#ffe9e9",
+   "#dc2626"
+  ],
+  "maxValue": 4,
+  "minValue": 0
+ },
+ "hideDisabled": false,
+ "legendItems": [],
+ "name": "strix",
+ "selectTechniquesAcrossTactics": true,
+ "showTacticsRow": false,
+ "techniques": [
+  {
+   "comment": "Strix AI pentest agent on a host or reporting from your network",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1059.006"
+  },
+  {
+   "comment": "Strix AI Pentest Agent CLI or Sandbox; Strix AI pentest agent on a host or reporting from your network; Strix Telemetry DNS Query; Strix Telemetry or Results Viewer API in Proxy Logs",
+   "enabled": true,
+   "score": 4,
+   "showSubtechniques": true,
+   "techniqueID": "T1595.002"
+  }
+ ],
+ "versions": {
+  "attack": "17",
+  "layer": "4.5",
+  "navigator": "5.1.0"
+ }
+}

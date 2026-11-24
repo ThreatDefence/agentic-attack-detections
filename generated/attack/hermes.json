@@ -1,0 +1,59 @@
+{
+ "description": "46 rules from https://github.com/ThreatDefence/agentic-attack-detections",
+ "domain": "enterprise-attack",
+ "gradient": {
+  "colors": [
+   "#ffe9e9",
+   "#dc2626"
+  ],
+  "maxValue": 2,
+  "minValue": 0
+ },
+ "hideDisabled": false,
+ "legendItems": [],
+ "name": "hermes",
+ "selectTechniquesAcrossTactics": true,
+ "showTacticsRow": false,
+ "techniques": [
+  {
+   "comment": "Carbonato Docker worm host escape or persistence",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1036.005"
+  },
+  {
+   "comment": "Carbonato Docker worm host escape or persistence",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1053.003"
+  },
+  {
+   "comment": "Hermes Agent With Approvals Off or Its Jailbreak Skill; Hermes Agent set up for attack (approvals off, jailbreak skill or attack persona)",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1059"
+  },
+  {
+   "comment": "Hermes Agent set up for attack (approvals off, jailbreak skill or attack persona)",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1562"
+  },
+  {
+   "comment": "Carbonato Docker Worm Host Escape or Persistence; Carbonato Docker worm host escape or persistence",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1611"
+  }
+ ],
+ "versions": {
+  "attack": "17",
+  "layer": "4.5",
+  "navigator": "5.1.0"
+ }
+}

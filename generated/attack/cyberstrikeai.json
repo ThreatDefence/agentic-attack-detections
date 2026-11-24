@@ -1,0 +1,87 @@
+{
+ "description": "41 rules from https://github.com/ThreatDefence/agentic-attack-detections",
+ "domain": "enterprise-attack",
+ "gradient": {
+  "colors": [
+   "#ffe9e9",
+   "#dc2626"
+  ],
+  "maxValue": 3,
+  "minValue": 0
+ },
+ "hideDisabled": false,
+ "legendItems": [],
+ "name": "cyberstrikeai",
+ "selectTechniquesAcrossTactics": true,
+ "showTacticsRow": false,
+ "techniques": [
+  {
+   "comment": "CyberStrikeAI Implant Linux Persistence or curl Beacon; CyberStrikeAI implant persistence",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1053.003"
+  },
+  {
+   "comment": "CyberStrikeAI Implant Windows Persistence Named SystemUpdate; CyberStrikeAI implant persistence",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1053.005"
+  },
+  {
+   "comment": "CyberStrikeAI webshell manager or OS probe",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1059"
+  },
+  {
+   "comment": "CyberStrikeAI Implant Linux Persistence or curl Beacon; CyberStrikeAI User Agents or Implant Check-in in Proxy Logs",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1071.001"
+  },
+  {
+   "comment": "CyberStrikeAI Webshell OS Probe Command",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1082"
+  },
+  {
+   "comment": "CyberStrikeAI Webshell Manager User Agent or OS Probe in Web Logs; CyberStrikeAI Webshell OS Probe Command; CyberStrikeAI webshell manager or OS probe",
+   "enabled": true,
+   "score": 3,
+   "showSubtechniques": true,
+   "techniqueID": "T1505.003"
+  },
+  {
+   "comment": "CyberStrikeAI Implant LaunchAgent com.apple.systemupdate; CyberStrikeAI implant persistence",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1543.001"
+  },
+  {
+   "comment": "CyberStrikeAI implant persistence",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1546.004"
+  },
+  {
+   "comment": "CyberStrikeAI Implant Run Key Value SystemUpdate; CyberStrikeAI Implant Windows Persistence Named SystemUpdate; CyberStrikeAI implant persistence",
+   "enabled": true,
+   "score": 3,
+   "showSubtechniques": true,
+   "techniqueID": "T1547.001"
+  }
+ ],
+ "versions": {
+  "attack": "17",
+  "layer": "4.5",
+  "navigator": "5.1.0"
+ }
+}

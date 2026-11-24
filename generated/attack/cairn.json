@@ -1,0 +1,80 @@
+{
+ "description": "73 rules from https://github.com/ThreatDefence/agentic-attack-detections",
+ "domain": "enterprise-attack",
+ "gradient": {
+  "colors": [
+   "#ffe9e9",
+   "#dc2626"
+  ],
+  "maxValue": 2,
+  "minValue": 0
+ },
+ "hideDisabled": false,
+ "legendItems": [],
+ "name": "cairn",
+ "selectTechniquesAcrossTactics": true,
+ "showTacticsRow": false,
+ "techniques": [
+  {
+   "comment": "Traffic to or from published Cairn campaign infrastructure",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1041"
+  },
+  {
+   "comment": "DNS Query for Skimmer or C2 Hosts of the Hermes, Strix and Cairn Card-Theft Campaign",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1056"
+  },
+  {
+   "comment": "Cairn Task Snapshot, Pi Provider Key or Competition Skill Written; Cairn dispatcher, server or worker artifacts on a host",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1059"
+  },
+  {
+   "comment": "Cairn Agent Worker or Dispatcher Command Line",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1059.004"
+  },
+  {
+   "comment": "Traffic to or from published Cairn campaign infrastructure",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1071"
+  },
+  {
+   "comment": "DNS Query for Skimmer or C2 Hosts of the Hermes, Strix and Cairn Card-Theft Campaign",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1071.004"
+  },
+  {
+   "comment": "Traffic to or from published Cairn campaign infrastructure",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1190"
+  },
+  {
+   "comment": "Cairn dispatcher, server or worker artifacts on a host",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1219"
+  }
+ ],
+ "versions": {
+  "attack": "17",
+  "layer": "4.5",
+  "navigator": "5.1.0"
+ }
+}

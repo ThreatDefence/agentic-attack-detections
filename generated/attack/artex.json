@@ -1,0 +1,248 @@
+{
+ "description": "160 rules from https://github.com/ThreatDefence/agentic-attack-detections",
+ "domain": "enterprise-attack",
+ "gradient": {
+  "colors": [
+   "#ffe9e9",
+   "#dc2626"
+  ],
+  "maxValue": 8,
+  "minValue": 0
+ },
+ "hideDisabled": false,
+ "legendItems": [],
+ "name": "artex",
+ "selectTechniquesAcrossTactics": true,
+ "showTacticsRow": false,
+ "techniques": [
+  {
+   "comment": "Svchost Running Outside the Windows System Folder; Windows System Binary Name Running From the Wrong Folder",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1036.005"
+  },
+  {
+   "comment": "ARTEX agent shell or recording proxy credential on a host",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1046"
+  },
+  {
+   "comment": "Scheduled Task Disguised as Microsoft Edge Update in the SQL Server Toolkit",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1053.005"
+  },
+  {
+   "comment": "Remote Process Listing With tasklist; Remote tasklist Fan-Out From One Host",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1057"
+  },
+  {
+   "comment": "ARTEX Artifact Names in Command Lines; ARTEX Probe Artifact Created",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1059"
+  },
+  {
+   "comment": "Web or Database Service Spawns a Shell or Download Tool on Windows",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1059.001"
+  },
+  {
+   "comment": "SQL Server Spawns a Shell Through xp_cmdshell; Web or Database Service Spawns a Shell or Download Tool on Windows",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1059.003"
+  },
+  {
+   "comment": "ARTEX agent shell or recording proxy credential on a host; Web or Database Service Spawns a Shell or Download Tool on Linux",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1059.004"
+  },
+  {
+   "comment": "DNS Query for Reported ARTEX Infrastructure",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1071.001"
+  },
+  {
+   "comment": "ARTEX agentic attack framework user agent",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1078"
+  },
+  {
+   "comment": "ARTEX User Agent in Entra ID Sign-In Logs; ARTEX User Agent in Okta System Log; Cognito Sign-Up With ARTEX Artifacts",
+   "enabled": true,
+   "score": 3,
+   "showSubtechniques": true,
+   "techniqueID": "T1078.004"
+  },
+  {
+   "comment": "Service principal assigned a role by itself",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1098"
+  },
+  {
+   "comment": "Credential Added to an Entra ID Application",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1098.001"
+  },
+  {
+   "comment": "App Role or Directory Role Assigned to a Service Principal",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1098.003"
+  },
+  {
+   "comment": "DNS Query to Request Collection or DNS Callback Services",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1102"
+  },
+  {
+   "comment": "DNS Query for Payload Hosts Active in ARTEX Operator Toolkits",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1105"
+  },
+  {
+   "comment": "Password spray at a fixed one-second rhythm",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1110"
+  },
+  {
+   "comment": "ARTEX User Agent in Entra ID Sign-In Logs; Entra ID Sign-In Failure; Password Spray Against Many Entra ID Accounts From One Address",
+   "enabled": true,
+   "score": 3,
+   "showSubtechniques": true,
+   "techniqueID": "T1110.003"
+  },
+  {
+   "comment": "ARTEX Artifact Names in Command Lines",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1136"
+  },
+  {
+   "comment": "Cognito Sign-Up With ARTEX Artifacts",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1136.003"
+  },
+  {
+   "comment": "ARTEX Agentic Attack Framework User Agent in Proxy Logs; ARTEX Agentic Attack Framework User Agent in Web Logs; ARTEX OAuth Callback Probe; ARTEX Placeholder Probe Paths; ARTEX Probe Marker in HTTP Request; Unsigned JWT With alg none Sent to a Web Application",
+   "enabled": true,
+   "score": 6,
+   "showSubtechniques": true,
+   "techniqueID": "T1190"
+  },
+  {
+   "comment": "SQL Server Spawns a Shell Through xp_cmdshell",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1505.001"
+  },
+  {
+   "comment": "JSP Web Shell Names Seen in ARTEX Intrusions; Web or Database Service Spawns a Shell or Download Tool on Linux; Web or Database Service Spawns a Shell or Download Tool on Windows",
+   "enabled": true,
+   "score": 3,
+   "showSubtechniques": true,
+   "techniqueID": "T1505.003"
+  },
+  {
+   "comment": "Remote Process Listing With tasklist; Remote tasklist Fan-Out From One Host",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1518.001"
+  },
+  {
+   "comment": "CloudWatch Logs Searched for Secrets; CloudWatch logs searched for secrets",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1552"
+  },
+  {
+   "comment": "DNS Query to Request Collection or DNS Callback Services",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1567"
+  },
+  {
+   "comment": "BLOODALCHEMY Loader Files Written; Svchost Running Outside the Windows System Folder",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1574.001"
+  },
+  {
+   "comment": "ARTEX User Agent in AWS CloudTrail; AWS API Call Denied; AWS Access Denied Sweep Across Many APIs; Azure Resource Manager Deployment Validate Call; Azure Resource Manager Validate Sweep; Burst of EC2 DryRun Calls From One Identity; Burst of EC2 DryRun permission tests; EC2 DryRun Permission Test",
+   "enabled": true,
+   "score": 8,
+   "showSubtechniques": true,
+   "techniqueID": "T1580"
+  },
+  {
+   "comment": "ARTEX code-default user agents (norma WebFetch, update check)",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1592"
+  },
+  {
+   "comment": "ARTEX agentic attack framework user agent; ARTEX code-default user agents (norma WebFetch, update check)",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1595"
+  },
+  {
+   "comment": "ARTEX Agentic Attack Framework User Agent in Proxy Logs; ARTEX Agentic Attack Framework User Agent in Web Logs; ARTEX OAuth Callback Probe; ARTEX Placeholder Probe Paths; ARTEX Probe Marker in HTTP Request",
+   "enabled": true,
+   "score": 5,
+   "showSubtechniques": true,
+   "techniqueID": "T1595.002"
+  },
+  {
+   "comment": "Unsigned JWT With alg none Sent to a Web Application",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1606.001"
+  }
+ ],
+ "versions": {
+  "attack": "17",
+  "layer": "4.5",
+  "navigator": "5.1.0"
+ }
+}

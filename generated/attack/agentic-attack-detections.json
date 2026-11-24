@@ -1,0 +1,374 @@
+{
+ "description": "460 rules from https://github.com/ThreatDefence/agentic-attack-detections",
+ "domain": "enterprise-attack",
+ "gradient": {
+  "colors": [
+   "#ffe9e9",
+   "#dc2626"
+  ],
+  "maxValue": 15,
+  "minValue": 0
+ },
+ "hideDisabled": false,
+ "legendItems": [],
+ "name": "All frameworks",
+ "selectTechniquesAcrossTactics": true,
+ "showTacticsRow": false,
+ "techniques": [
+  {
+   "comment": "Carbonato Docker worm host escape or persistence; Svchost Running Outside the Windows System Folder; Windows System Binary Name Running From the Wrong Folder",
+   "enabled": true,
+   "score": 3,
+   "showSubtechniques": true,
+   "techniqueID": "T1036.005"
+  },
+  {
+   "comment": "Traffic to or from published Cairn campaign infrastructure",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1041"
+  },
+  {
+   "comment": "AI Agent CLI Starts an Attack Tool; ARTEX agent shell or recording proxy credential on a host; HexStrike tool server or MCP client on a host; PentAGI agent command wrapper on a host; PentAGI update check from your network",
+   "enabled": true,
+   "score": 5,
+   "showSubtechniques": true,
+   "techniqueID": "T1046"
+  },
+  {
+   "comment": "Carbonato Docker worm host escape or persistence; CyberStrikeAI Implant Linux Persistence or curl Beacon; CyberStrikeAI implant persistence",
+   "enabled": true,
+   "score": 3,
+   "showSubtechniques": true,
+   "techniqueID": "T1053.003"
+  },
+  {
+   "comment": "CyberStrikeAI Implant Windows Persistence Named SystemUpdate; CyberStrikeAI implant persistence; Scheduled Task Disguised as Microsoft Edge Update in the SQL Server Toolkit",
+   "enabled": true,
+   "score": 3,
+   "showSubtechniques": true,
+   "techniqueID": "T1053.005"
+  },
+  {
+   "comment": "DNS Query for Skimmer or C2 Hosts of the Hermes, Strix and Cairn Card-Theft Campaign",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1056"
+  },
+  {
+   "comment": "Remote Process Listing With tasklist; Remote tasklist Fan-Out From One Host",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1057"
+  },
+  {
+   "comment": "AI Agent CLI Starts an Attack Tool; ARTEX Artifact Names in Command Lines; ARTEX Probe Artifact Created; Agent Zero Container, UI or Tunnel Started; Cairn Task Snapshot, Pi Provider Key or Competition Skill Written; Cairn dispatcher, server or worker artifacts on a host; CyberStrikeAI webshell manager or OS probe; Hermes Agent With Approvals Off or Its Jailbreak Skill; Hermes Agent set up for attack (approvals off, jailbreak skill or attack persona); Pentest Swarm AI Authorization Record Written; Pentest Swarm AI Started on a Host; RedAmon Stack or Reverse Shell Tunnel on a Host",
+   "enabled": true,
+   "score": 12,
+   "showSubtechniques": true,
+   "techniqueID": "T1059"
+  },
+  {
+   "comment": "Web or Database Service Spawns a Shell or Download Tool on Windows",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1059.001"
+  },
+  {
+   "comment": "SQL Server Spawns a Shell Through xp_cmdshell; Web or Database Service Spawns a Shell or Download Tool on Windows",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1059.003"
+  },
+  {
+   "comment": "ARTEX agent shell or recording proxy credential on a host; Cairn Agent Worker or Dispatcher Command Line; HexStrike Server or MCP Client Process; HexStrike tool server or MCP client on a host; PentAGI Agent Command Wrapper; PentAGI agent command wrapper on a host; Web or Database Service Spawns a Shell or Download Tool on Linux; Xalgorix Agent on a Host",
+   "enabled": true,
+   "score": 8,
+   "showSubtechniques": true,
+   "techniqueID": "T1059.004"
+  },
+  {
+   "comment": "Strix AI pentest agent on a host or reporting from your network",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1059.006"
+  },
+  {
+   "comment": "Traffic to or from published Cairn campaign infrastructure",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1071"
+  },
+  {
+   "comment": "AI Agent Client Calling a Chinese Model API or Model Gateway; CyberStrikeAI Implant Linux Persistence or curl Beacon; CyberStrikeAI User Agents or Implant Check-in in Proxy Logs; DNS Query for Reported ARTEX Infrastructure; HexStrike Tool API Requested Through a Proxy; PentAGI Console API Requested Through a Proxy; PentAGI update check from your network",
+   "enabled": true,
+   "score": 7,
+   "showSubtechniques": true,
+   "techniqueID": "T1071.001"
+  },
+  {
+   "comment": "DNS Query for Skimmer or C2 Hosts of the Hermes, Strix and Cairn Card-Theft Campaign; DNS Query for the PentAGI Update Service",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1071.004"
+  },
+  {
+   "comment": "ARTEX agentic attack framework user agent",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1078"
+  },
+  {
+   "comment": "ARTEX User Agent in Entra ID Sign-In Logs; ARTEX User Agent in Okta System Log; Cognito Sign-Up With ARTEX Artifacts",
+   "enabled": true,
+   "score": 3,
+   "showSubtechniques": true,
+   "techniqueID": "T1078.004"
+  },
+  {
+   "comment": "CyberStrikeAI Webshell OS Probe Command",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1082"
+  },
+  {
+   "comment": "Service principal assigned a role by itself",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1098"
+  },
+  {
+   "comment": "Credential Added to an Entra ID Application",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1098.001"
+  },
+  {
+   "comment": "App Role or Directory Role Assigned to a Service Principal",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1098.003"
+  },
+  {
+   "comment": "DNS Query to Request Collection or DNS Callback Services",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1102"
+  },
+  {
+   "comment": "DNS Query for Payload Hosts Active in ARTEX Operator Toolkits",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1105"
+  },
+  {
+   "comment": "Password spray at a fixed one-second rhythm",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1110"
+  },
+  {
+   "comment": "ARTEX User Agent in Entra ID Sign-In Logs; Entra ID Sign-In Failure; Password Spray Against Many Entra ID Accounts From One Address",
+   "enabled": true,
+   "score": 3,
+   "showSubtechniques": true,
+   "techniqueID": "T1110.003"
+  },
+  {
+   "comment": "ARTEX Artifact Names in Command Lines",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1136"
+  },
+  {
+   "comment": "Cognito Sign-Up With ARTEX Artifacts",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1136.003"
+  },
+  {
+   "comment": "ARTEX Agentic Attack Framework User Agent in Proxy Logs; ARTEX Agentic Attack Framework User Agent in Web Logs; ARTEX OAuth Callback Probe; ARTEX Placeholder Probe Paths; ARTEX Probe Marker in HTTP Request; Attack Agent Write Test on a Container Registry; DNS Query for an Out-of-Band Testing Domain; HexStrike User Agent or XSS Probe in Web Logs; HexStrike user agent or cross-site scripting probe; Pentest Swarm AI Probe Marker in Web Logs; RedAmon User Agent or Canary in Web Logs; Traffic to or from published Cairn campaign infrastructure; Unsigned JWT With alg none Sent to a Web Application; WSUS Administration or Sync API Requested; Xalgorix Verifier Marker or Canary in Web Logs",
+   "enabled": true,
+   "score": 15,
+   "showSubtechniques": true,
+   "techniqueID": "T1190"
+  },
+  {
+   "comment": "Cairn dispatcher, server or worker artifacts on a host",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1219"
+  },
+  {
+   "comment": "SQL Server Spawns a Shell Through xp_cmdshell",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1505.001"
+  },
+  {
+   "comment": "CyberStrikeAI Webshell Manager User Agent or OS Probe in Web Logs; CyberStrikeAI Webshell OS Probe Command; CyberStrikeAI webshell manager or OS probe; JSP Web Shell Names Seen in ARTEX Intrusions; Web or Database Service Spawns a Shell or Download Tool on Linux; Web or Database Service Spawns a Shell or Download Tool on Windows",
+   "enabled": true,
+   "score": 6,
+   "showSubtechniques": true,
+   "techniqueID": "T1505.003"
+  },
+  {
+   "comment": "Remote Process Listing With tasklist; Remote tasklist Fan-Out From One Host",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1518.001"
+  },
+  {
+   "comment": "Attack Agent Write Test on a Container Registry",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1525"
+  },
+  {
+   "comment": "CyberStrikeAI Implant LaunchAgent com.apple.systemupdate; CyberStrikeAI implant persistence",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1543.001"
+  },
+  {
+   "comment": "Xalgorix Configuration, Service or Scan Data Written",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1543.002"
+  },
+  {
+   "comment": "CyberStrikeAI implant persistence",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1546.004"
+  },
+  {
+   "comment": "CyberStrikeAI Implant Run Key Value SystemUpdate; CyberStrikeAI Implant Windows Persistence Named SystemUpdate; CyberStrikeAI implant persistence",
+   "enabled": true,
+   "score": 3,
+   "showSubtechniques": true,
+   "techniqueID": "T1547.001"
+  },
+  {
+   "comment": "CloudWatch Logs Searched for Secrets; CloudWatch logs searched for secrets",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1552"
+  },
+  {
+   "comment": "Hermes Agent set up for attack (approvals off, jailbreak skill or attack persona)",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1562"
+  },
+  {
+   "comment": "DNS Query to Request Collection or DNS Callback Services",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1567"
+  },
+  {
+   "comment": "RedAmon Stack or Reverse Shell Tunnel on a Host",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1572"
+  },
+  {
+   "comment": "BLOODALCHEMY Loader Files Written; Svchost Running Outside the Windows System Folder",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1574.001"
+  },
+  {
+   "comment": "ARTEX User Agent in AWS CloudTrail; AWS API Call Denied; AWS Access Denied Sweep Across Many APIs; Azure Resource Manager Deployment Validate Call; Azure Resource Manager Validate Sweep; Burst of EC2 DryRun Calls From One Identity; Burst of EC2 DryRun permission tests; EC2 DryRun Permission Test",
+   "enabled": true,
+   "score": 8,
+   "showSubtechniques": true,
+   "techniqueID": "T1580"
+  },
+  {
+   "comment": "RedAmon Ownership Check Lookup",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1590.002"
+  },
+  {
+   "comment": "ARTEX code-default user agents (norma WebFetch, update check)",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1592"
+  },
+  {
+   "comment": "AI Agent Page Reader User Agent in Web Server Logs",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1594"
+  },
+  {
+   "comment": "ARTEX agentic attack framework user agent; ARTEX code-default user agents (norma WebFetch, update check)",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1595"
+  },
+  {
+   "comment": "ARTEX Agentic Attack Framework User Agent in Proxy Logs; ARTEX Agentic Attack Framework User Agent in Web Logs; ARTEX OAuth Callback Probe; ARTEX Placeholder Probe Paths; ARTEX Probe Marker in HTTP Request; HexStrike User Agent or XSS Probe in Web Logs; HexStrike user agent or cross-site scripting probe; Pentest Swarm AI Probe Marker in Web Logs; RedAmon User Agent or Canary in Web Logs; Strix AI Pentest Agent CLI or Sandbox; Strix AI pentest agent on a host or reporting from your network; Strix Telemetry DNS Query; Strix Telemetry or Results Viewer API in Proxy Logs; Xalgorix Verifier Marker or Canary in Web Logs",
+   "enabled": true,
+   "score": 14,
+   "showSubtechniques": true,
+   "techniqueID": "T1595.002"
+  },
+  {
+   "comment": "Unsigned JWT With alg none Sent to a Web Application",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1606.001"
+  },
+  {
+   "comment": "Carbonato Docker Worm Host Escape or Persistence; Carbonato Docker worm host escape or persistence",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1611"
+  }
+ ],
+ "versions": {
+  "attack": "17",
+  "layer": "4.5",
+  "navigator": "5.1.0"
+ }
+}

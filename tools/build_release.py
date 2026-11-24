@@ -10,6 +10,7 @@ Writes:
     agentic-attack-detections-stix2.1.json       the STIX 2.1 bundle
     agentic-attack-detections.ndjson             every rule as one Kibana Security import (generated/elastic_ndjson/)
     agentic-attack-indicators.ndjson             the indicators for its indicator match rule, in _bulk format
+    agentic-attack-detections-attack.zip         the ATT&CK Navigator layers, one per framework and one for everything
     agentic-attack-detections-indicators.zip     iocs/indicators.csv and everything under feeds/
     agentic-attack-detections-waf.zip            everything under waf/
     agentic-attack-detections-sentinel.json      the Microsoft Sentinel ARM template with everything (deploy/sentinel/)
@@ -143,6 +144,7 @@ def main():
     print(f"{NAME}.ndjson: copied from generated/elastic_ndjson/")
     (out / "agentic-attack-indicators.ndjson").write_bytes((ROOT / "generated" / "elastic_ndjson" / "agentic-attack-indicators.ndjson").read_bytes())
     print("agentic-attack-indicators.ndjson: copied from generated/elastic_ndjson/")
+    print(f"{NAME}-attack.zip: {write_zip(out / f'{NAME}-attack.zip', tree(ROOT / 'generated' / 'attack'), version)} layers")
 
     indicators = [("iocs/indicators.csv", (ROOT / "iocs" / "indicators.csv").read_bytes())] + tree(ROOT / "feeds")
     print(f"{NAME}-indicators.zip: {write_zip(out / f'{NAME}-indicators.zip', indicators, version)} files")
