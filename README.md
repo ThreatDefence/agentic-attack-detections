@@ -10,7 +10,7 @@ Free to use under the MIT license. Fixes, false-positive reports and new indicat
 
 ## What is here
 
-- **Framework folders.** ARTEX and its AntiFox fork, Cairn, PentAGI, HexStrike, CyberStrikeAI, Strix, Hermes Agent, Agent Zero, RedAmon, Xalgorix and Pentest Swarm AI. Each folder is built from a review of the framework's source code and the public reporting on its use.
+- **Framework folders.** ARTEX and its AntiFox fork, Cairn, PentAGI, HexStrike, CyberStrikeAI, Strix, Hermes Agent, Agent Zero, RedAmon, Xalgorix and Pentest Swarm AI. Each folder is built from a review of the framework's source code and the public reporting on its use. Fourteen more frameworks whose consoles were found on the internet have smaller folders that say what the console and the tool look like, with the code behind each signal: AutoCVE, CyberStrike, Vulnerator AI, Decepticon, AIDA, BugTraceAI, Z3r0, AIRecon, LuaN1aoAgent, open-kritt, REDCELL, T3MP3ST, WormXGPT and Chufeng Agent Core.
 - **Shared behaviors.** Rules for what these frameworks have in common, whatever the tool or the model behind it.
 - **Indicators and feeds.** One CSV of 580 sourced indicators, and the feeds generated from it.
 - **Exposed consoles.** A dated list of addresses where one of these consoles answers on the internet, in [`exposure/`](exposure), with a [count per framework](#exposed-consoles). It is a record of what is exposed, not a detection feed.
@@ -46,7 +46,7 @@ The capture is test traffic written from the framework source code and published
 | Microsoft Sentinel | [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FThreatDefence%2Fagentic-attack-detections%2Fmain%2Fdeploy%2Fsentinel%2Fagentic-attack-detections.json) One deployment creates every analytics rule (disabled until you enable them), every hunting query and the `AGENTIC_IOCs` watchlist. Give it the workspace name. [`deploy/sentinel/`](deploy/sentinel) has one template per framework too. Run the hunts in each folder's `hunting-order.md` order |
 | Defender XDR | Run the hunts from `frameworks/*/sentinel/hunting/` in advanced hunting. They work where the tables exist |
 | Suricata | Add the `.rules` files from `frameworks/*/suricata/` and `behaviors/suricata/`. HTTP rules need cleartext or decrypted traffic. DNS and TLS SNI rules work on encrypted traffic |
-| Zeek | Install the behaviors package with `zkg install https://github.com/ThreatDefence/agentic-attack-detections` (or load `behaviors/zeek/agentic-behaviors/` by path), set `server_nets` to your server ranges ([setup](behaviors/zeek/README.md)), load the framework scripts `frameworks/artex/zeek/artex/`, `frameworks/cyberstrikeai/zeek/cyberstrikeai/` and `frameworks/hexstrike/zeek/hexstrike/`, and feed `frameworks/*/zeek/intel/*.intel` to the Intel framework |
+| Zeek | Install the behaviors package with `zkg install https://github.com/ThreatDefence/agentic-attack-detections` (or load `behaviors/zeek/agentic-behaviors/` by path), set `server_nets` to your server ranges ([setup](behaviors/zeek/README.md)), load the framework scripts `frameworks/artex/zeek/artex/`, `frameworks/cyberstrikeai/zeek/cyberstrikeai/`, `frameworks/hexstrike/zeek/hexstrike/`, `frameworks/autocve/zeek/autocve/` and `frameworks/luan1aoagent/zeek/luan1aoagent/`, and feed `frameworks/*/zeek/intel/*.intel` to the Intel framework |
 | YARA | Scan container layers, home folders, `/tmp` and web roots with `frameworks/*/yara/` |
 | Any SIEM with Sigma | Convert `frameworks/*/sigma/` and `behaviors/sigma/` with `sigma convert`, or take the conversions in [`generated/`](generated) |
 | Splunk | Install [`agentic-attack-detections-splunk.tgz`](https://github.com/ThreatDefence/agentic-attack-detections/releases/latest/download/agentic-attack-detections-splunk.tgz) from the latest release (Apps > Install app from file). One app has the searches for every framework, the indicator lookups and a dashboard with a card per framework. Point the `aad_indexes` macro at your indexes. [Setup](deploy/splunk) |
@@ -58,7 +58,7 @@ The capture is test traffic written from the framework source code and published
 
 | | KQL hunts | Sentinel analytics | Sigma | Suricata | YARA | Zeek | Indicators |
 |---|---|---|---|---|---|---|---|
-| [ARTEX](frameworks/artex) | 31 | 7 | 36 | 43 | 4 | script, intel | 247 |
+| [ARTEX](frameworks/artex) | 31 | 7 | 36 | 46 | 4 | script, intel | 247 |
 | [Cairn](frameworks/cairn) | 6 | 2 | 3 | 26 | 6 | intel | 73 |
 | [PentAGI](frameworks/pentagi) | 5 | 2 | 3 | 10 | 3 | intel | 39 |
 | [HexStrike](frameworks/hexstrike) | 4 | 2 | 3 | 7 | 3 | script, intel | 22 |
@@ -69,9 +69,11 @@ The capture is test traffic written from the framework source code and published
 | [RedAmon](frameworks/redamon) | 3 | | 3 | 10 | 1 | intel | 19 |
 | [Xalgorix](frameworks/xalgorix) | 3 | | 3 | 10 | 1 | intel | 24 |
 | [Pentest Swarm AI](frameworks/pentestswarm) | 3 | | 3 | 11 | 1 | intel | 15 |
+| [AutoCVE](frameworks/autocve) | | | | 2 | | script | |
+| [LuaN1aoAgent](frameworks/luan1aoagent) | | | | 4 | | script | |
 | [Shared behaviors](behaviors) | 9 | 2 | 6 | 18 | | package | |
 
-Suricata counts are hand-written rules; each framework also has address rules generated from its indicators. Some indicators belong to more than one framework. Every framework is in the [Splunk app](deploy/splunk). ARTEX also has Elastic rules and ES\|QL queries, and an osquery pack.
+The other twelve console-level folders (CyberStrike, Vulnerator AI, Decepticon, AIDA, BugTraceAI, Z3r0, AIRecon, open-kritt, REDCELL, T3MP3ST, WormXGPT, Chufeng Agent Core) have no rules yet: they describe the console and the tool, and their exposure searches are in `exposure/`. Suricata counts are hand-written rules; each framework also has address rules generated from its indicators. Some indicators belong to more than one framework. Every framework is in the [Splunk app](deploy/splunk). ARTEX also has Elastic rules and ES\|QL queries, and an osquery pack.
 
 ## Frameworks
 
@@ -88,6 +90,20 @@ Suricata counts are hand-written rules; each framework also has address rules ge
 | [RedAmon](frameworks/redamon) | Self-hosted penetration testing platform: a web console, a recon pipeline and an agent that exploits from a Kali sandbox with Metasploit | No public report of use in an attack. Covered from its source code |
 | [Xalgorix](frameworks/xalgorix) | Go binary with a web dashboard whose agent tests web applications and APIs without approval steps and re-exploits each finding | No public report of use in an attack. Covered from its source code |
 | [Pentest Swarm AI](frameworks/pentestswarm) | Go command-line tool that runs recon, exploit and report agents over about 40 security tools | No public report of use in an attack. Covered from its source code |
+| [AutoCVE](frameworks/autocve) | Python platform whose agents audit source code for new CVEs and write reports, with a web console and an API | No public report of use in an attack. 256 consoles exposed |
+| [CyberStrike](frameworks/cyberstrike) | TypeScript offensive security harness with a browser extension, an injection prober and a callback server. Not CyberStrikeAI | No public report of use in an attack |
+| [Vulnerator AI](frameworks/vulnerator-ai) | OODA-loop pentest agent: a Hermes Agent brain driving Kali and Playwright tools over MCP | No public report of use in an attack |
+| [Decepticon](frameworks/decepticon) | LangGraph red team agent with a Kali sandbox; its open web console was removed in November 2026 | No public report of use in an attack |
+| [AIDA](frameworks/aida) | Platform that turns a model into a pentester working from its own tool container or Exegol | No public report of use in an attack |
+| [BugTraceAI](frameworks/bugtraceai) | Self-hosted web pentest suite with agentic scanning, a web interface and an API | No public report of use in an attack |
+| [Z3r0](frameworks/z3r0) | Red team workbench with specialist agents, sandboxed tools and an egress proxy pool | No public report of use in an attack |
+| [AIRecon](frameworks/airecon) | Recon agent on a local Ollama model with a Kali sandbox and its own search instance | No public report of use in an attack |
+| [LuaN1aoAgent](frameworks/luan1aoagent) | Pentest agent with graph-based planning (鸾鸟), a web workbench and a chisel tunnel | No public report of use in an attack |
+| [open-kritt](frameworks/open-kritt) | Vulnerability research tool whose agents find and validate flaws in code | No public report of use in an attack |
+| [REDCELL](frameworks/redcell) | LangGraph agents that run a pentest end to end in a Kali container, with chisel pivoting | No public report of use in an attack |
+| [T3MP3ST](frameworks/t3mp3st) | Multi-agent red teaming harness with a command and control dashboard | No public report of use in an attack |
+| [WormXGPT](frameworks/wormxgpt) | Hacker-themed web terminal and MCP bridge calling security tools. Not the criminal WormGPT service | No public report of use in an attack |
+| [Chufeng Agent Core](frameworks/chufeng) | Agent workspace (楚锋 Agent Core) for CTF, forensics and pentest tasks; no public code | No public report of use in an attack. Built from scan data |
 
 Each folder has a README, the hunts and rules, and a `source-code-signals.md` that explains what the framework leaves behind and where in its code each signal comes from.
 
@@ -96,27 +112,44 @@ Each folder has a README, the hunts and rules, and a `source-code-signals.md` th
 Hosts on the internet that serve the web console of each framework, found in internet-wide scan data with the fingerprints the rules here use: favicons, page titles, page text that survives a rename, and certificates.
 
 <!-- exposed-consoles:start -->
-An active host is one seen in the seven days to November 23, 2026. Hosts the scan data flags as honeypots are left out of both counts.
+An active host is one seen in the seven days to November 25, 2026. Hosts the scan data flags as honeypots are left out of both counts.
 
 | Framework | Active hosts | Seen in 30 days | Honeypots left out |
 |---|---|---|---|
-| [ARTEX](frameworks/artex) and AntiFox | 2,117 | 2,816 | 0 |
-| [Hermes Agent](frameworks/hermes) | 1,019 | 2,194 | 1 |
-| [CyberStrikeAI](frameworks/cyberstrikeai) | 489 | 671 | 506 |
-| [PentAGI](frameworks/pentagi) | 329 | 500 | 0 |
-| [Agent Zero](frameworks/agent-zero) | 116 | 175 | 0 |
-| [HexStrike](frameworks/hexstrike) | 25 | 30 | 0 |
-| [RedAmon](frameworks/redamon) | 20 | 34 | 0 |
-| [Cairn](frameworks/cairn) | 17 | 30 | 0 |
-| [Xalgorix](frameworks/xalgorix) | 6 | 13 | 0 |
-| [Strix](frameworks/strix) | 5 | 12 | 0 |
+| [ARTEX](frameworks/artex) and AntiFox | 2,478 | 3,273 | 0 |
+| [Hermes Agent](frameworks/hermes) | 1,220 | 2,226 | 0 |
+| [CyberStrikeAI](frameworks/cyberstrikeai) | 492 | 669 | 513 |
+| [PentAGI](frameworks/pentagi) | 309 | 493 | 0 |
+| [AutoCVE](frameworks/autocve) | 147 | 256 | 0 |
+| [Agent Zero](frameworks/agent-zero) | 113 | 173 | 0 |
+| [HexStrike](frameworks/hexstrike) | 30 | 35 | 0 |
+| [RedAmon](frameworks/redamon) | 22 | 38 | 0 |
+| [Cairn](frameworks/cairn) | 19 | 32 | 0 |
+| [Xalgorix](frameworks/xalgorix) | 6 | 12 | 0 |
+| [CyberStrike](frameworks/cyberstrike) | 5 | 8 | 0 |
+| [Strix](frameworks/strix) | 4 | 13 | 0 |
+| [AIDA](frameworks/aida) | 4 | 5 | 0 |
+| [BugTraceAI](frameworks/bugtraceai) | 3 | 3 | 0 |
+| [Chufeng Agent Core](frameworks/chufeng) | 2 | 4 | 0 |
+| [Z3r0](frameworks/z3r0) | 1 | 4 | 0 |
+| [Decepticon](frameworks/decepticon) | 1 | 3 | 0 |
+| [AIRecon](frameworks/airecon) | 1 | 2 | 0 |
+| [LuaN1aoAgent](frameworks/luan1aoagent) | 1 | 1 | 0 |
+| [open-kritt](frameworks/open-kritt) | 1 | 1 | 0 |
+| [T3MP3ST](frameworks/t3mp3st) | 1 | 1 | 0 |
+| [Vulnerator AI](frameworks/vulnerator-ai) | 0 | 21 | 0 |
+| [REDCELL](frameworks/redcell) | 0 | 1 | 0 |
+| [WormXGPT](frameworks/wormxgpt) | 0 | 1 | 0 |
 | [Pentest Swarm AI](frameworks/pentestswarm) | 0 | 0 | 0 |
-| All, each host counted once | 3,968 | 6,200 | 507 |
+| All, each host counted once | 4,699 | 6,982 | 513 |
 <!-- exposed-consoles:end -->
 
 - An exposed console is not proof of an attack. Researchers, students and security teams run these tools, and some hosts are decoys.
 - More than half of the pages titled CyberStrikeAI are flagged as honeypots, which is why that count is so much lower than a title search suggests. The flagged hosts stay in the list with `honeypot` set to `yes`.
 - One network that is not flagged holds more than a third of the remaining CyberStrikeAI hosts and of the PentAGI hosts. That looks like one mass deployment or a set of decoys, not that many operators ([#21](https://github.com/ThreatDefence/agentic-attack-detections/issues/21)).
+- The ARTEX count includes 229 services found by the Basic auth realm or the `X-Artex-Auth` header put in front of the console. The realm match is probable, not certain: Artex is also a company name ([details](exposure/README.md#artex-behind-basic-authentication)).
+- Consoles behind Basic auth named after the tool are common: 63 realms named Cairn, 14 CyberStrikeAI, 8 PentAGI and a few for other frameworks. They now have searches, marked probable, and are added to the counts at the next full snapshot ([plain-word searches](exposure/README.md#plain-word-searches)).
+- These counts come from Shodan alone. Consoles on ports Shodan has not scanned are not in them.
 - Hermes Agent and Agent Zero are general-purpose agents, so their numbers count exposed agents, not attack consoles. Hermes is counted on its default port only.
 - Consoles served by host name only, or on a port that has not been scanned, are not counted.
 
@@ -212,6 +245,8 @@ bash frameworks/artex/tests/run_network_tests.sh       # needs zeek and suricata
 bash behaviors/zeek/tests/run_tests.sh                 # needs zeek on the PATH
 bash frameworks/cyberstrikeai/tests/run_zeek_tests.sh  # needs zeek on the PATH
 bash frameworks/hexstrike/tests/run_zeek_tests.sh      # needs zeek on the PATH
+bash frameworks/autocve/tests/run_zeek_tests.sh        # needs zeek on the PATH
+bash frameworks/luan1aoagent/tests/run_zeek_tests.sh   # needs zeek on the PATH
 ```
 
 `validate.py` checks KQL with Microsoft's parser when `dotnet` is installed, and Zeek scripts when `zeek` is.
