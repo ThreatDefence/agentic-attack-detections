@@ -71,8 +71,12 @@ TECHNIQUE_TACTICS = {
     "T1592": {"Reconnaissance"},
     "T1595": {"Reconnaissance"},
     "T1611": {"PrivilegeEscalation"},
-    "T1699": {"Execution"},
 }
+# Techniques newer than Microsoft Sentinel's ATT&CK list. Sentinel refuses an analytics rule that names one, whatever
+# its tactics ("No valid tactic corresponding to the technique T1699 was provided in the tactics field", seen in the
+# lab on November 25, 2026, with each of its tactics), so the templates leave them out of relevantTechniques. The rule
+# file, the coverage page, Sigma, Splunk, Elastic and the hunting query tags keep them.
+SENTINEL_UNKNOWN = {"T1699"}
 TAG_MAX = 256  # Log Analytics refuses a saved search whose tag value is longer (seen: 239 accepted, 260 refused)
 OPERATORS = {"gt": "GreaterThan", "lt": "LessThan", "eq": "Equal", "ne": "NotEqual"}
 SEVERITIES = {"High", "Medium", "Low", "Informational"}
@@ -137,7 +141,7 @@ def analytics_rule(path, framework):
         "tactics": list(d.get("tactics", [])),
         # API 2024-03-01 stores parent techniques only (a subTechniques field is accepted and dropped, seen in a test
         # deployment), so sub-techniques such as T1059.004 are sent as their parent T1059.
-        "techniques": sorted({t.split(".")[0] for t in techniques}),
+        "techniques": sorted({t.split(".")[0] for t in techniques} - SENTINEL_UNKNOWN),
         "eventGroupingSettings": {"aggregationKind": d.get("eventGroupingSettings", {}).get("aggregationKind", "SingleAlert")},
         "incidentConfiguration": {"createIncident": True, "groupingConfiguration": {
             "enabled": False, "reopenClosedIncident": False, "lookbackDuration": "PT5H",

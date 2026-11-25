@@ -645,8 +645,7 @@
           "Execution"
         ],
         "techniques": [
-          "T1059",
-          "T1699"
+          "T1059"
         ],
         "eventGroupingSettings": {
           "aggregationKind": "SingleAlert"
