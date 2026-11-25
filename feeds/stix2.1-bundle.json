@@ -1,6 +1,6 @@
 {
  "type": "bundle",
- "id": "bundle--14fc0e1a-65dc-5de7-b766-f2759126da6f",
+ "id": "bundle--26de81dc-ca13-5ea0-abb0-c37a8fbae706",
  "objects": [
   {
    "type": "identity",
@@ -195,6 +195,239 @@
     "pentestswarm"
    ],
    "description": "Open-source Go command-line tool (Armur-Ai/Pentest-Swarm-AI, 2026) that runs recon, exploit and report agents over about 40 security tools; no public report of use in an intrusion.",
+   "tool_types": [
+    "exploitation",
+    "vulnerability-scanning"
+   ]
+  },
+  {
+   "type": "tool",
+   "spec_version": "2.1",
+   "id": "tool--bcf97641-f0b5-581c-8386-17087f58ba12",
+   "created": "2026-11-21T00:00:00.000Z",
+   "modified": "2026-11-21T00:00:00.000Z",
+   "name": "AutoCVE",
+   "aliases": [
+    "larlarua/AutoCVE"
+   ],
+   "description": "Open-source agent-driven CVE discovery platform (larlarua/AutoCVE, June 2026) that audits source code, verifies findings and writes reports, with a web console on port 3000 and an API on port 8000; no public report of use in an intrusion.",
+   "tool_types": [
+    "exploitation",
+    "vulnerability-scanning"
+   ]
+  },
+  {
+   "type": "tool",
+   "spec_version": "2.1",
+   "id": "tool--60255dd0-809d-585f-9a40-2eafbedce0b8",
+   "created": "2026-11-21T00:00:00.000Z",
+   "modified": "2026-11-21T00:00:00.000Z",
+   "name": "CyberStrike",
+   "aliases": [
+    "CyberStrikeus/CyberStrike",
+    "CyberStrikeus/cyberstrike"
+   ],
+   "description": "Open-core TypeScript offensive security harness (CyberStrikeus/CyberStrike, February 2026) whose agents run web and network tests with a browser extension and a callback server, with a web console on port 4096; not related to CyberStrikeAI; no public report of use in an intrusion.",
+   "tool_types": [
+    "exploitation",
+    "vulnerability-scanning"
+   ]
+  },
+  {
+   "type": "tool",
+   "spec_version": "2.1",
+   "id": "tool--3d9f5900-9867-5c1f-883d-0f88ea11e183",
+   "created": "2026-11-21T00:00:00.000Z",
+   "modified": "2026-11-21T00:00:00.000Z",
+   "name": "Vulnerator AI",
+   "aliases": [
+    "irraz/vulnerator-ai",
+    "Vulnerator"
+   ],
+   "description": "Open-source OODA-loop penetration testing agent (irraz/vulnerator-ai, October 2026) that drives Kali and Playwright tools over MCP from a Hermes Agent brain, with an operator console on port 9100; no public report of use in an intrusion.",
+   "tool_types": [
+    "exploitation",
+    "vulnerability-scanning"
+   ]
+  },
+  {
+   "type": "tool",
+   "spec_version": "2.1",
+   "id": "tool--df40077d-5737-5263-9384-b8eee507d13e",
+   "created": "2026-11-21T00:00:00.000Z",
+   "modified": "2026-11-21T00:00:00.000Z",
+   "name": "Decepticon",
+   "aliases": [
+    "BitterSecurity/Decepticon"
+   ],
+   "description": "Open-source autonomous red team agent (BitterSecurity/Decepticon, June 2025) built on LangGraph with a Kali sandbox, whose open web console on port 3000 was removed in November 2026 in favour of a hosted one; no public report of use in an intrusion.",
+   "tool_types": [
+    "exploitation",
+    "vulnerability-scanning"
+   ]
+  },
+  {
+   "type": "tool",
+   "spec_version": "2.1",
+   "id": "tool--fb4889b8-9079-5a7e-ba94-f4fc35da60b9",
+   "created": "2026-11-21T00:00:00.000Z",
+   "modified": "2026-11-21T00:00:00.000Z",
+   "name": "AIDA",
+   "aliases": [
+    "Vasco0x4/AIDA",
+    "AI-Driven Security Assessment"
+   ],
+   "description": "Open-source platform (Vasco0x4/AIDA, January 2026) that turns a model into a penetration tester working from its own tool container or Exegol, with a web console on port 31337; no public report of use in an intrusion.",
+   "tool_types": [
+    "exploitation",
+    "vulnerability-scanning"
+   ]
+  },
+  {
+   "type": "tool",
+   "spec_version": "2.1",
+   "id": "tool--8baca3aa-3f30-5be3-854e-2ad6d92137b1",
+   "created": "2026-11-21T00:00:00.000Z",
+   "modified": "2026-11-21T00:00:00.000Z",
+   "name": "BugTraceAI",
+   "aliases": [
+    "BugTraceAI/BugTraceAI",
+    "BugTraceAI-CLI",
+    "BugTraceAI-WEB"
+   ],
+   "description": "Open-source self-hosted web penetration testing suite (BugTraceAI, February 2026) with agentic scanning, a web interface, an API on port 8000 and MCP servers; no public report of use in an intrusion.",
+   "tool_types": [
+    "exploitation",
+    "vulnerability-scanning"
+   ]
+  },
+  {
+   "type": "tool",
+   "spec_version": "2.1",
+   "id": "tool--b0934de0-2985-5207-b9ba-848305fe5177",
+   "created": "2026-11-21T00:00:00.000Z",
+   "modified": "2026-11-21T00:00:00.000Z",
+   "name": "Z3r0",
+   "aliases": [
+    "yv1ing/Z3r0"
+   ],
+   "description": "Open-source AI red team workbench (yv1ing/Z3r0, April 2026) with specialist agents, sandboxed tools and an egress proxy pool, with a web console on port 8000; no public report of use in an intrusion.",
+   "tool_types": [
+    "exploitation",
+    "vulnerability-scanning"
+   ]
+  },
+  {
+   "type": "tool",
+   "spec_version": "2.1",
+   "id": "tool--68e0c64d-faf9-557f-92be-0c628870c92b",
+   "created": "2026-11-21T00:00:00.000Z",
+   "modified": "2026-11-21T00:00:00.000Z",
+   "name": "AIRecon",
+   "aliases": [
+    "pikpikcu/airecon"
+   ],
+   "description": "Open-source autonomous reconnaissance agent (pikpikcu/airecon, March 2026) that drives a Kali Docker sandbox from a local Ollama model and runs its own SearXNG instance; no public report of use in an intrusion.",
+   "tool_types": [
+    "exploitation",
+    "vulnerability-scanning"
+   ]
+  },
+  {
+   "type": "tool",
+   "spec_version": "2.1",
+   "id": "tool--545c9725-4218-5d4b-bbda-d9f9b78efa2a",
+   "created": "2026-11-21T00:00:00.000Z",
+   "modified": "2026-11-21T00:00:00.000Z",
+   "name": "LuaN1aoAgent",
+   "aliases": [
+    "SanMuzZzZz/LuaN1aoAgent",
+    "鸾鸟渗透智能体",
+    "LuaN1ao"
+   ],
+   "description": "Open-source autonomous penetration testing agent with graph-based planning (SanMuzZzZz/LuaN1aoAgent, December 2025), with a web workbench on port 8787 and a chisel tunnel server for its sandbox; no public report of use in an intrusion.",
+   "tool_types": [
+    "exploitation",
+    "vulnerability-scanning"
+   ]
+  },
+  {
+   "type": "tool",
+   "spec_version": "2.1",
+   "id": "tool--63f0a767-ed49-59b3-a352-3cd43219b2f2",
+   "created": "2026-11-21T00:00:00.000Z",
+   "modified": "2026-11-21T00:00:00.000Z",
+   "name": "open-kritt",
+   "aliases": [
+    "Kritt-ai/open-kritt",
+    "kritt"
+   ],
+   "description": "Open-source self-hosted AI vulnerability research tool (Kritt-ai/open-kritt, July 2026) whose agents find and validate flaws in code, with a web interface on port 5173 and an executor view on port 8090; no public report of use in an intrusion.",
+   "tool_types": [
+    "exploitation",
+    "vulnerability-scanning"
+   ]
+  },
+  {
+   "type": "tool",
+   "spec_version": "2.1",
+   "id": "tool--a0a8bfb3-9537-5154-a6e0-8023530c6cd9",
+   "created": "2026-11-21T00:00:00.000Z",
+   "modified": "2026-11-21T00:00:00.000Z",
+   "name": "REDCELL",
+   "aliases": [
+    "martian56/redcell"
+   ],
+   "description": "Open-source AI red team platform (martian56/redcell, August 2026) whose LangGraph agents run a penetration test end to end inside a Kali container and write the report; no public report of use in an intrusion.",
+   "tool_types": [
+    "exploitation",
+    "vulnerability-scanning"
+   ]
+  },
+  {
+   "type": "tool",
+   "spec_version": "2.1",
+   "id": "tool--e0bcadf0-2ef2-5c4f-8386-d45c351eb15b",
+   "created": "2026-11-21T00:00:00.000Z",
+   "modified": "2026-11-21T00:00:00.000Z",
+   "name": "T3MP3ST",
+   "aliases": [
+    "elder-plinius/T3MP3ST"
+   ],
+   "description": "Open-source multi-agent red teaming harness (elder-plinius/T3MP3ST, July 2026) with a command and control dashboard on port 3333; no public report of use in an intrusion.",
+   "tool_types": [
+    "exploitation",
+    "vulnerability-scanning"
+   ]
+  },
+  {
+   "type": "tool",
+   "spec_version": "2.1",
+   "id": "tool--7cc6f432-696d-538a-89ec-60948b5b4f66",
+   "created": "2026-11-21T00:00:00.000Z",
+   "modified": "2026-11-21T00:00:00.000Z",
+   "name": "WormXGPT",
+   "aliases": [
+    "gaur-avvv/wormxgpt",
+    "WormGPT Red Terminal"
+   ],
+   "description": "Open-source hacker-themed AI tooling suite (gaur-avvv/wormxgpt, January 2026) with a web terminal on port 3000 that calls security tools from a model told to ignore its limits; it borrows the WormGPT name but is not the criminal service; no public report of use in an intrusion.",
+   "tool_types": [
+    "exploitation",
+    "vulnerability-scanning"
+   ]
+  },
+  {
+   "type": "tool",
+   "spec_version": "2.1",
+   "id": "tool--cc23e5c9-f1c3-55b9-9a24-d3f34342dbbb",
+   "created": "2026-11-21T00:00:00.000Z",
+   "modified": "2026-11-21T00:00:00.000Z",
+   "name": "Chufeng Agent Core",
+   "aliases": [
+    "楚锋 Agent Core"
+   ],
+   "description": "Self-hosted agent workspace titled 楚锋 Agent Core, seen on Chinese cloud hosts in November 2026, whose sign-in page offers CTF, digital forensics and authorised penetration testing tasks; no public source code or report found.",
    "tool_types": [
     "exploitation",
     "vulnerability-scanning"

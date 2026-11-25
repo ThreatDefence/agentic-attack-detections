@@ -152,3 +152,7 @@ RedAmon ships no implant, C2 protocol or persistence of its own. Post-exploitati
 - An Ostorlab blog post compares RedAmon with other open-source AI pentest tools (https://blog.ostorlab.co/9-open-source-ai-pentest-tools-2026.html); its date was not confirmed and it reports no malicious use.
 - Compose volume and built-image names that depend on the project folder name (for example `redamon_postgres_data`, `redamon-webapp`) are inferred from Docker Compose naming rules.
 - The clone was shallow (200 commits, back to November 13, 2026), so line numbers and defaults describe 7.9.0 only. Older versions were not compared.
+
+## Behind Basic authentication
+
+Operators put nginx Basic auth in front of the RedAmon console and name the realm after the tool. In Shodan on November 25, 2026, 3 services answered `401` with a realm that starts with `RedAmon`, on port 443. The realm is set by the web server in front of the console, so a match is probable, not certain. The exposure search `basic auth realm (probable)` finds them, and Suricata 3801043 and the Zeek behavior `AgenticBehaviors::Agent_Console_Realm` match the realm on your own network.

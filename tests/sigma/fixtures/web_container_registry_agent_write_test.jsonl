@@ -9,3 +9,9 @@
 {"name": "a company image named artex", "expected": false, "event": {"cs-method": "PUT", "cs-uri-stem": "/v2/artex/billing-api/manifests/latest", "cs-uri-query": "", "cs-user-agent": "docker/27.0"}}
 {"name": "pulling a write-test image", "expected": false, "event": {"cs-method": "GET", "cs-uri-stem": "/v2/pwned-test-push2/manifests/latest", "cs-uri-query": "", "cs-user-agent": "docker/27.0"}}
 {"name": "a blob upload, which comes before the manifest", "expected": false, "event": {"cs-method": "POST", "cs-uri-stem": "/v2/pwned-test-push2/blobs/uploads/", "cs-uri-query": "", "cs-user-agent": "docker/27.0"}}
+{"name": "artex-rce from the open registries", "expected": true, "event": {"cs-method": "PUT", "cs-uri-stem": "/v2/artex-rce/manifests/latest", "cs-uri-query": "", "cs-user-agent": "docker/27.0"}}
+{"name": "artex_rce_<id> from the open registries", "expected": true, "event": {"cs-method": "PUT", "cs-uri-stem": "/v2/artex_rce_141840/manifests/latest", "cs-uri-query": "", "cs-user-agent": "docker/27.0"}}
+{"name": "artex-exploit-i<id> from the open registries", "expected": true, "event": {"cs-method": "PUT", "cs-uri-stem": "/v2/artex-exploit-i137302/manifests/latest", "cs-uri-query": "", "cs-user-agent": "docker/27.0"}}
+{"name": "artex-push-probe from the open registries", "expected": true, "event": {"cs-method": "PUT", "cs-uri-stem": "/v2/artex-push-probe/manifests/latest", "cs-uri-query": "", "cs-user-agent": "docker/27.0"}}
+{"name": "near miss: a blob upload for artex-rce is not the push itself", "expected": false, "event": {"cs-method": "POST", "cs-uri-stem": "/v2/artex-rce/blobs/uploads/", "cs-uri-query": "", "cs-user-agent": "docker/27.0"}}
+{"name": "near miss: an artex-ui image", "expected": false, "event": {"cs-method": "PUT", "cs-uri-stem": "/v2/artex-ui/manifests/1.0.0", "cs-uri-query": "", "cs-user-agent": "docker/27.0"}}

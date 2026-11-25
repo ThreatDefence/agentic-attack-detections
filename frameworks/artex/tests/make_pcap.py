@@ -52,6 +52,21 @@ session(ATT, WEB, 40008, 80, req("/", "ARTEX-PENTEST/1.0"), resp("ok", status="2
 session(ATT, WEB, 40009, 80, req("/api/me?token=eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.e30.", "python-requests/2.31.0"), resp("denied", status="401 Unauthorized"))
 session("10.0.0.20", CONSOLE, 40004, 8787, req("/", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"),
         resp('<html><head><title>ARTEX - Agentic Pentest</title><script src="/_next/static/chunks/main.js"></script></head></html>', status="200 OK"))
+# Renamed console with the Japanese title ending, the Pojun derivative, and the Basic auth realm and proxy header in front of consoles
+session("10.0.0.21", CONSOLE, 40011, 8787, req("/", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"),
+        resp('<html><head><title>KAI \u2014 \u81ea\u5f8b\u578b\u30da\u30cd\u30c8\u30ec\u30fc\u30b7\u30e7\u30f3\u30c6\u30b9\u30c8\u30b3\u30f3\u30bd\u30fc\u30eb</title>'
+             '<script src="/_next/static/chunks/main.js"></script></head></html>', status="200 OK"))
+session("10.0.0.22", CONSOLE, 40012, 8789, req("/", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"),
+        resp('<html><head><title>Console</title><meta name="description" content="Authorized operations console"/>'
+             '<script src="/_next/static/chunks/main.js"></script></head></html>', status="200 OK"))
+session("10.0.0.23", CONSOLE, 40013, 8787, req("/", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"),
+        resp("", status="401 Unauthorized", extra='WWW-Authenticate: Basic realm="ARTEX Gateway"\r\n'))
+session("10.0.0.24", CONSOLE, 40014, 8787, req("/", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"),
+        resp('{"error":"unauthorized"}', ctype="application/json", status="401 Unauthorized",
+             extra='WWW-Authenticate: Basic realm="Restricted"\r\nX-Artex-Auth: basic\r\n'))
+# Near miss: a realm that only starts with Artex
+session("198.51.100.8", WEB, 40015, 80, req("/", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"),
+        resp("", status="401 Unauthorized", extra='WWW-Authenticate: Basic realm="Artexis Portal"\r\n'))
 session("198.51.100.7", WEB, 40005, 80, req("/", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131.0 Safari/537.36"),
         resp("<html><head><title>Home</title></head></html>", status="200 OK"))
 session("10.0.0.30", "172.86.84.226", 40006, 88,

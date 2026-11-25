@@ -19,7 +19,7 @@ quiet() { if [ "$(count "$2" "${3:-}")" != 0 ]; then echo "UNEXPECTED: $1"; fail
 
 if [ -s "$work/stderr.txt" ]; then echo "UNEXPECTED: zeek wrote to stderr"; cat "$work/stderr.txt"; fail=1; fi
 for n in Model_API_From_Server AI_Agent_Attacking_Site Rotating_Proxy_Probing Backup_File_Served Backup_Path_Sweep \
-         WSUS_Admin_From_Internet WSUS_Port_From_Internet Kerberos_Enumeration SMB_WinRM_Fan_Out Callback_To_Prober Out_Of_Band_Lookup; do
+         WSUS_Admin_From_Internet WSUS_Port_From_Internet Kerberos_Enumeration SMB_WinRM_Fan_Out Callback_To_Prober Out_Of_Band_Lookup Agent_Console_Realm; do
     if grep -q "AgenticBehaviors::$n" "$log" 2>/dev/null; then echo "notice: $n"; else echo "MISSING: $n"; fail=1; fi
 done
 # The benign visitor and the www.example.com call must not raise anything.
@@ -41,6 +41,7 @@ quiet "a workstation signing in raised a notice" "" "10.0.0.70"
 quiet "a login page in normal use raised Rotating_Proxy_Probing" Rotating_Proxy_Probing portal.example.test
 
 # Near misses.
+quiet "a realm that only starts with Cairn raised Agent_Console_Realm" Agent_Console_Realm "Cairns Holiday"
 quiet "a laptop outside server_nets raised a notice" "" "10.0.0.77"
 quiet "a catch-all 200 page raised Backup_File_Served" Backup_File_Served "203.0.113.32"
 quiet "a SYN scan raised SMB_WinRM_Fan_Out" SMB_WinRM_Fan_Out "10.0.0.67"

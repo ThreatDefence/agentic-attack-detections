@@ -36,3 +36,6 @@ alert tls $HOME_NET any -> any any (msg:"TD Cairn campaign skimmer or C2 domain 
 alert http any any -> any any (msg:"TD Skimmer loader new Function(atob(...).slice(7)) in served JavaScript"; flow:established,to_client; http.response_body; content:"new Function(atob("; fast_pattern; content:".slice(7)"; distance:0; classtype:trojan-activity; sid:3801032; rev:2; metadata:created_at 2026_11_21, updated_at 2026_11_22, confidence Medium, malware_family Cairn;)
 
 # The WSUS rule (SID 3801040) moved to behaviors/suricata/behaviors.rules.
+# A Cairn build seen in Shodan on November 25, 2026 (title 衍迹 · 自主探索工作台, Cairn's Chinese name) serves a
+# self-signed certificate with this subject. Not in the public code at 8e7e0ea.
+alert tls any any -> any any (msg:"TD Cairn console auto-generated certificate"; flow:established,to_client; tls.cert_subject; content:"CN=Cairn auto-generated TLS certificate"; fast_pattern; classtype:policy-violation; sid:3801004; rev:1; metadata:created_at 2026_11_25, confidence High, malware_family Cairn;)

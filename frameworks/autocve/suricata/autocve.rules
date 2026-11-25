@@ -1,0 +1,10 @@
+# Agentic attack detections by ThreatDefence: AutoCVE
+# https://github.com/ThreatDefence/agentic-attack-detections
+# Suricata 7 and 8. SID range 3811001-3811049. HTTP rules need cleartext HTTP or decrypted traffic.
+# The web console (3000) and the API (8000) are plain HTTP in the stock Docker stack, so these rules work without decryption.
+
+# --- An exposed AutoCVE API (8000) and console (3000) ---
+# GET / on the API answers with a fixed welcome and the demo account (backend/app/main.py:122-130).
+alert http any any -> any any (msg:"TD AutoCVE API answer"; flow:established,to_client; http.response_body; content:"Welcome to AutoCVE API"; fast_pattern; content:"demo_account"; classtype:policy-violation; sid:3811001; rev:1; metadata:created_at 2026_11_25, confidence Medium, malware_family AutoCVE;)
+# The console page title (frontend/index.html:8).
+alert http any any -> any any (msg:"TD AutoCVE console page"; flow:established,to_client; http.response_body; content:"<title>AutoCVE</title>"; fast_pattern; classtype:policy-violation; sid:3811002; rev:1; metadata:created_at 2026_11_25, confidence Low, malware_family AutoCVE;)

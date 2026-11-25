@@ -1,0 +1,16 @@
+# Agentic attack detections by ThreatDefence: LuaN1aoAgent
+# https://github.com/ThreatDefence/agentic-attack-detections
+# Suricata 7 and 8. SID range 3811801-3811849. HTTP rules need cleartext HTTP or decrypted traffic.
+# The web workbench (8787) is plain HTTP unless the operator puts TLS in front of it.
+
+# --- Requests from its research and fetch tools ---
+# src/tools/research-tools.ts:10, sent by the search and fetch tools.
+alert http any any -> any any (msg:"TD LuaN1aoAgent research tool user agent"; flow:established,to_server; http.user_agent; content:"LuaN1aoAgent/"; startswith; fast_pattern; classtype:policy-violation; sid:3811801; rev:1; metadata:created_at 2026_11_25, confidence High, malware_family LuaN1aoAgent;)
+# src/tools/research-tools.ts:11: a browser string with no "(KHTML, like Gecko)" and a two-part Chrome version. No real browser sends it.
+alert http any any -> any any (msg:"TD LuaN1aoAgent fetch tool browser imitation"; flow:established,to_server; http.user_agent; content:"Mozilla/5.0 (Macintosh|3b| Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/124.0 Safari/537.36"; fast_pattern; startswith; endswith; classtype:policy-violation; sid:3811802; rev:1; metadata:created_at 2026_11_25, confidence Medium, malware_family LuaN1aoAgent;)
+
+# --- An exposed LuaN1aoAgent workbench (8787) ---
+# Page title 鸾鸟渗透智能体 · Agent Workbench (web/index.html:7).
+alert http any any -> any any (msg:"TD LuaN1aoAgent workbench page"; flow:established,to_client; http.response_body; content:"<title>|e9 b8 be e9 b8 9f e6 b8 97 e9 80 8f e6 99 ba e8 83 bd e4 bd 93|"; fast_pattern; classtype:policy-violation; sid:3811803; rev:1; metadata:created_at 2026_11_25, confidence Medium, malware_family LuaN1aoAgent;)
+# The workbench sets its CSRF cookie on every page (src/web-security.ts:5, 92).
+alert http any any -> any any (msg:"TD LuaN1aoAgent workbench CSRF cookie set"; flow:established,to_client; http.cookie; content:"luanniao_csrf="; startswith; fast_pattern; classtype:policy-violation; sid:3811804; rev:1; metadata:created_at 2026_11_25, confidence Medium, malware_family LuaN1aoAgent;)

@@ -143,6 +143,25 @@ def define_cases(work):
                      '<script src="/_next/static/chunks/main.js"></script></head></html>'))
     http("artex basic auth realm", [3800042], get("/"), client="int",
          response=ok("", "401 Unauthorized", headers='WWW-Authenticate: Basic realm="ARTEX"\r\n'))
+    http("artex basic auth realm variant (ARTEX Gateway)", [3800042], get("/"), client="int", port=8787,
+         response=ok("", "401 Unauthorized", headers='WWW-Authenticate: Basic realm="ARTEX Gateway", charset="UTF-8"\r\n'))
+    http("near miss: basic auth realm of another product that starts with Artex", [], get("/"), client="int",
+         response=ok("", "401 Unauthorized", headers='WWW-Authenticate: Basic realm="Artexis Portal"\r\n'))
+    http("artex console auth proxy header", [3800084], get("/"), client="int", port=8787,
+         response=ok('{"error":"unauthorized"}', "401 Unauthorized", ctype="application/json",
+                     headers='WWW-Authenticate: Basic realm="Restricted", charset="UTF-8"\r\nX-Artex-Auth: basic\r\n'))
+    http("near miss: another X-Artex header (cache)", [], get("/"), client="int", port=8787,
+         response=ok("ok", headers="X-Artex-Cache: HIT\r\n"))
+    http("renamed artex console page (Japanese title ending)", [3800085], get("/"), client="int", port=8787,
+         response=ok('<html><head><title>KAI — 自律型ペネトレーションテストコンソール</title>'
+                     '<script src="/_next/static/chunks/main.js"></script></head></html>'))
+    http("near miss: Japanese title ending without the Next.js build", [], get("/"), client="int",
+         response=ok('<html><head><title>自律型ペネトレーションテストコンソール 紹介</title></head></html>'))
+    http("artex derivative Pojun console page", [3800086], get("/"), client="int", port=8787,
+         response=ok('<html><head><title>Console</title><meta name="description" content="Authorized operations console"/>'
+                     '<script src="/_next/static/chunks/main.js"></script></head></html>'))
+    http("near miss: Pojun description on a page without the Next.js build", [], get("/"), client="int",
+         response=ok('<html><head><title>Ops</title><meta name="description" content="Authorized operations console"/></head></html>'))
     for name, dns_sid, sni_sid in [("nginxmysql.com", 3800060, 3800061), ("cdn.nginxmysql.com", 3800060, 3800061),
                                    ("sqlserver-sqlite.com", 3800070, 3800072), ("www.ddduuuppp.com", 3800071, 3800073)]:
         lookup(f"bloodalchemy c2 lookup {name}", [dns_sid], name)
@@ -189,6 +208,18 @@ def define_cases(work):
          response=ok("/*! Bootstrap */;new Function(atob('Xk3pQz9" + "dmFyIGE9MTs7" * 120 + "'.slice(7)))();", ctype="application/javascript"))
     http("near miss: /projects on an ordinary site", [], get("/projects", host="10.2.0.5:8000"), port=8000,
          response=ok('[{"id":1,"title":"Website","status":"active"}]', ctype="application/json"))
+
+    case("cairn console auto-generated certificate", [3801004], client="int", server="ext", port=443, request=client_hello("203.0.113.9"),
+         response=server_cert(make_cert(work, "cairn", "/CN=Cairn auto-generated TLS certificate")))
+    case("near miss: another auto-generated certificate", [], client="int", server="ext", port=443, request=client_hello("203.0.113.9"),
+         response=server_cert(make_cert(work, "cairn-other", "/CN=Kubernetes Ingress Controller Fake Certificate")))
+    for realm in ["Cairn", "PentAGI", "CyberStrikeAI", "HexStrike Console"]:
+        http(f"basic auth realm naming {realm}", [3801043], get("/"), client="int", port=443,
+             response=ok("", "401 Unauthorized", headers=f'WWW-Authenticate: Basic realm="{realm}"\r\n'))
+    http("near miss: realm that only starts with cairn", [], get("/"), client="int",
+         response=ok("", "401 Unauthorized", headers='WWW-Authenticate: Basic realm="Cairns Holiday Rentals"\r\n'))
+    http("near miss: a framework realm on a 200 page", [], get("/"), client="int",
+         response=ok("ok", headers='WWW-Authenticate: Basic realm="Cairn"\r\n'))
 
     # ---- PentAGI
     case("pentagi console certificate", [3802001, 3802002], client="int", server="int", port=8443, request=client_hello("pentagi.local"),
@@ -325,6 +356,33 @@ def define_cases(work):
     http("near miss: an ordinary cross-origin post", [],
          post("/account/email", "email=a%40example.test", headers="Origin: https://app.example.test\r\n", ctype="application/x-www-form-urlencoded"))
 
+    # ---- AutoCVE
+    http("autocve API answer", [3811001], get("/", ua="python-requests/2.32.3"), client="int", port=8000,
+         response=ok('{"message":"Welcome to AutoCVE API","docs":"/docs","demo_account":{"email":"demo@example.com","password":"demo123"}}',
+                     ctype="application/json"))
+    http("near miss: a page that quotes the AutoCVE welcome", [], get("/blog/autocve"), client="int",
+         response=ok("<p>The API answers Welcome to AutoCVE API on port 8000.</p>"))
+    http("autocve console page", [3811002], get("/"), client="int", port=3000,
+         response=ok('<!doctype html><html><head><title>AutoCVE</title><script type="module" src="/assets/index.js"></script></head></html>'))
+    http("near miss: a page titled with more than AutoCVE", [], get("/"), client="int",
+         response=ok("<html><head><title>AutoCVE alternatives compared</title></head></html>"))
+
+    # ---- LuaN1aoAgent
+    http("luan1aoagent research tool user agent", [3811801], get("/", ua="LuaN1aoAgent/0.1 security-research"))
+    http("near miss: user agent that names LuaN1aoAgent later in the string", [], get("/", ua="Mozilla/5.0 (compatible; LuaN1aoAgent-checker)"))
+    http("luan1aoagent fetch tool browser imitation", [3811802],
+         get("/", ua="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/124.0 Safari/537.36"))
+    http("near miss: real Chrome 124 on macOS", [],
+         get("/", ua="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"))
+    http("luan1aoagent workbench page", [3811803], get("/"), client="int", port=8787,
+         response=ok('<!doctype html><html lang="zh-CN"><head><title>鸾鸟渗透智能体 · Agent Workbench</title></head><body><div id="root"></div></body></html>'))
+    http("luan1aoagent workbench CSRF cookie", [3811804], get("/api/session"), client="int", port=8787,
+         response=ok('{"user":null}', ctype="application/json", headers="Set-Cookie: luanniao_csrf=AbC123; Path=/; SameSite=Lax; Max-Age=604800\r\n"))
+    http("near miss: a page that only names the workbench", [], get("/"), client="int",
+         response=ok("<html><head><title>Review: 鸾鸟 agent</title></head></html>"))
+    http("near miss: another CSRF cookie", [], get("/api/session"), client="int", port=8787,
+         response=ok("{}", ctype="application/json", headers="Set-Cookie: csrftoken=AbC123; Path=/\r\n"))
+
     # ---- Pentest Swarm AI
     def control_probe(path, body="{}"):
         return (f"GET {path} HTTP/1.1\r\nHost: app.example.test\r\nUser-Agent: {BROWSER}\r\nContent-Type: application/json\r\n"
@@ -370,6 +428,12 @@ def define_cases(work):
                 f"Content-Type: application/vnd.docker.distribution.manifest.v2+json\r\nContent-Length: {len(body)}\r\n\r\n{body}").encode()
     created = ok("", "201 Created")
     http("registry push named after artex with an issue id", [3801041], push("artex-i127739"), created, port=5000)
+    # Repository names in the open registries of exposure/registry-writes.csv
+    http("registry push of artex-rce", [3801041], push("artex-rce"), created, port=5000)
+    http("registry push of artex_rce_<id>", [3801041], push("artex_rce_141840"), created, port=5000)
+    http("registry push of artex-exploit-i<id>", [3801041], push("artex-exploit-i137302"), created, port=5000)
+    http("registry push of artex-push-probe", [3801041, 3801042], push("artex-push-probe"), created, port=5000)
+    http("near miss: an artex-ui image", [], push("artex-ui", "1.0.0"), created, port=5000)
     http("registry push of a hermes write check", [3801041, 3801042], push("hermes-h23645-writecheck"), created, port=5000)
     http("registry push of a cyberstrikeai push probe", [3801041, 3801042], push("csai-push-probe"), created, port=5000)
     http("registry push into a gh0st namespace", [3801041], push("gh0st/mydocker-kali"), created, port=5000)

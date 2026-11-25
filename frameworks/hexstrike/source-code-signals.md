@@ -49,3 +49,7 @@ The assistant's model requests carry HexStrike's tool definitions. In Claude Cod
 - **Elastic** lists its user agents, the XSS probe and the Python server on 8888 as what to watch for.
 
 No addresses have been published for HexStrike operations, which is why the hunts here rely on its code-level strings.
+
+## Behind Basic authentication
+
+Operators put nginx Basic auth in front of the HexStrike console and name the realm after the tool. In Shodan on November 25, 2026, 3 services answered `401` with a realm that starts with `HexStrike`, on ports 443 and 8443. The realm is set by the web server in front of the console, so a match is probable, not certain. The exposure search `basic auth realm (probable)` finds them, and Suricata 3801043 and the Zeek behavior `AgenticBehaviors::Agent_Console_Realm` match the realm on your own network.

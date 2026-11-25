@@ -41,6 +41,8 @@ Strix ([usestrix/strix](https://github.com/usestrix/strix), PyPI `strix-agent`, 
 
 The viewer's page title is `Strix Results` and its icon (`logo.png`) hashes to `-566184040` on Shodan, SHA-256 `a6d5ca4b…`. GitGuardian counted 13 exposed viewers on port 8080 on November 7, 2026, and PenTestIT 11 on November 13. The viewer binds to `127.0.0.1` unless started with `--host 0.0.0.0`, so an exposed one was published on purpose or by mistake, and it shows that operator's runs.
 
+The viewer's HTTP server answers with `Server: StrixViewer/1.0` (`strix/interface/viewer/server.py:153` at `935f8235`, November 24, 2026), on the page and on its API routes, whatever the title. The exposure search on it found one viewer with no page title in the November 25, 2026 snapshot.
+
 ## What has been seen in the wild
 
 - **Gambit Security** (September 22, 2026) recovered the staging server of an operator who hacked online retailers and stole more than 600,000 payment cards. Strix found the vulnerabilities, Cairn exploited them and the Hermes agent ran the campaign. Strix ran 146 times in deep mode against 138 hosts from August 23 to 31, 2026 (633 hours of scanner time in 195 hours), through OpenRouter on GLM 5.2 and later DeepSeek v4 Pro. Some of its reports became the start of Cairn's exploitation. The campaign's addresses, C2 and skimmer domains are in the CSV under both `cairn` and `strix`.

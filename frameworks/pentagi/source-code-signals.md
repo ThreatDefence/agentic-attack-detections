@@ -55,3 +55,7 @@ Where model traffic is inspected, PentAGI requests carry the pre-authorization b
 ## What the code does not contain
 
 PentAGI ships no implant, beacon or exploit code of its own beyond what the agents write and the Kali image provides. Elastic notes that PentAGI keeps the code its agents write in a store shared across engagements, so a tool written for one target can reappear against the next.
+
+## Behind Basic authentication
+
+Operators put nginx Basic auth in front of the PentAGI console and name the realm after the tool. In Shodan on November 25, 2026, 8 services answered `401` with a realm that starts with `PentAGI`, on port 443. The realm is set by the web server in front of the console, so a match is probable, not certain. The exposure search `basic auth realm (probable)` finds them, and Suricata 3801043 and the Zeek behavior `AgenticBehaviors::Agent_Console_Realm` match the realm on your own network.

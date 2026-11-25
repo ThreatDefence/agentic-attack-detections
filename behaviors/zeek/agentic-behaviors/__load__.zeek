@@ -6,3 +6,4 @@
 @load ./kerberos-enum-and-fan-out
 @load ./callback-to-prober
 @load ./out-of-band-lookups
+@load ./console-auth-realm

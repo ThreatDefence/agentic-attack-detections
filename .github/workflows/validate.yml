@@ -41,6 +41,8 @@ jobs:
           bash frameworks/artex/tests/run_network_tests.sh
           bash frameworks/cyberstrikeai/tests/run_zeek_tests.sh
           bash frameworks/hexstrike/tests/run_zeek_tests.sh
+          bash frameworks/autocve/tests/run_zeek_tests.sh
+          bash frameworks/luan1aoagent/tests/run_zeek_tests.sh
       - name: Convert Sigma to Splunk, Sentinel and Elastic
         run: python tools/convert.py
       - name: Check generated conversions are committed

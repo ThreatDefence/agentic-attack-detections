@@ -72,3 +72,7 @@ Where model traffic is inspected, CyberStrikeAI requests carry Chinese-language 
 ## What the code does not contain
 
 The implant has no AI of its own; the model runs on the console, which sends the implant shell commands. The persistence names, headers and build path above are defaults of the stock template, and the operator can rebuild it. Kaspersky's samples still carried them.
+
+## Behind Basic authentication
+
+Operators put nginx Basic auth in front of the CyberStrikeAI console and name the realm after the tool. In Shodan on November 25, 2026, 14 services answered `401` with a realm that starts with `CyberStrikeAI`, on ports 443 and 8443. The realm is set by the web server in front of the console, so a match is probable, not certain. The exposure search `basic auth realm (probable)` finds them, and Suricata 3801043 and the Zeek behavior `AgenticBehaviors::Agent_Console_Realm` match the realm on your own network.

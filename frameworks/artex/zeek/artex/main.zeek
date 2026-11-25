@@ -26,6 +26,8 @@ export {
         JWT_Alg_None,
         ## A server answered with an ARTEX console page.
         Console_Page,
+        ## A server answered with the Basic auth realm or the auth proxy header put in front of ARTEX consoles.
+        Console_Auth,
     };
 
     ## User agents that name ARTEX, its forks and renamed builds. The name is the indicator, so case is ignored:
@@ -63,6 +65,16 @@ export {
     const console_titles: pattern =
         /<title>(ARTEX|ScopeWeaver|LUCK)[ :\-<]/ &redef;
 
+    ## Text that renamed builds keep: the Japanese title ending, and the description of the Pojun derivative
+    ## (chu0119/Pojun, web/src/config/app-config.ts:13), whose title is only "Console".
+    const console_text: pattern =
+        /\xe8\x87\xaa\xe5\xbe\x8b\xe5\x9e\x8b\xe3\x83\x9a\xe3\x83\x8d\xe3\x83\x88\xe3\x83\xac\xe3\x83\xbc\xe3\x82\xb7\xe3\x83\xa7\xe3\x83\xb3\xe3\x83\x86\xe3\x82\xb9\xe3\x83\x88\xe3\x82\xb3\xe3\x83\xb3\xe3\x82\xbd\xe3\x83\xbc\xe3\x83\xab/ |
+        /content=\x22Authorized operations console\x22/ &redef;
+
+    ## Basic auth realms put in front of ARTEX consoles: ARTEX, ARTEX Gateway, ARTEX Console, ARTEX Admin and others.
+    ## Artex is also a company name, so a match is probable, not certain.
+    const console_realm: pattern = /(?i:realm=\x22artex[\x22 ])/ &redef;
+
     ## How long to suppress repeat notices for the same source and indicator.
     const suppress_for: interval = 1hr &redef;
 }
@@ -90,7 +102,19 @@ event http_request(c: connection, method: string, original_URI: string,
 event http_all_headers(c: connection, is_orig: bool, hlist: mime_header_list)
     {
     if ( ! is_orig )
+        {
+        for ( j in hlist )
+            {
+            local r = hlist[j];
+
+            if ( r$name == "WWW-AUTHENTICATE" && console_realm in r$value )
+                raise(c, Console_Auth, fmt("ARTEX Basic auth realm served by %s:%s", c$id$resp_h, c$id$resp_p), r$value);
+
+            else if ( r$name == "X-ARTEX-AUTH" )
+                raise(c, Console_Auth, fmt("X-Artex-Auth header served by %s:%s", c$id$resp_h, c$id$resp_p), r$value);
+            }
         return;
+        }
 
     for ( i in hlist )
         {
@@ -112,7 +136,7 @@ event http_entity_data(c: connection, is_orig: bool, length: count, data: string
     if ( is_orig )
         return;
 
-    if ( console_titles in data )
+    if ( console_titles in data || console_text in data )
         raise(c, Console_Page, fmt("ARTEX console page served by %s:%s", c$id$resp_h, c$id$resp_p),
               cat(c$id$resp_h, ":", c$id$resp_p));
     }

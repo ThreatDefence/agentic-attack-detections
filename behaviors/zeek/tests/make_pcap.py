@@ -205,6 +205,12 @@ dns(WEB, "d0m3zr8b2c4e.oast.fun", 3)
 dns(LAPTOP, "e1n4as9c3d5f.oast.fun", 4)
 dns(WEB, "www.example.org", 5)
 
+# A console behind Basic auth with a realm named after the framework, and a near miss with another realm
+session("203.0.113.60", WEB, nxt(), 8001, req("/", BROWSER),
+        b'HTTP/1.1 401 Unauthorized\r\nWWW-Authenticate: Basic realm="Cairn Console"\r\nContent-Length: 0\r\n\r\n')
+session("203.0.113.61", WEB, nxt(), 443, req("/", BROWSER),
+        b'HTTP/1.1 401 Unauthorized\r\nWWW-Authenticate: Basic realm="Cairns Holiday Rentals"\r\nContent-Length: 0\r\n\r\n')
+
 # Benign: an ordinary visitor and an ordinary outbound call (nothing expected)
 session("198.51.100.99", WEB, nxt(), 80, req("/", BROWSER), resp("ok", "200 OK"))
 session(WEB, "198.51.100.100", nxt(), 443, client_hello("www.example.com"))
