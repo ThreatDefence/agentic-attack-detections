@@ -8,7 +8,8 @@ Checks:
     Sigma       pySigma parses every rule and correlation, ids are unique, no validator issues
     Sentinel    analytics YAML parses and has the required keys, hunts are non-empty
     KQL         every hunt and analytics query parses, and its tables and columns exist (when dotnet is installed)
-    Elastic     TOML rules parse, rule_ids are unique, ES|QL files start with FROM, generated queries use ECS DNS and web fields
+    Elastic     TOML rules parse, rule_ids are unique, ES|QL files start with FROM, generated queries use ECS DNS and web fields,
+                and the NDJSON import has unique rule_ids, Kibana severities and every rule disabled
     Splunk      .conf files parse, every saved search ships disabled
     Suricata    SIDs are unique across both rule files
     YARA        rules compile (when yara-python is installed)
@@ -109,7 +110,18 @@ def check_elastic():
         found = sorted(set(sigma_fields.findall(query)))
         if found:
             err(f"{p.relative_to(ROOT).as_posix()}: Sigma field names instead of ECS: {', '.join(found)}")
-    print(f"elastic: {len(ids)} rules")
+    severities = {"low", "medium", "high", "critical"}
+    imported = []
+    for line in (ROOT / "generated" / "elastic_ndjson" / "agentic-attack-detections.ndjson").read_text(encoding="utf-8").splitlines():
+        r = json.loads(line)
+        imported.append(r["rule_id"])
+        if r.get("enabled") is not False:
+            err(f"Elastic import: {r['name']} is not disabled")
+        if r.get("severity") not in severities:
+            err(f"Elastic import: {r['name']} has severity {r.get('severity')!r}; Kibana accepts {sorted(severities)}")
+    if len(imported) != len(set(imported)):
+        err("Elastic import: duplicate rule_id")
+    print(f"elastic: {len(ids)} hand-written rules, {len(imported)} in the import")
 
 
 def check_splunk():

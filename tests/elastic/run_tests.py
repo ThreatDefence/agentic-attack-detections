@@ -12,8 +12,11 @@ both in Docker. The test:
    match.
 2. Runs each rule's Lucene query against those events the way the detection engine does (query_string over logs-*)
    and checks Elasticsearch agrees with the Sigma rule on every event.
-3. Imports every rule into Kibana Security in one NDJSON import, enables them, waits for their first run and checks
-   each run succeeded and that the rules with a matching test event raised an alert.
+3. Loads the indicators from generated/elastic_ndjson/ into the aad-indicators index and writes one event that names
+   an indicator domain, for the indicator match rule.
+4. Imports every rule into Kibana Security in one NDJSON import, enables them, waits for their first run and checks
+   each run succeeded, that the rules with a matching test event raised an alert, and that the indicator match rule
+   raised one for the planted event.
 
 The NDJSON comes from tools/build_elastic.py when it exists, otherwise it is built here the same way (pass --ndjson to
 import a file of your own). Rules stay enabled afterwards with --keep-enabled, so the lab keeps showing alerts.
@@ -193,6 +196,23 @@ def ecs_event(event, fields, category, case, stamp):
     return doc
 
 
+def load_indicators(es):
+    """Recreate aad-indicators from the committed mapping and bulk file; return one indicator domain."""
+    folder = ROOT / "generated" / "elastic_ndjson"
+    try:
+        es.call("DELETE", "/aad-indicators")
+    except RuntimeError:
+        pass
+    es.call("PUT", "/aad-indicators", json.loads((folder / "indicators-index.json").read_text(encoding="utf-8")))
+    data = (folder / "indicators.ndjson").read_bytes()
+    res = es.call("POST", "/_bulk?refresh=true", raw=data, ctype="application/x-ndjson")
+    if res.get("errors"):
+        fail(f"indicator bulk: {[it['index']['error'] for it in res['items'] if 'error' in it['index']][:3]}")
+    docs = [json.loads(line) for line in data.decode().splitlines()[1::2]]
+    print(f"indicators: {len(docs)} loaded into aad-indicators")
+    return next(d["threat"]["indicator"]["url"]["domain"] for d in docs if d["threat"]["indicator"]["type"] == "domain-name")
+
+
 def bulk(es, docs):
     for i in range(0, len(docs), 500):
         lines = "".join(json.dumps({"create": {}}) + "\n" + json.dumps(d) + "\n" for d in docs[i:i + 500])
@@ -229,8 +249,12 @@ def main():
             case = f"{run}-{rule.id}-{i}"
             docs.append(ecs_event(ev, fields, rule.logsource.category, case, stamp))
             plan.append((rule, query, case, cname, expected))
+    domain = load_indicators(es)
+    docs.append({"@timestamp": stamp, "event": {"ingested": stamp, "category": "network", "type": "protocol"},
+                 "labels": {"aad_case": f"{run}-indicator"}, "host": {"name": "aad-test-host"},
+                 "dns": {"question": {"name": domain}}})
     bulk(es, docs)
-    print(f"{len(docs)} test events indexed into {DATA_STREAM} (run {run})")
+    print(f"{len(docs)} test events indexed into {DATA_STREAM} (run {run}), one naming the indicator {domain}")
 
     # 1. Each rule's query, as the detection engine runs it, agrees with the Sigma rule on every event.
     checked, wrong = 0, {}
@@ -276,7 +300,9 @@ def main():
             ids.append(kb.call("GET", "/api/detection_engine/rules?rule_id=" + urllib.parse.quote(rid))["id"])
         except RuntimeError:
             pass
-    since = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(time.time() - 5))
+    # Count runs and alerts from when the events were written: rules left enabled by an earlier --keep-enabled run
+    # may already have alerted on them before this import.
+    since = stamp
     kb.call("POST", "/api/detection_engine/rules/_bulk_action", {"action": "enable", "ids": ids})
     status, deadline = {}, time.time() + args.wait
     while time.time() < deadline:
@@ -307,6 +333,10 @@ def main():
     for rid, title in sorted(should.items(), key=lambda x: x[1]):
         if rid not in fired:
             fail(f"{title}: no alert, though its test events match in Elasticsearch")
+    matchers = [json.loads(line) for line in data.decode().splitlines() if '"threat_match"' in line]
+    for r in matchers:
+        if r["rule_id"] not in fired:
+            fail(f"{r['name']}: no alert for the event that names an indicator domain")
     print(f"alerts: {sum(fired.values())} alerts from {len(fired)} rules")
     if not args.keep_enabled:
         kb.call("POST", "/api/detection_engine/rules/_bulk_action", {"action": "disable", "ids": ids})

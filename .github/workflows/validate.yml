@@ -45,6 +45,8 @@ jobs:
         run: python tools/convert.py
       - name: Check generated conversions are committed
         run: git diff --exit-code generated/ || (echo "Run tools/convert.py and commit generated/" && exit 1)
+      - name: Build the Elastic import and check it is committed
+        run: python tools/build_elastic.py --check
       - name: Build the Microsoft Sentinel templates, validate them and check they are committed
         run: python tools/build_sentinel.py --check
       - name: Build the Splunk app, check it is committed and run Splunk AppInspect

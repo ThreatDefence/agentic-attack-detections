@@ -8,6 +8,9 @@ Writes:
     agentic-attack-detections.rules              every Suricata rule in one file (behaviors, then each framework)
     agentic-attack-detections-yara.zip           the YARA rules, one file per framework
     agentic-attack-detections-stix2.1.json       the STIX 2.1 bundle
+    agentic-attack-detections-elastic.ndjson     every rule as one Kibana Security import (generated/elastic_ndjson/)
+    agentic-attack-detections-elastic-indicators.ndjson     the indicators for the indicator match rule, a _bulk request
+    agentic-attack-detections-elastic-indicators-index.json the mapping for their index, aad-indicators
     agentic-attack-detections-indicators.zip     iocs/indicators.csv and everything under feeds/
     agentic-attack-detections-waf.zip            everything under waf/
     agentic-attack-detections-sentinel.json      the Microsoft Sentinel ARM template with everything (deploy/sentinel/)
@@ -136,6 +139,12 @@ def main():
 
     (out / f"{NAME}-stix2.1.json").write_bytes((ROOT / "feeds" / "stix2.1-bundle.json").read_bytes())
     print(f"{NAME}-stix2.1.json: copied from feeds/stix2.1-bundle.json")
+
+    elastic = ROOT / "generated" / "elastic_ndjson"
+    for src, dst in [(f"{NAME}.ndjson", f"{NAME}-elastic.ndjson"), ("indicators.ndjson", f"{NAME}-elastic-indicators.ndjson"),
+                     ("indicators-index.json", f"{NAME}-elastic-indicators-index.json")]:
+        (out / dst).write_bytes((elastic / src).read_bytes())
+        print(f"{dst}: copied from generated/elastic_ndjson/{src}")
 
     indicators = [("iocs/indicators.csv", (ROOT / "iocs" / "indicators.csv").read_bytes())] + tree(ROOT / "feeds")
     print(f"{NAME}-indicators.zip: {write_zip(out / f'{NAME}-indicators.zip', indicators, version)} files")

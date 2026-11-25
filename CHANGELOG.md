@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.12.0, unreleased
+
+- Elastic Security: one import with every rule. `tools/build_elastic.py` writes `generated/elastic_ndjson/agentic-attack-detections.ndjson` with every Sigma rule as a query rule, the five Sigma correlations as threshold rules, the hand-written ARTEX rules and an indicator match rule, all disabled, each with its severity, risk score, ATT&CK 20.1 tactics and techniques, references and a link to its source file. The indicators for the indicator match rule ship as a mapping and a `_bulk` file for the `aad-indicators` index. Each release carries all three; `tools/build_elastic.py --check` runs in CI, and `tests/elastic/run_tests.py` now also loads the indicators and checks the indicator rule alerts. Setup in `deploy/elastic/`. Closes #25; builds on the import proposed by @shiwng in #27.
+
 ## 2.11.1, November 25, 2026
 
 Analytics rules deployed from the Microsoft Sentinel templates can now be enabled, and two console rules are added.

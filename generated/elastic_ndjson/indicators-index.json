@@ -1,0 +1,90 @@
+{
+ "mappings": {
+  "dynamic": "false",
+  "properties": {
+   "@timestamp": {
+    "type": "date"
+   },
+   "event": {
+    "properties": {
+     "category": {
+      "type": "keyword"
+     },
+     "kind": {
+      "type": "keyword"
+     },
+     "type": {
+      "type": "keyword"
+     }
+    }
+   },
+   "labels": {
+    "properties": {
+     "framework": {
+      "type": "keyword"
+     }
+    }
+   },
+   "threat": {
+    "properties": {
+     "indicator": {
+      "properties": {
+       "confidence": {
+        "type": "keyword"
+       },
+       "description": {
+        "type": "text"
+       },
+       "file": {
+        "properties": {
+         "hash": {
+          "properties": {
+           "md5": {
+            "type": "keyword"
+           },
+           "sha256": {
+            "type": "keyword"
+           }
+          }
+         }
+        }
+       },
+       "first_seen": {
+        "type": "date"
+       },
+       "ip": {
+        "type": "ip"
+       },
+       "provider": {
+        "type": "keyword"
+       },
+       "reference": {
+        "type": "keyword"
+       },
+       "type": {
+        "type": "keyword"
+       },
+       "url": {
+        "properties": {
+         "domain": {
+          "type": "keyword"
+         },
+         "full": {
+          "type": "keyword"
+         }
+        }
+       },
+       "user_agent": {
+        "properties": {
+         "original": {
+          "type": "keyword"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

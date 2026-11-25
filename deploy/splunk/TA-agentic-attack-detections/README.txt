@@ -1,4 +1,4 @@
-Agentic Attack Detections for Splunk, version 2.11.1
+Agentic Attack Detections for Splunk, version 2.12.0
 
 https://github.com/ThreatDefence/agentic-attack-detections
 
