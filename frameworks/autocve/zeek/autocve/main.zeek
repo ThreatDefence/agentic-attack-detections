@@ -16,9 +16,9 @@ module AutoCVE;
 
 export {
     redef enum Notice::Type += {
-        ## A server answered with the AutoCVE API welcome.
+        ## A server answered with the AutoCVE API welcome. ATT&CK: T1071.001.
         API_Exposed,
-        ## A server answered with the AutoCVE console page.
+        ## A server answered with the AutoCVE console page. ATT&CK: T1071.001.
         Console_Page,
     };
 

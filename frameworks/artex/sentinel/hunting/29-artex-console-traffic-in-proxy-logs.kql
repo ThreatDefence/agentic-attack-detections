@@ -1,5 +1,6 @@
 // ARTEX console and side-channel traffic in your outbound proxy logs
 // Agentic attack detections by ThreatDefence (ARTEX). Source: https://threatdefence.com/article/artex-agentic-attack-framework-detection-hunting
+// ATT&CK: T1071.001 (Application Layer Protocol: Web Protocols)
 // Example hunt for Microsoft Sentinel. Test and baseline before alerting.
 // From the ARTEX source code. Someone on your network who drives a remote ARTEX console, or an ARTEX host behind your
 // proxy, leaves requests a TLS-inspecting proxy can name:

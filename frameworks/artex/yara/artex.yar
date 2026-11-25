@@ -10,6 +10,7 @@ rule ARTEX_Operator_Binary_Strings
 {
     meta:
         description = "ARTEX operator binary or worker: Go program carrying ARTEX user agents, tool function names or probe placeholders"
+        mitre_att = "T1588.002"
         author = "ThreatDefence"
         date = "2026-11-20"
         reference = "https://www.reversinglabs.com/blog/threat-researchers-notebook-detection-strategies-for-artex-and-related-forks"
@@ -40,6 +41,7 @@ rule ARTEX_Console_Web_Assets
 {
     meta:
         description = "ARTEX web console (Next.js) page or build output, including renamed ScopeWeaver and LUCK consoles"
+        mitre_att = "T1588.002, T1071.001"
         author = "ThreatDefence"
         date = "2026-11-20"
         reference = "https://censys.com/blog/artex-agentic-asbestos/"
@@ -58,6 +60,7 @@ rule ARTEX_Backdoored_Console_Binary
 {
     meta:
         description = "Backdoored ARTEX console binary (/app/artex) from the tomicdd/artex and congdonglinux/artex images"
+        mitre_att = "T1588.002, T1195.002"
         author = "ThreatDefence"
         date = "2026-11-20"
         reference = "https://e2e-assure.com/guide/artex-attacks"
@@ -76,6 +79,7 @@ rule ARTEX_Probe_Artifacts_In_Files
 {
     meta:
         description = "Files carrying ARTEX probe markers, such as test files the agents write to prove write access"
+        mitre_att = "T1190"
         author = "ThreatDefence"
         date = "2026-11-20"
         reference = "https://cloud.google.com/blog/topics/threat-intelligence/artex-and-friends-enter-agentic-offensive-frameworks"

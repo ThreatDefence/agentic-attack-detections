@@ -1,5 +1,6 @@
 // ARTEX names in files, folders and command lines
 // Agentic attack detections by ThreatDefence (ARTEX). Source: https://threatdefence.com/article/artex-agentic-attack-framework-detection-hunting
+// ATT&CK: T1588.002 (Obtain Capabilities: Tool)
 // Example hunt for Microsoft Sentinel and Defender XDR advanced hunting. Test and baseline before alerting.
 // Expect a few false matches on words that contain the same letters. A numbered `artex-probe` file or anything under `C:\ProgramData\artx5v\` is not one of them.
 

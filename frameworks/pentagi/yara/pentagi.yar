@@ -9,6 +9,7 @@ rule PentAGI_Server_Binary_Or_Source
 {
     meta:
         description = "PentAGI server binary or source: worker container naming, update endpoint, Swagger title"
+        mitre_att = "T1588.002"
         author = "ThreatDefence"
         date = "2026-11-21"
         reference = "https://github.com/vxcontrol/pentagi"
@@ -28,6 +29,7 @@ rule PentAGI_Prompt_Templates
 {
     meta:
         description = "PentAGI agent prompt templates or prompts rendered from them: the pre-authorization block and the reflector"
+        mitre_att = "T1588.007, T1699"
         author = "ThreatDefence"
         date = "2026-11-21"
         reference = "https://github.com/vxcontrol/pentagi"
@@ -46,6 +48,7 @@ rule PentAGI_Agent_Command_Wrapper
 {
     meta:
         description = "PentAGI's shell wrapper for agent commands, in a script, a process dump or a container log"
+        mitre_att = "T1059.004"
         author = "ThreatDefence"
         date = "2026-11-21"
         reference = "https://github.com/vxcontrol/pentagi"

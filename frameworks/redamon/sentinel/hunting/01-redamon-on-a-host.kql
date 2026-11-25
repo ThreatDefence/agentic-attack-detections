@@ -1,5 +1,6 @@
 // RedAmon on a host you monitor, and the reverse shell tunnel it opens
 // Agentic attack detections by ThreatDefence (RedAmon). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1588.002 (Obtain Capabilities: Tool), T1572 (Protocol Tunneling)
 // Example hunt for Defender XDR advanced hunting. Test and baseline before alerting.
 // RedAmon (samugit83/redamon) is a self-hosted penetration testing platform. No report of its use in a real intrusion
 // was found on November 23, 2026, so this hunt looks for the software itself, from its source code:

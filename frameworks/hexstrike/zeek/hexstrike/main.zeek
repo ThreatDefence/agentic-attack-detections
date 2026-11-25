@@ -16,15 +16,15 @@ module HexStrike;
 
 export {
     redef enum Notice::Type += {
-        ## A request carried the user agent of HexStrike's HTTP testing module or headless browser.
+        ## A request carried the user agent of HexStrike's HTTP testing module or headless browser. ATT&CK: T1595.002.
         User_Agent,
-        ## A request carried the user agent of an exploit script HexStrike generated.
+        ## A request carried the user agent of an exploit script HexStrike generated. ATT&CK: T1190.
         Exploit_User_Agent,
-        ## A request carried HexStrike's XSS reflection probe.
+        ## A request carried HexStrike's XSS reflection probe. ATT&CK: T1595.002, T1190.
         XSS_Probe,
-        ## A request asked the HexStrike server to run a shell command or a tool.
+        ## A request asked the HexStrike server to run a shell command or a tool. ATT&CK: T1059, T1071.001.
         Tool_API_Request,
-        ## A server answered as a HexStrike server.
+        ## A server answered as a HexStrike server. ATT&CK: T1588.002.
         Server_Exposed,
     };
 

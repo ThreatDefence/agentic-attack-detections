@@ -1,5 +1,6 @@
 // Servers calling webhook and tunnel services, or downloading from a bare address
 // Agentic attack detections by ThreatDefence (ARTEX). Source: https://threatdefence.com/article/artex-agentic-attack-framework-detection-hunting
+// ATT&CK: T1105 (Ingress Tool Transfer), T1567.004 (Exfiltration Over Web Service: Exfiltration Over Webhook), T1572 (Protocol Tunneling)
 // Example hunt for Microsoft Sentinel and Defender XDR advanced hunting. Test and baseline before alerting.
 // Microsoft's own hunt for Storm-3358 follows the same idea: list the addresses curl downloaded from in the last day that it did not use in the week before.
 

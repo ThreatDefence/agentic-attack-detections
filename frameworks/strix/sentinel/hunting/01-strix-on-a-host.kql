@@ -1,5 +1,6 @@
 // Strix running on a host you monitor
 // Agentic attack detections by ThreatDefence (Strix). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1588.002 (Obtain Capabilities: Tool)
 // Example hunt for Defender XDR advanced hunting. Test before alerting.
 // From the Strix source code (usestrix/strix at a1ccf777). Strix is a Python CLI, pip package strix-agent, that runs its
 // agents' commands in a Docker sandbox:

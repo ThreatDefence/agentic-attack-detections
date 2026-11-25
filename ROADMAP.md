@@ -13,7 +13,7 @@ There are no dates. This page is updated with each release.
 
 - **More log sources.** Google Cloud, Okta, Kubernetes and build pipelines.
 - **Tripwires.** Bait that an agent takes and a person doesn't.
-- **Easier setup.** One-step deployment for Microsoft Sentinel, Splunk and Elastic content for every framework, and a MITRE ATT&CK mapping. Issues: [Sentinel](https://github.com/ThreatDefence/agentic-attack-detections/issues/23), [Splunk](https://github.com/ThreatDefence/agentic-attack-detections/issues/24), [Elastic](https://github.com/ThreatDefence/agentic-attack-detections/issues/25), [ATT&CK](https://github.com/ThreatDefence/agentic-attack-detections/issues/26).
+- **Easier setup.** One-step deployment for Microsoft Sentinel, Splunk and Elastic content for every framework. Issues: [Sentinel](https://github.com/ThreatDefence/agentic-attack-detections/issues/23), [Splunk](https://github.com/ThreatDefence/agentic-attack-detections/issues/24), [Elastic](https://github.com/ThreatDefence/agentic-attack-detections/issues/25).
 
 ## Later
 

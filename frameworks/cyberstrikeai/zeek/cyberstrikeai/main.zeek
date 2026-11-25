@@ -19,21 +19,21 @@ module CyberStrikeAI;
 
 export {
     redef enum Notice::Type += {
-        ## A request carried the webshell manager's user agent.
+        ## A request carried the webshell manager's user agent. ATT&CK: T1505.003.
         Webshell_Manager,
-        ## A request to a web server carried the webshell OS probe.
+        ## A request to a web server carried the webshell OS probe. ATT&CK: T1505.003, T1082.
         OS_Probe,
-        ## A web server answered the OS probe, so a webshell ran the command.
+        ## A web server answered the OS probe, so a webshell ran the command. ATT&CK: T1505.003, T1082.
         OS_Probe_Answered,
-        ## An implant checked in or polled for tasks over HTTP.
+        ## An implant checked in or polled for tasks over HTTP. ATT&CK: T1071.001.
         Implant_Checkin,
-        ## A request carried the implant's default user agent, a Chrome string cut short.
+        ## A request carried the implant's default user agent, a Chrome string cut short. ATT&CK: T1071.001, T1036.012.
         Implant_User_Agent,
-        ## A TCP connection opened with the TCP implant's CSB1 greeting.
+        ## A TCP connection opened with the TCP implant's CSB1 greeting. ATT&CK: T1095.
         TCP_Implant,
-        ## A request carried the console's own user agent (recon APIs, chat gateways).
+        ## A request carried the console's own user agent (recon APIs, chat gateways). ATT&CK: T1071.001.
         Console_User_Agent,
-        ## A server presented the console's self-signed CyberStrikeAI certificate.
+        ## A server presented the console's self-signed CyberStrikeAI certificate. ATT&CK: T1071.001, T1587.003.
         Console_Certificate,
     };
 

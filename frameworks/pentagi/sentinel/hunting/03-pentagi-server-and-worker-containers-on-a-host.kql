@@ -1,5 +1,6 @@
 // PentAGI server and worker containers on a host you monitor
 // Agentic attack detections by ThreatDefence (PentAGI). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1588.002 (Obtain Capabilities: Tool), T1059.004 (Command and Scripting Interpreter: Unix Shell)
 // Example hunt for Defender XDR advanced hunting. Test before alerting.
 // From the PentAGI source code. Someone running PentAGI on your own hosts is an authorized tester, an insider or an
 // intruder staging from your network.

@@ -1,5 +1,6 @@
 // Hermes consoles, Telegram control from servers, and Hermes results left on web servers
 // Agentic attack detections by ThreatDefence (Hermes Agent). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1102.002 (Web Service: Bidirectional Communication), T1071.001 (Application Layer Protocol: Web Protocols)
 // Example hunt for Defender XDR advanced hunting with web and proxy logs in Microsoft Sentinel. Test before alerting.
 // Every Hermes abuse case so far was controlled over Telegram (Unit 42, Carbonato) or a web console (Gambit's operator
 // console, the Hermes WebUI on 8878 Hunt.io found, the Hermes dashboard on 9119), and two were found because the agent's

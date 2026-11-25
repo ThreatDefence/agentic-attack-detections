@@ -1,5 +1,6 @@
 // Card data staged, dumped and wiped in e-commerce databases
 // Agentic attack detections by ThreatDefence (Cairn). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1213 (Data from Information Repositories), T1485 (Data Destruction)
 // Example hunt for Microsoft Sentinel with Azure Database for MySQL audit logs. Adapt to your database audit source.
 // From public research. Gambit's operator, using Cairn for exploitation, decrypted Magento card data (cc_number_enc),
 // dumped sales_flat_order_payment and sales_flat_quote_payment, then emptied their serialized payment columns in batches,

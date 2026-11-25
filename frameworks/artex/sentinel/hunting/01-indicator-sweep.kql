@@ -1,5 +1,6 @@
 // Indicator sweep
 // Agentic attack detections by ThreatDefence (ARTEX). Source: https://threatdefence.com/article/artex-agentic-attack-framework-detection-hunting
+// ATT&CK: T1595 (Active Scanning), T1071 (Application Layer Protocol)
 // Example hunt for Microsoft Sentinel and Defender XDR advanced hunting. Test and baseline before alerting.
 // Search every log source that records a user agent or a source address.
 

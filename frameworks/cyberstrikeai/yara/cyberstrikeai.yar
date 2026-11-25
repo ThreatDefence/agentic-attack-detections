@@ -11,6 +11,7 @@ rule CyberStrikeAI_Implant
 {
     meta:
         description = "Go implant built by the CyberStrikeAI console from its beacon template"
+        mitre_att = "T1071.001, T1095"
         author = "ThreatDefence"
         date = "2026-11-21"
         reference = "https://securelist.com/cyberstrikeai-attacks/121715/"
@@ -37,6 +38,7 @@ rule CyberStrikeAI_Console
 {
     meta:
         description = "CyberStrikeAI console binary or source, or a fork that keeps its strings"
+        mitre_att = "T1588.002"
         author = "ThreatDefence"
         date = "2026-11-21"
         reference = "https://github.com/AIPentest/CyberStrikeAI"
@@ -57,6 +59,7 @@ rule CyberStrikeAI_Curl_Beacon_Script
 {
     meta:
         description = "CyberStrikeAI curl_beacon one-liner saved to a script, shell history or cron file"
+        mitre_att = "T1071.001, T1059.004"
         author = "ThreatDefence"
         date = "2026-11-21"
         reference = "https://github.com/AIPentest/CyberStrikeAI"
@@ -74,6 +77,7 @@ rule CyberStrikeAI_Persistence_Artifacts
 {
     meta:
         description = "Persistence the CyberStrikeAI implant writes: a .bashrc line ending in # cs, or the com.apple.systemupdate LaunchAgent"
+        mitre_att = "T1546.004, T1543.001"
         author = "ThreatDefence"
         date = "2026-11-21"
         reference = "https://github.com/AIPentest/CyberStrikeAI"

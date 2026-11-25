@@ -1,5 +1,6 @@
 // One site probed through hundreds of rotating proxy addresses
 // Agentic attack detections by ThreatDefence (cross-framework behavior, first written for Cairn). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1090.002 (Proxy: External Proxy), T1595.002 (Active Scanning: Vulnerability Scanning)
 // Example hunt for Microsoft Sentinel. Test and baseline before alerting.
 // From public research. Gambit's operator told its agents to "run these, use the proxy, high severity only" and used
 // the residential proxy services IPRoyal, 711proxy and 1024proxy. In the Japanese breach wave, Cyber Security Cloud saw

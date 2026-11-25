@@ -33,6 +33,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
 sys.path.insert(0, str(ROOT / "tests" / "sigma"))
+import attack  # noqa: E402
 import build_splunk  # noqa: E402
 import run_tests as sigma_eval  # noqa: E402
 from sigma import conditions as C  # noqa: E402
@@ -344,6 +345,21 @@ def main():
             except urllib.error.HTTPError:
                 pass
     print(f"saved searches: {len(conf)} enabled and disabled again")
+    # Every saved search carries its ATT&CK techniques where Enterprise Security reads them, as Splunk stored them.
+    pinned = 0
+    for name in conf:
+        entry = sp.rest(base + urllib.parse.quote(name, safe=""))["entry"][0]["content"]
+        try:
+            techniques = json.loads(entry.get("action.correlationsearch.annotations") or "{}").get("mitre_attack", [])
+        except ValueError:
+            techniques = None
+        if not techniques:
+            fail(f"{name}: no ATT&CK techniques in action.correlationsearch.annotations")
+        elif attack.problems(techniques):
+            fail(f"{name}: {attack.problems(techniques)}")
+        else:
+            pinned += 1
+    print(f"att&ck: {pinned} of {len(conf)} saved searches carry techniques from ATT&CK {attack.version()}")
     # The search stays enabled until its actions have run: Splunk drops the alert of a search disabled meanwhile.
     targets = ["Indicators - Reported user agents", "ARTEX - User agent naming ARTEX in any source"]
     paths = [base + urllib.parse.quote(t, safe="") for t in targets]

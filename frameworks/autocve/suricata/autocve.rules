@@ -5,6 +5,6 @@
 
 # --- An exposed AutoCVE API (8000) and console (3000) ---
 # GET / on the API answers with a fixed welcome and the demo account (backend/app/main.py:122-130).
-alert http any any -> any any (msg:"TD AutoCVE API answer"; flow:established,to_client; http.response_body; content:"Welcome to AutoCVE API"; fast_pattern; content:"demo_account"; classtype:policy-violation; sid:3811001; rev:1; metadata:created_at 2026_11_25, confidence Medium, malware_family AutoCVE;)
+alert http any any -> any any (msg:"TD AutoCVE API answer"; flow:established,to_client; http.response_body; content:"Welcome to AutoCVE API"; fast_pattern; content:"demo_account"; classtype:policy-violation; sid:3811001; rev:1; metadata:created_at 2026_11_25, confidence Medium, malware_family AutoCVE, mitre_tactic_id TA0011, mitre_tactic_name Command_and_Control, mitre_technique_id T1071.001, mitre_technique_name Web_Protocols;)
 # The console page title (frontend/index.html:8).
-alert http any any -> any any (msg:"TD AutoCVE console page"; flow:established,to_client; http.response_body; content:"<title>AutoCVE</title>"; fast_pattern; classtype:policy-violation; sid:3811002; rev:1; metadata:created_at 2026_11_25, confidence Low, malware_family AutoCVE;)
+alert http any any -> any any (msg:"TD AutoCVE console page"; flow:established,to_client; http.response_body; content:"<title>AutoCVE</title>"; fast_pattern; classtype:policy-violation; sid:3811002; rev:1; metadata:created_at 2026_11_25, confidence Low, malware_family AutoCVE, mitre_tactic_id TA0011, mitre_tactic_name Command_and_Control, mitre_technique_id T1071.001, mitre_technique_name Web_Protocols;)

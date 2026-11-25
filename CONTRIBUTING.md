@@ -29,6 +29,7 @@ Run these and commit everything they regenerate:
 ```bash
 python3 tools/build_feeds.py           # rebuild feeds/ and the per-framework lists from iocs/indicators.csv
 python3 tools/convert.py               # rebuild generated/ from the Sigma rules
+python3 tools/build_attack.py          # rebuild the ATT&CK coverage page and Navigator layers
 python3 tools/validate.py              # Sigma, KQL, Elastic, Splunk, Suricata, YARA, Zeek, feeds
 python3 tests/suricata/run_tests.py    # one flow per Suricata rule
 python3 tests/sigma/run_tests.py       # Sigma rules against test events in tests/sigma/fixtures
@@ -61,6 +62,14 @@ CI runs the same checks on every pull request.
 - One behavior per rule, with `falsepositives` filled in honestly.
 - Keep a rule's file path stable: its ID is derived from the path.
 - Test events are welcome: a match and a near miss in `tests/sigma/fixtures/`, in the format described in [tests/sigma/README.md](tests/sigma/README.md).
+
+**ATT&CK**: every rule names at least one technique from the release pinned in `tools/attack-enterprise.json`, and CI fails one that names none or a retired one. Pick the technique for what the rule sees, not for everything the framework can do.
+- Sigma: `attack.<tactic>` and `attack.tNNNN` tags.
+- Sentinel analytics: `tactics` and `relevantTechniques`.
+- KQL hunts: a `// ATT&CK: T1190 (Exploit Public-Facing Application), ...` line in the header comment, after the attribution line.
+- Suricata: `mitre_tactic_id`, `mitre_tactic_name`, `mitre_technique_id` and `mitre_technique_name` in `metadata`, one group per technique, as the Emerging Threats rules write them.
+- YARA: `mitre_att = "T1505.003"` in `meta` (comma separated for more than one).
+- Zeek: `ATT&CK: T1595.002.` at the end of the notice's `##` comment.
 
 **Every signature string** should come from the framework's source code at a named commit, or from a report that published it. Say which in the pull request.
 

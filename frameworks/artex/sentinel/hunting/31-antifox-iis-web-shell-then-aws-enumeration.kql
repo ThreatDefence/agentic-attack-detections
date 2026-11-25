@@ -1,5 +1,6 @@
 // AntiFox intrusion pattern: an IIS web shell, web.config theft, then AWS enumeration from hosting infrastructure
 // Agentic attack detections by ThreatDefence (ARTEX, AntiFox fork). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1505.003 (Server Software Component: Web Shell), T1552.001 (Unsecured Credentials: Credentials In Files), T1580 (Cloud Infrastructure Discovery)
 // Example hunt for Defender XDR advanced hunting and Microsoft Sentinel with AWS CloudTrail. Test and baseline before alerting.
 // Arctic Wolf Labs (November 10, 2026) tied AntiFox consoles on Alibaba Cloud (47.79.4.33, 8.208.101.210) to intrusions:
 //  - w3wp.exe wrote an ASPX web shell (pwn*.aspx) into an upload folder and started cmd.exe, powershell.exe, where.exe,

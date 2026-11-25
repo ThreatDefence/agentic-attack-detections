@@ -1,5 +1,6 @@
 // Configuration and backup file theft, and probes of internet-facing WSUS servers
 // Agentic attack detections by ThreatDefence (cross-framework behavior, first written for Cairn). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1595.003 (Active Scanning: Wordlist Scanning), T1552.001 (Unsecured Credentials: Credentials In Files), T1190 (Exploit Public-Facing Application)
 // Example hunt for Microsoft Sentinel. Test and baseline before alerting.
 // From public research. JPCERT/CC's Case E (October 23, 2026) describes attacks with Cairn, CyberStrikeAI and ARTEX on
 // Japanese organizations: probing web applications for known flaws, stealing configuration and backup files, and

@@ -73,6 +73,8 @@ The capture is test traffic written from the framework source code and published
 | [LuaN1aoAgent](frameworks/luan1aoagent) | | | | 4 | | script | |
 | [Shared behaviors](behaviors) | 9 | 2 | 6 | 18 | | package | |
 
+Every rule names its MITRE ATT&CK techniques. [docs/attack-coverage.md](docs/attack-coverage.md) lists them per framework with links to the rules, and [`generated/attack/`](generated/attack) has an ATT&CK Navigator layer per framework and one for everything.
+
 The other twelve console-level folders (CyberStrike, Vulnerator AI, Decepticon, AIDA, BugTraceAI, Z3r0, AIRecon, open-kritt, REDCELL, T3MP3ST, WormXGPT, Chufeng Agent Core) have no rules yet: they describe the console and the tool, and their exposure searches are in `exposure/`. Suricata counts are hand-written rules; each framework also has address rules generated from its indicators. Some indicators belong to more than one framework. Every framework is in the [Splunk app](deploy/splunk). ARTEX also has Elastic rules and ES\|QL queries, and an osquery pack.
 
 ## Frameworks
@@ -180,6 +182,7 @@ The ARTEX folder also carries behavior hunts that apply to every framework: user
 |---|---|
 | [`iocs/indicators.csv`](iocs/indicators.csv) | 580 indicators. Each row has its source, confidence, a review date for addresses and the framework it belongs to. This file is the single source for every feed |
 | [`feeds/`](feeds) | Generated from the CSV: a STIX 2.1 bundle, a Sentinel watchlist, and plain lists of addresses, domains, URLs, user agents and hashes. The plain lists carry medium and high confidence rows only. Low confidence rows, which include legitimate services such as AI model APIs, need their context, so they stay in the CSV, the watchlist and the STIX bundle. [`feeds/by-framework/`](feeds/by-framework) has the lists per framework |
+| [`docs/attack-coverage.md`](docs/attack-coverage.md) | Which rules cover which ATT&CK technique, per framework, with the [Navigator layers](generated/attack) beside it. `tools/build_attack.py` rebuilds both |
 | [`generated/`](generated) | Every Sigma rule converted to Splunk SPL, Sentinel and Defender XDR KQL, and Elastic ES\|QL and Lucene, plus [`elastic_ndjson/`](generated/elastic_ndjson) where all of them are one Kibana import. [`SUMMARY.md`](generated/SUMMARY.md) shows which rule converted to which backend |
 | [`waf/`](waf) | Cloudflare, AWS WAF and Azure WAF rules built from [`waf/signatures.yaml`](waf/signatures.yaml) and the CSV. The [README](waf/README.md) covers when a WAF helps and how to deploy |
 | [`exposure/`](exposure) | Addresses where one of these consoles answers on the internet, with the fingerprint that found each one. A record of what is exposed, kept out of the feeds above. `tools/exposure_snapshot.py` rebuilds it |

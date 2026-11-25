@@ -1,5 +1,6 @@
 // Azure capability checks, validate sweeps and Kudu sign-ins
 // Agentic attack detections by ThreatDefence (ARTEX). Source: https://threatdefence.com/article/artex-agentic-attack-framework-detection-hunting
+// ATT&CK: T1526 (Cloud Service Discovery), T1580 (Cloud Infrastructure Discovery), T1078.004 (Valid Accounts: Cloud Accounts)
 // Example hunt for Microsoft Sentinel and Defender XDR advanced hunting. Test and baseline before alerting.
 // Normal backup and deployment tools also write and delete test blobs, so start with callers you cannot name.
 

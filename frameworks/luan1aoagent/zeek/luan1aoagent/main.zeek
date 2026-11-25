@@ -17,11 +17,11 @@ module LuaN1aoAgent;
 
 export {
     redef enum Notice::Type += {
-        ## A request carried the research tool user agent LuaN1aoAgent/<version>.
+        ## A request carried the research tool user agent LuaN1aoAgent/<version>. ATT&CK: T1595.002.
         User_Agent,
-        ## A request carried the browser string of the fetch tool, which no real browser sends.
+        ## A request carried the browser string of the fetch tool, which no real browser sends. ATT&CK: T1595.002.
         Browser_Imitation,
-        ## A server answered with the LuaN1aoAgent workbench page or set its CSRF cookie.
+        ## A server answered with the LuaN1aoAgent workbench page or set its CSRF cookie. ATT&CK: T1071.001.
         Console_Page,
     };
 

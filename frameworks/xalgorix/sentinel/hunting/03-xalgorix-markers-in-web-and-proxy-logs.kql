@@ -1,5 +1,6 @@
 // Xalgorix testing you: its verifier paths, canary and user agents in web and proxy logs
 // Agentic attack detections by ThreatDefence (Xalgorix). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1595.002 (Active Scanning: Vulnerability Scanning), T1190 (Exploit Public-Facing Application)
 // Example hunt for Microsoft Sentinel. Test and baseline before alerting.
 // From the Xalgorix source code (xalgorix/xalgorix, reviewed at f5b1a99a):
 //  - When its verifier confirms a finding it requests <path>-xalgorix-nonexistent-<id> (access control) and

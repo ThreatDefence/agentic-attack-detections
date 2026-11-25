@@ -15,7 +15,7 @@ module AgenticBehaviors;
 
 export {
     redef enum Notice::Type += {
-        ## A server answered 401 with a Basic auth realm that names an agentic attack framework.
+        ## A server answered 401 with a Basic auth realm that names an agentic attack framework. ATT&CK: T1071.001.
         Agent_Console_Realm,
     };
 

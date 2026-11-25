@@ -1,5 +1,6 @@
 // HexStrike user agents and its cross-site scripting probe
 // Agentic attack detections by ThreatDefence (HexStrike). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1595.002 (Active Scanning: Vulnerability Scanning), T1190 (Exploit Public-Facing Application)
 // Example hunt for Microsoft Sentinel and Defender XDR advanced hunting. Test and baseline before alerting.
 // From the HexStrike source code. Its HTTP testing framework sends "HexStrike-HTTP-Framework/1.0 (Advanced Security
 // Testing)" (hexstrike_server.py:13287), its Selenium browser agent sends "HexStrike-BrowserAgent/1.0 (Security Testing)"

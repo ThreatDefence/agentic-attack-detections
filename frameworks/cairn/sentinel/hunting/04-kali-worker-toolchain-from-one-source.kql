@@ -1,5 +1,6 @@
 // The Cairn worker toolchain seen from one source
 // Agentic attack detections by ThreatDefence (Cairn). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1595.002 (Active Scanning: Vulnerability Scanning)
 // Example hunt for Microsoft Sentinel. Test and baseline before alerting.
 // From the Cairn source code. The worker image is Kali with kali-linux-headless plus pinned extras: nuclei 3.7.1,
 // katana 1.5.0, dalfox 2.12.0, kerbrute 1.0.3, cloudfox 2.0.1, naabu, nikto, dirsearch, netexec, sqlmap from Kali,

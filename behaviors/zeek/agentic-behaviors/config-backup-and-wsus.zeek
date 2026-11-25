@@ -16,13 +16,13 @@ module AgenticBehaviors;
 
 export {
     redef enum Notice::Type += {
-        ## A server answered 200 or 206 to an outside request for a configuration or backup file.
+        ## A server answered 200 or 206 to an outside request for a configuration or backup file. ATT&CK: T1552.001.
         Backup_File_Served,
-        ## One outside address asked for many configuration or backup paths.
+        ## One outside address asked for many configuration or backup paths. ATT&CK: T1595.003.
         Backup_Path_Sweep,
-        ## An outside address reached a WSUS administration or sync web service.
+        ## An outside address reached a WSUS administration or sync web service. ATT&CK: T1190.
         WSUS_Admin_From_Internet,
-        ## An outside address connected to a WSUS port (8530 or 8531).
+        ## An outside address connected to a WSUS port (8530 or 8531). ATT&CK: T1595.002.
         WSUS_Port_From_Internet,
     };
 

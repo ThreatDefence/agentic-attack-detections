@@ -1,5 +1,6 @@
 // CyberStrikeAI webshell manager driving a webshell on your servers
 // Agentic attack detections by ThreatDefence (CyberStrikeAI). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1505.003 (Server Software Component: Web Shell), T1082 (System Information Discovery)
 // Example hunt for Defender XDR advanced hunting with web and proxy logs in Microsoft Sentinel. Test before alerting.
 // From the CyberStrikeAI source code (AIPentest/CyberStrikeAI at af6cf750). Once its agent plants a webshell, the console's
 // webshell manager talks to it directly:

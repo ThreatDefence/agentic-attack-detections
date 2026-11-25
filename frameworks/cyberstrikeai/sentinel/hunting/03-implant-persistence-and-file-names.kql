@@ -1,5 +1,6 @@
 // CyberStrikeAI implant persistence and the file names seen in real attacks
 // Agentic attack detections by ThreatDefence (CyberStrikeAI). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1547.001 (Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder), T1053.005 (Scheduled Task/Job: Scheduled Task), T1053.003 (Scheduled Task/Job: Cron), T1546.004 (Event Triggered Execution: Unix Shell Configuration Modification), T1543.001 (Create or Modify System Process: Launch Agent), T1036.005 (Masquerading: Match Legitimate Resource Name or Location)
 // Example hunt for Defender XDR advanced hunting. Test before alerting.
 // From the CyberStrikeAI implant template (internal/c2/payload_templates/beacon.go.tmpl:1262-1340). When the operator asks
 // the implant to persist, it uses fixed names on every operating system:

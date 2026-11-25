@@ -1,5 +1,6 @@
 // AWS permission testing and the foothold that follows
 // Agentic attack detections by ThreatDefence (ARTEX). Source: https://threatdefence.com/article/artex-agentic-attack-framework-detection-hunting
+// ATT&CK: T1078.004 (Valid Accounts: Cloud Accounts), T1580 (Cloud Infrastructure Discovery), T1098.001 (Account Manipulation: Additional Cloud Credentials)
 // Example hunt for Microsoft Sentinel and Defender XDR advanced hunting. Test and baseline before alerting.
 // Check `GetCallerIdentity` from the same identity just before either result. It is the first call most stolen keys make.
 

@@ -38,6 +38,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from convert import SIGMA_DIRS, convert_one, ecs, rel_of  # noqa: E402
 import build_feeds  # noqa: E402
+import attack  # noqa: E402
 
 NAME = "agentic-attack-detections"
 OUT = ROOT / "generated" / "elastic_ndjson"
@@ -60,6 +61,15 @@ def link(path):
     return f"{REPO}/blob/main/{path.relative_to(ROOT).as_posix()}"
 
 
+def threat(tags):
+    """Kibana's threat field from the rule's ATT&CK tags, named from the release pinned in tools/attack-enterprise.json
+    so the import does not depend on the ATT&CK copy pySigma downloads."""
+    names = [str(t) for t in tags]
+    ids = [n.split(".", 1)[1].upper() for n in names if re.fullmatch(r"attack\.t\d{4}(\.\d{3})?", n, re.I)]
+    tactics = [n.split(".", 1)[1] for n in names if n.lower().startswith("attack.")]
+    return attack.elastic_threat(ids, tactics)
+
+
 def common(rule, path):
     level = rule.level.name.lower() if rule.level else "medium"
     severity, risk = LEVEL[level]
@@ -73,7 +83,7 @@ def common(rule, path):
         "author": [a.strip() for a in (rule.author or "ThreatDefence").split(",") if a.strip()],
         "references": list(rule.references or []),
         "false_positives": list(rule.falsepositives or []),
-        "threat": list(LuceneBackend().finalize_output_threat_model(rule.tags)),
+        "threat": threat(rule.tags),
         "tags": TAGS + [f"Source: {rel_of(path)}"],
         "from": "now-9m",
         "interval": "5m",
@@ -217,6 +227,8 @@ def indicator_rule():
         "references": [f"{REPO}/blob/main/iocs/indicators.csv"],
         "false_positives": ["Reassigned cloud and VPS addresses", "Shared hosting behind a reported domain"],
         "tags": TAGS + ["Source: iocs/indicators.csv", "Rule Type: Indicator Match"],
+        # As the indicator sweeps: traffic in from a reported address is scanning, traffic out to one is C2.
+        "threat": attack.elastic_threat(["T1071", "T1595"]),
         "type": "threat_match",
         "language": "kuery",
         "index": INDEX,

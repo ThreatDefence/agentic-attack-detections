@@ -1,0 +1,44 @@
+{
+ "description": "7 rules from https://github.com/ThreatDefence/agentic-attack-detections, checked against ATT&CK 20.1. Score: the number of rules that name the technique.",
+ "domain": "enterprise-attack",
+ "gradient": {
+  "colors": [
+   "#ffe9e9",
+   "#dc2626"
+  ],
+  "maxValue": 4,
+  "minValue": 0
+ },
+ "hideDisabled": false,
+ "legendItems": [],
+ "links": [
+  {
+   "label": "Rules",
+   "url": "https://github.com/ThreatDefence/agentic-attack-detections"
+  }
+ ],
+ "name": "luan1aoagent",
+ "selectTechniquesAcrossTactics": true,
+ "showTacticsRow": true,
+ "techniques": [
+  {
+   "comment": "Suricata: 3811803 TD LuaN1aoAgent workbench page; Suricata: 3811804 TD LuaN1aoAgent workbench CSRF cookie set; Zeek notice: LuaN1aoAgent::Console_Page",
+   "enabled": true,
+   "score": 3,
+   "showSubtechniques": true,
+   "techniqueID": "T1071.001"
+  },
+  {
+   "comment": "Suricata: 3811801 TD LuaN1aoAgent research tool user agent; Suricata: 3811802 TD LuaN1aoAgent fetch tool browser imitation; Zeek notice: LuaN1aoAgent::Browser_Imitation; Zeek notice: LuaN1aoAgent::User_Agent",
+   "enabled": true,
+   "score": 4,
+   "showSubtechniques": true,
+   "techniqueID": "T1595.002"
+  }
+ ],
+ "versions": {
+  "attack": "20",
+  "layer": "4.5",
+  "navigator": "5.1.0"
+ }
+}

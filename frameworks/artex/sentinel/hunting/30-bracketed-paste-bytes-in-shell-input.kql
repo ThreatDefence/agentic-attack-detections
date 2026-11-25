@@ -1,5 +1,6 @@
 // Bracketed-paste bytes in shell input on a compromised host
 // Agentic attack detections by ThreatDefence (ARTEX). Source: https://threatdefence.com/article/artex-agentic-attack-framework-detection-hunting
+// ATT&CK: T1059.004 (Command and Scripting Interpreter: Unix Shell)
 // Example hunt for Microsoft Sentinel and Defender XDR advanced hunting. Low confidence on its own. Test before alerting.
 // From the ARTEX source code. Agents drive interactive sessions (nc shells, ssh, database clients, REPLs) through the
 // shell_open and shell_send tools, which are on by default for every agent (db/db.go:314-321). When the model sends

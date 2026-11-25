@@ -1,5 +1,6 @@
 // Application reconnaissance in web logs
 // Agentic attack detections by ThreatDefence (ARTEX). Source: https://threatdefence.com/article/artex-agentic-attack-framework-detection-hunting
+// ATT&CK: T1595.002 (Active Scanning: Vulnerability Scanning), T1594 (Search Victim-Owned Websites)
 // Example hunt for Microsoft Sentinel and Defender XDR advanced hunting. Test and baseline before alerting.
 // Two or more of these markers from one source against one host is a strong sign of an agent reading and probing the application.
 

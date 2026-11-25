@@ -1,0 +1,37 @@
+{
+ "description": "4 rules from https://github.com/ThreatDefence/agentic-attack-detections, checked against ATT&CK 20.1. Score: the number of rules that name the technique.",
+ "domain": "enterprise-attack",
+ "gradient": {
+  "colors": [
+   "#ffe9e9",
+   "#dc2626"
+  ],
+  "maxValue": 4,
+  "minValue": 0
+ },
+ "hideDisabled": false,
+ "legendItems": [],
+ "links": [
+  {
+   "label": "Rules",
+   "url": "https://github.com/ThreatDefence/agentic-attack-detections"
+  }
+ ],
+ "name": "autocve",
+ "selectTechniquesAcrossTactics": true,
+ "showTacticsRow": true,
+ "techniques": [
+  {
+   "comment": "Suricata: 3811001 TD AutoCVE API answer; Suricata: 3811002 TD AutoCVE console page; Zeek notice: AutoCVE::API_Exposed; Zeek notice: AutoCVE::Console_Page",
+   "enabled": true,
+   "score": 4,
+   "showSubtechniques": true,
+   "techniqueID": "T1071.001"
+  }
+ ],
+ "versions": {
+  "attack": "20",
+  "layer": "4.5",
+  "navigator": "5.1.0"
+ }
+}

@@ -1,5 +1,6 @@
 // Cairn server, dispatcher and worker containers on a host you monitor
 // Agentic attack detections by ThreatDefence (Cairn). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1588.002 (Obtain Capabilities: Tool), T1071.001 (Application Layer Protocol: Web Protocols)
 // Example hunt for Defender XDR advanced hunting. Test before alerting.
 // From the Cairn source code. Someone running Cairn on your own hosts is an authorized tester, an insider or an intruder.
 //  - Server: "cairn serve" (uvicorn, FastAPI) on port 8000, bound to 0.0.0.0 by docker-compose, with no authentication

@@ -29,6 +29,9 @@ from pathlib import Path
 
 import yaml
 
+import attack
+import build_attack
+
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "deploy" / "sentinel"
 REPO = "https://github.com/ThreatDefence/agentic-attack-detections"
@@ -69,6 +72,11 @@ TECHNIQUE_TACTICS = {
     "T1595": {"Reconnaissance"},
     "T1611": {"PrivilegeEscalation"},
 }
+# Techniques newer than Microsoft Sentinel's ATT&CK list. Sentinel refuses an analytics rule that names one, whatever
+# its tactics ("No valid tactic corresponding to the technique T1699 was provided in the tactics field", seen in the
+# lab on November 25, 2026, with each of its tactics), so the templates leave them out of relevantTechniques. The rule
+# file, the coverage page, Sigma, Splunk, Elastic and the hunting query tags keep them.
+SENTINEL_UNKNOWN = {"T1699"}
 TAG_MAX = 256  # Log Analytics refuses a saved search whose tag value is longer (seen: 239 accepted, 260 refused)
 OPERATORS = {"gt": "GreaterThan", "lt": "LessThan", "eq": "Equal", "ne": "NotEqual"}
 SEVERITIES = {"High", "Medium", "Low", "Informational"}
@@ -102,7 +110,7 @@ def hunt_header(text):
     if not comments:
         raise ValueError("no header comment")
     title = comments[0]
-    body = [c for c in comments[1:] if not c.startswith("Agentic attack detections by ThreatDefence")]
+    body = [c for c in comments[1:] if not c.startswith(("Agentic attack detections by ThreatDefence", "ATT&CK:"))]
     desc = " ".join(c.lstrip("- ").strip() for c in body if c).strip()
     return title, shorten(desc, TAG_MAX - 6)
 
@@ -133,7 +141,7 @@ def analytics_rule(path, framework):
         "tactics": list(d.get("tactics", [])),
         # API 2024-03-01 stores parent techniques only (a subTechniques field is accepted and dropped, seen in a test
         # deployment), so sub-techniques such as T1059.004 are sent as their parent T1059.
-        "techniques": sorted({t.split(".")[0] for t in techniques}),
+        "techniques": sorted({t.split(".")[0] for t in techniques} - SENTINEL_UNKNOWN),
         "eventGroupingSettings": {"aggregationKind": d.get("eventGroupingSettings", {}).get("aggregationKind", "SingleAlert")},
         "incidentConfiguration": {"createIncident": True, "groupingConfiguration": {
             "enabled": False, "reopenClosedIncident": False, "lookbackDuration": "PT5H",
@@ -185,11 +193,25 @@ def split_examples(text):
     return parts
 
 
+def hunt_attack(text, rel):
+    """The hunt's `// ATT&CK:` line as the tactics and techniques tags Microsoft Sentinel shows on a hunting query:
+    tactic names as Sentinel spells them, and parent techniques, the form Sentinel stores for its own rules."""
+    ids = build_attack.hunt_techniques(text)
+    if not ids:
+        raise SystemExit(f"{rel}: no // ATT&CK: line in the header comment")
+    for tid, why in attack.problems(ids):
+        raise SystemExit(f"{rel}: {tid} is {why}")
+    tactics = sorted({attack.sentinel_tactic(s) for t in ids for s in attack.techniques()[t]["tactics"]})
+    techniques = sorted({t.split(".")[0] for t in ids})
+    return ",".join(tactics), ",".join(techniques)
+
+
 def hunting_queries(path, framework):
     rel = path.relative_to(ROOT).as_posix()
     text = path.read_text(encoding="utf-8")
     title, desc = hunt_header(text)
     parts = split_examples(text)
+    tactics, techniques = hunt_attack(text, rel)
     out = []
     for n, (example, query) in enumerate(parts, 1):
         key = rel if len(parts) == 1 else f"{rel}#{n}"
@@ -205,6 +227,8 @@ def hunting_queries(path, framework):
                 "version": 2,
                 "tags": [
                     {"name": "description", "value": desc},
+                    {"name": "tactics", "value": tactics},
+                    {"name": "techniques", "value": techniques},
                     {"name": "source", "value": f"{REPO}/blob/main/{rel}"},
                 ],
             },

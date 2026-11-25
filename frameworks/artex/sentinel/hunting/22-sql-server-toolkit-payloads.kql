@@ -1,5 +1,6 @@
 // Payload hosts and fake system binaries from the SQL Server toolkit active in ARTEX operations
 // Agentic attack detections by ThreatDefence (ARTEX). Source: https://threatdefence.com/article/artex-agentic-attack-framework-detection-hunting
+// ATT&CK: T1105 (Ingress Tool Transfer), T1036.005 (Masquerading: Match Legitimate Resource Name or Location), T1496 (Resource Hijacking)
 // Example hunt for Defender XDR advanced hunting. Test before alerting.
 // ThreatDefence saw these hosts active in ARTEX operator toolkits on November 20, 2026. Fortinet reports the same
 // vietnam852.com hosts in a campaign that brute-forces Microsoft SQL Servers, enables xp_cmdshell and installs

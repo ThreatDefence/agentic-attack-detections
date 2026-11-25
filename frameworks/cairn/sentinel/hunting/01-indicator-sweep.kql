@@ -1,5 +1,6 @@
 // Indicator sweep
 // Agentic attack detections by ThreatDefence (Cairn). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1595 (Active Scanning), T1071 (Application Layer Protocol)
 // Example hunt for Microsoft Sentinel and Defender XDR advanced hunting. Test and baseline before alerting.
 // Every address and domain published for Cairn operations so far: JPCERT/CC Case E (Cairn, CyberStrikeAI and ARTEX
 // attacks on Japanese web apps and WSUS servers), NorForge's AIA0002 staging servers, Scutum's AI-agent sources and the

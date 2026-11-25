@@ -1,5 +1,6 @@
 // Uploader web shells and skimmer loaders written by the web server
 // Agentic attack detections by ThreatDefence (Cairn). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1505.003 (Server Software Component: Web Shell), T1059.007 (Command and Scripting Interpreter: JavaScript)
 // Example hunt for Defender XDR advanced hunting. Test and baseline before alerting.
 // From public research on Cairn operations. NorForge's AIA0001 cluster set its goal as an uploader shell: an HTML upload
 // form plus move_uploaded_file, explicitly not a command shell. AIA0002 asked for a shell "in a hidden directory deep
