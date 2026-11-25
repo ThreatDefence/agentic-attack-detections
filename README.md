@@ -14,7 +14,7 @@ This project now tracks exposure as well as detection: which of these frameworks
 
 ![Active offensive agents by framework on 25 November 2026](docs/images/exposure-status-2026-11-25.png)
 
-The image counts agents found in Shodan and ONYPHE together since 21 October 2026, across 25 public frameworks. The [table below](#exposed-consoles) is stricter: it uses Shodan alone, counts hosts seen in the last seven days and leaves out honeypots, so its numbers are lower. An exposed console is not proof of an attack.
+The image counts every agent found since 21 October 2026, across 25 public frameworks. The [table below](#exposed-consoles) is stricter: it counts hosts seen in the last seven days and leaves out honeypots, so its numbers are lower. An exposed console is not proof of an attack.
 
 ## What is here
 
