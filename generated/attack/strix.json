@@ -1,29 +1,70 @@
 {
- "description": "23 rules from https://github.com/ThreatDefence/agentic-attack-detections",
+ "description": "23 rules from https://github.com/ThreatDefence/agentic-attack-detections, checked against ATT&CK 20.1. Score: the number of rules that name the technique.",
  "domain": "enterprise-attack",
  "gradient": {
   "colors": [
    "#ffe9e9",
    "#dc2626"
   ],
-  "maxValue": 4,
+  "maxValue": 5,
   "minValue": 0
  },
  "hideDisabled": false,
  "legendItems": [],
+ "links": [
+  {
+   "label": "Rules",
+   "url": "https://github.com/ThreatDefence/agentic-attack-detections"
+  }
+ ],
  "name": "strix",
  "selectTechniquesAcrossTactics": true,
- "showTacticsRow": false,
+ "showTacticsRow": true,
  "techniques": [
   {
-   "comment": "Strix AI pentest agent on a host or reporting from your network",
+   "comment": "Sentinel analytics: Strix AI pentest agent on a host or reporting from your network",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1059.006"
   },
   {
-   "comment": "Strix AI Pentest Agent CLI or Sandbox; Strix AI pentest agent on a host or reporting from your network; Strix Telemetry DNS Query; Strix Telemetry or Results Viewer API in Proxy Logs",
+   "comment": "KQL hunt: Indicator sweep with the agentic watchlist; Suricata: 3805500 TD Strix reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), C2 (outbound); Suricata: 3805502 TD Strix reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), DNS exfiltration, catch-all mail, HTTP listeners (outbound); Suricata: 3805504 TD Strix reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), Skimmer host (outbound); Suricata: 3805506 TD Strix reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), Staging and command server, AI console (outbound)",
+   "enabled": true,
+   "score": 5,
+   "showSubtechniques": true,
+   "techniqueID": "T1071"
+  },
+  {
+   "comment": "KQL hunt: Strix telemetry and results viewers seen from your network; Suricata: 3805002 TD Strix telemetry TLS (strix.gateway.scarf.sh); Suricata: 3805003 TD Strix telemetry finding reported; Suricata: 3805010 TD Strix results viewer page; Suricata: 3805011 TD Strix results viewer agent steering API",
+   "enabled": true,
+   "score": 5,
+   "showSubtechniques": true,
+   "techniqueID": "T1071.001"
+  },
+  {
+   "comment": "Suricata: 3805001 TD Strix telemetry DNS query (strix.gateway.scarf.sh)",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1071.004"
+  },
+  {
+   "comment": "KQL hunt: Strix running on a host you monitor; YARA: Strix_Package; YARA: Strix_Run_Record; YARA: Strix_Sandbox_Entrypoint",
+   "enabled": true,
+   "score": 4,
+   "showSubtechniques": true,
+   "techniqueID": "T1588.002"
+  },
+  {
+   "comment": "KQL hunt: Indicator sweep with the agentic watchlist; Suricata: 3805501 TD Strix reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), C2 (inbound); Suricata: 3805503 TD Strix reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), DNS exfiltration, catch-all mail, HTTP listeners (inbound); Suricata: 3805505 TD Strix reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), Skimmer host (inbound); Suricata: 3805507 TD Strix reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), Staging and command server, AI console (inbound)",
+   "enabled": true,
+   "score": 5,
+   "showSubtechniques": true,
+   "techniqueID": "T1595"
+  },
+  {
+   "comment": "Sentinel analytics: Strix AI pentest agent on a host or reporting from your network; Sigma: Strix AI Pentest Agent CLI or Sandbox; Sigma: Strix Telemetry DNS Query; Sigma: Strix Telemetry or Results Viewer API in Proxy Logs",
    "enabled": true,
    "score": 4,
    "showSubtechniques": true,
@@ -31,7 +72,7 @@
   }
  ],
  "versions": {
-  "attack": "17",
+  "attack": "20",
   "layer": "4.5",
   "navigator": "5.1.0"
  }

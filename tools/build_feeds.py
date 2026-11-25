@@ -24,7 +24,11 @@ import hashlib
 import json
 import uuid
 from collections import defaultdict
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import attack  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "iocs" / "indicators.csv"
@@ -141,6 +145,12 @@ def zeek_intel(rows, fw):
     write(ROOT / "frameworks" / fw / "zeek" / "intel" / f"{fw}.intel", "\n".join(lines) + "\n")
 
 
+# A host of yours talking to a reported address is treated as command and control, and a reported address sending
+# traffic in as scanning: the addresses are operator and scanning infrastructure, not victims.
+IP_OUTBOUND = ", ".join(attack.suricata_metadata([("command-and-control", "T1071")]))
+IP_INBOUND = ", ".join(attack.suricata_metadata([("reconnaissance", "T1595")]))
+
+
 def suricata_ip(rows, fw):
     meta = FRAMEWORKS[fw]
     label = meta["name"]
@@ -163,8 +173,8 @@ def suricata_ip(rows, fw):
         confidence = min((r["confidence"] for r in active), key=CONFIDENCE_RANK.__getitem__).title()
         classtype = "misc-activity" if confidence == "Low" else "trojan-activity"
         msg = f"TD {label} reported address, {actor}, {ctx}".replace(";", ",").replace('"', "'")
-        out.append(f'alert ip $HOME_NET any -> {group} any (msg:"{msg} (outbound)"; classtype:{classtype}; sid:{sid}; rev:2; metadata:created_at {meta["created"]}, confidence {confidence};)')
-        out.append(f'alert ip {group} any -> $HOME_NET any (msg:"{msg} (inbound)"; classtype:{classtype}; sid:{sid + 1}; rev:2; metadata:created_at {meta["created"]}, confidence {confidence};)')
+        out.append(f'alert ip $HOME_NET any -> {group} any (msg:"{msg} (outbound)"; classtype:{classtype}; sid:{sid}; rev:2; metadata:created_at {meta["created"]}, confidence {confidence}, {IP_OUTBOUND};)')
+        out.append(f'alert ip {group} any -> $HOME_NET any (msg:"{msg} (inbound)"; classtype:{classtype}; sid:{sid + 1}; rev:2; metadata:created_at {meta["created"]}, confidence {confidence}, {IP_INBOUND};)')
         sid += 2
     write(ROOT / "frameworks" / fw / "suricata" / f"{fw}-ip.rules", "\n".join(out) + "\n")
 

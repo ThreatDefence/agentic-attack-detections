@@ -1,5 +1,6 @@
 // Servers resolving out-of-band testing domains: blind bugs being confirmed against you
 // Agentic attack detections by ThreatDefence (cross-framework behavior). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1190 (Exploit Public-Facing Application), T1071.004 (Application Layer Protocol: DNS)
 // Example hunt for Defender XDR advanced hunting and Microsoft Sentinel DNS logs. Test and baseline before alerting.
 // Agents confirm blind SQL injection, SSRF, XXE, command injection and log4j-style bugs by making the target look up or
 // fetch a unique name under a callback service, then checking the service for the hit. Strix's sandbox ships

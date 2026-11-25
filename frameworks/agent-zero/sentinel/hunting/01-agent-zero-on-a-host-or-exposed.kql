@@ -1,5 +1,6 @@
 // Agent Zero on a host you monitor, attack tools on that host, or its UI exposed through a tunnel
 // Agentic attack detections by ThreatDefence (Agent Zero). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1588.002 (Obtain Capabilities: Tool), T1572 (Protocol Tunneling)
 // Example hunt for Defender XDR advanced hunting with proxy logs in Microsoft Sentinel. Test before alerting.
 // Agent Zero (agent0ai/agent-zero) is a general-purpose agent framework. GTIG reported threat actors experimenting with
 // it in 2026 but published no indicators, so this hunt looks for the setup an attacker would use:

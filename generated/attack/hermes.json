@@ -1,58 +1,120 @@
 {
- "description": "46 rules from https://github.com/ThreatDefence/agentic-attack-detections",
+ "description": "47 rules from https://github.com/ThreatDefence/agentic-attack-detections, checked against ATT&CK 20.1. Score: the number of rules that name the technique.",
  "domain": "enterprise-attack",
  "gradient": {
   "colors": [
    "#ffe9e9",
    "#dc2626"
   ],
-  "maxValue": 2,
+  "maxValue": 14,
   "minValue": 0
  },
  "hideDisabled": false,
  "legendItems": [],
+ "links": [
+  {
+   "label": "Rules",
+   "url": "https://github.com/ThreatDefence/agentic-attack-detections"
+  }
+ ],
  "name": "hermes",
  "selectTechniquesAcrossTactics": true,
- "showTacticsRow": false,
+ "showTacticsRow": true,
  "techniques": [
   {
-   "comment": "Carbonato Docker worm host escape or persistence",
+   "comment": "Sigma: Hermes Agent Jailbreak, Loot or Carbonato Files Written",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1005"
+  },
+  {
+   "comment": "Sentinel analytics: Carbonato Docker worm host escape or persistence",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1036.005"
   },
   {
-   "comment": "Carbonato Docker worm host escape or persistence",
+   "comment": "Sentinel analytics: Carbonato Docker worm host escape or persistence",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1053.003"
   },
   {
-   "comment": "Hermes Agent With Approvals Off or Its Jailbreak Skill; Hermes Agent set up for attack (approvals off, jailbreak skill or attack persona)",
+   "comment": "KQL hunt: Hermes Agent set up for attack on a host you monitor: yolo mode, jailbreak skill, red-team persona, attack tools; Sentinel analytics: Hermes Agent set up for attack (approvals off, jailbreak skill or attack persona); Sigma: Hermes Agent With Approvals Off or Its Jailbreak Skill",
    "enabled": true,
-   "score": 2,
+   "score": 3,
    "showSubtechniques": true,
    "techniqueID": "T1059"
   },
   {
-   "comment": "Hermes Agent set up for attack (approvals off, jailbreak skill or attack persona)",
+   "comment": "KQL hunt: Indicator sweep with the agentic watchlist; Suricata: 3806500 TD Hermes Agent reported address, Carbonato Docker botnet (Costa Rica, assessed), Beacon and reverse shell, ports 8080 and 4444 (Contabo) (outbound); Suricata: 3806502 TD Hermes Agent reported address, Carbonato Docker botnet (Costa Rica, assessed), C2 hub (Linode) (outbound); Suricata: 3806504 TD Hermes Agent reported address, Carbonato Docker botnet (Costa Rica, assessed), LLM gateway for the bots (Contabo) (outbound); Suricata: 3806506 TD Hermes Agent reported address, Carbonato Docker botnet (Costa Rica, assessed), Reverse SSH tunnel sink, AS262145 Costa Rica (outbound); Suricata: 3806508 TD Hermes Agent reported address, Carbonato Docker botnet (Costa Rica, assessed), fsociety-era C2 (Hetzner) (outbound); Suricata: 3806510 TD Hermes Agent reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), C2 (outbound); Suricata: 3806512 TD Hermes Agent reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), DNS exfiltration, catch-all mail, HTTP listeners (outbound); Suricata: 3806514 TD Hermes Agent reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), Skimmer host (outbound); Suricata: 3806516 TD Hermes Agent reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), Staging and command server, AI console (outbound); Suricata: 3806518 TD Hermes Agent reported address, Hermes operator against Thailand's Ministry of Finance (Hades, VShell), Hades Linux C2 on 12443, AS134196, Hong Kong (outbound); Suricata: 3806520 TD Hermes Agent reported address, Hermes operator against Thailand's Ministry of Finance (Hades, VShell), SSH client of the Hermes environment, connecting to 43.246.208.207, AS133073, Hong Kong (outbound); Suricata: 3806522 TD Hermes Agent reported address, Hermes operator against Thailand's Ministry of Finance (Hades, VShell), Same CN=www certificate family as the staging server, AS55720, Malaysia (outbound); Suricata: 3806524 TD Hermes Agent reported address, Hermes operator against Thailand's Ministry of Finance (Hades, VShell), Staging server with open directories (Hermes results, Hades and VShell builds), VShell C2 on 21083, Hades Windows C2 on 443, Hermes web UI on 8878, AS132883 TOPIDC, Hong Kong (outbound)",
    "enabled": true,
-   "score": 1,
+   "score": 14,
    "showSubtechniques": true,
-   "techniqueID": "T1562"
+   "techniqueID": "T1071"
   },
   {
-   "comment": "Carbonato Docker Worm Host Escape or Persistence; Carbonato Docker worm host escape or persistence",
+   "comment": "KQL hunt: Hermes consoles, Telegram control from servers, and Hermes results left on web servers; Suricata: 3806010 TD Hermes WebUI server header; Suricata: 3806011 TD Hermes Agent dashboard page; Suricata: 3806012 TD Hermes results folder requested from a web server; Suricata: 3806013 TD Hermes Agent sign-in page",
+   "enabled": true,
+   "score": 5,
+   "showSubtechniques": true,
+   "techniqueID": "T1071.001"
+  },
+  {
+   "comment": "KQL hunt: Carbonato: a Docker worm that turns exposed Docker hosts into Telegram-controlled Hermes agents; KQL hunt: Hermes consoles, Telegram control from servers, and Hermes results left on web servers",
    "enabled": true,
    "score": 2,
    "showSubtechniques": true,
+   "techniqueID": "T1102.002"
+  },
+  {
+   "comment": "Suricata: 3806003 TD Carbonato worm pulls system/resolved",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1105"
+  },
+  {
+   "comment": "KQL hunt: Indicator sweep with the agentic watchlist; Suricata: 3806501 TD Hermes Agent reported address, Carbonato Docker botnet (Costa Rica, assessed), Beacon and reverse shell, ports 8080 and 4444 (Contabo) (inbound); Suricata: 3806503 TD Hermes Agent reported address, Carbonato Docker botnet (Costa Rica, assessed), C2 hub (Linode) (inbound); Suricata: 3806505 TD Hermes Agent reported address, Carbonato Docker botnet (Costa Rica, assessed), LLM gateway for the bots (Contabo) (inbound); Suricata: 3806507 TD Hermes Agent reported address, Carbonato Docker botnet (Costa Rica, assessed), Reverse SSH tunnel sink, AS262145 Costa Rica (inbound); Suricata: 3806509 TD Hermes Agent reported address, Carbonato Docker botnet (Costa Rica, assessed), fsociety-era C2 (Hetzner) (inbound); Suricata: 3806511 TD Hermes Agent reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), C2 (inbound); Suricata: 3806513 TD Hermes Agent reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), DNS exfiltration, catch-all mail, HTTP listeners (inbound); Suricata: 3806515 TD Hermes Agent reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), Skimmer host (inbound); Suricata: 3806517 TD Hermes Agent reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), Staging and command server, AI console (inbound); Suricata: 3806519 TD Hermes Agent reported address, Hermes operator against Thailand's Ministry of Finance (Hades, VShell), Hades Linux C2 on 12443, AS134196, Hong Kong (inbound); Suricata: 3806521 TD Hermes Agent reported address, Hermes operator against Thailand's Ministry of Finance (Hades, VShell), SSH client of the Hermes environment, connecting to 43.246.208.207, AS133073, Hong Kong (inbound); Suricata: 3806523 TD Hermes Agent reported address, Hermes operator against Thailand's Ministry of Finance (Hades, VShell), Same CN=www certificate family as the staging server, AS55720, Malaysia (inbound); Suricata: 3806525 TD Hermes Agent reported address, Hermes operator against Thailand's Ministry of Finance (Hades, VShell), Staging server with open directories (Hermes results, Hades and VShell builds), VShell C2 on 21083, Hades Windows C2 on 443, Hermes web UI on 8878, AS132883 TOPIDC, Hong Kong (inbound)",
+   "enabled": true,
+   "score": 14,
+   "showSubtechniques": true,
+   "techniqueID": "T1595"
+  },
+  {
+   "comment": "Suricata: 3806004 TD Docker API exec into host namespaces with nsenter",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1609"
+  },
+  {
+   "comment": "KQL hunt: Carbonato: a Docker worm that turns exposed Docker hosts into Telegram-controlled Hermes agents; Suricata: 3806001 TD Carbonato privileged host-mount container created through the Docker API; Suricata: 3806002 TD Carbonato container name netns-probe or net-setup; Suricata: 3806003 TD Carbonato worm pulls system/resolved; YARA: Carbonato_Docker_Worm_Script",
+   "enabled": true,
+   "score": 5,
+   "showSubtechniques": true,
+   "techniqueID": "T1610"
+  },
+  {
+   "comment": "KQL hunt: Carbonato: a Docker worm that turns exposed Docker hosts into Telegram-controlled Hermes agents; Sentinel analytics: Carbonato Docker worm host escape or persistence; Sigma: Carbonato Docker Worm Host Escape or Persistence; Suricata: 3806001 TD Carbonato privileged host-mount container created through the Docker API; Suricata: 3806004 TD Docker API exec into host namespaces with nsenter; YARA: Carbonato_Docker_Worm_Script",
+   "enabled": true,
+   "score": 6,
+   "showSubtechniques": true,
    "techniqueID": "T1611"
+  },
+  {
+   "comment": "KQL hunt: Hermes Agent set up for attack on a host you monitor: yolo mode, jailbreak skill, red-team persona, attack tools; Sentinel analytics: Hermes Agent set up for attack (approvals off, jailbreak skill or attack persona); Sigma: Hermes Agent Jailbreak, Loot or Carbonato Files Written; YARA: Hermes_Carbonato_GH0ST_Persona; YARA: Hermes_Godmode_Jailbreak_Installed; YARA: Hermes_Red_Team_Operator_Persona",
+   "enabled": true,
+   "score": 6,
+   "showSubtechniques": true,
+   "techniqueID": "T1699"
   }
  ],
  "versions": {
-  "attack": "17",
+  "attack": "20",
   "layer": "4.5",
   "navigator": "5.1.0"
  }

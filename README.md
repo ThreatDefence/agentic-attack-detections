@@ -71,6 +71,8 @@ The capture is test traffic written from the framework source code and published
 | [Pentest Swarm AI](frameworks/pentestswarm) | 3 | | 3 | 11 | 1 | intel | 15 |
 | [Shared behaviors](behaviors) | 9 | 2 | 6 | 18 | | package | |
 
+Every rule names its MITRE ATT&CK techniques. [docs/attack-coverage.md](docs/attack-coverage.md) lists them per framework with links to the rules, and [`generated/attack/`](generated/attack) has an ATT&CK Navigator layer per framework and one for everything.
+
 Suricata counts are hand-written rules; each framework also has address rules generated from its indicators. Some indicators belong to more than one framework. Every framework is in the [Splunk app](deploy/splunk). ARTEX also has Elastic rules and ES\|QL queries, and an osquery pack.
 
 ## Frameworks

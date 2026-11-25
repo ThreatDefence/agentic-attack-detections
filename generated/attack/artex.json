@@ -1,239 +1,392 @@
 {
- "description": "160 rules from https://github.com/ThreatDefence/agentic-attack-detections",
+ "description": "168 rules from https://github.com/ThreatDefence/agentic-attack-detections, checked against ATT&CK 20.1. Score: the number of rules that name the technique.",
  "domain": "enterprise-attack",
  "gradient": {
   "colors": [
    "#ffe9e9",
    "#dc2626"
   ],
-  "maxValue": 8,
+  "maxValue": 28,
   "minValue": 0
  },
  "hideDisabled": false,
  "legendItems": [],
+ "links": [
+  {
+   "label": "Rules",
+   "url": "https://github.com/ThreatDefence/agentic-attack-detections"
+  }
+ ],
  "name": "artex",
  "selectTechniquesAcrossTactics": true,
- "showTacticsRow": false,
+ "showTacticsRow": true,
  "techniques": [
   {
-   "comment": "Svchost Running Outside the Windows System Folder; Windows System Binary Name Running From the Wrong Folder",
+   "comment": "KQL hunt: Kerberoasting, DCSync and WinRM fan-out",
    "enabled": true,
-   "score": 2,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1003.006"
+  },
+  {
+   "comment": "KQL hunt: Kerberoasting, DCSync and WinRM fan-out",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1021.006"
+  },
+  {
+   "comment": "KQL hunt: Payload hosts and fake system binaries from the SQL Server toolkit active in ARTEX operations; Sigma: Svchost Running Outside the Windows System Folder; Sigma: Windows System Binary Name Running From the Wrong Folder; Suricata: 3800067 TD Fake Windows system binary or miner driver downloaded from a /test/ path",
+   "enabled": true,
+   "score": 4,
    "showSubtechniques": true,
    "techniqueID": "T1036.005"
   },
   {
-   "comment": "ARTEX agent shell or recording proxy credential on a host",
+   "comment": "Sentinel analytics: ARTEX agent shell or recording proxy credential on a host",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1046"
   },
   {
-   "comment": "Scheduled Task Disguised as Microsoft Edge Update in the SQL Server Toolkit",
+   "comment": "Sigma: Scheduled Task Disguised as Microsoft Edge Update in the SQL Server Toolkit",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1053.005"
   },
   {
-   "comment": "Remote Process Listing With tasklist; Remote tasklist Fan-Out From One Host",
+   "comment": "Sigma: Remote Process Listing With tasklist; Sigma: Remote tasklist Fan-Out From One Host",
    "enabled": true,
    "score": 2,
    "showSubtechniques": true,
    "techniqueID": "T1057"
   },
   {
-   "comment": "ARTEX Artifact Names in Command Lines; ARTEX Probe Artifact Created",
+   "comment": "KQL hunt: Web and database services starting shells and download tools; Sigma: ARTEX Artifact Names in Command Lines; Sigma: ARTEX Probe Artifact Created",
    "enabled": true,
-   "score": 2,
+   "score": 3,
    "showSubtechniques": true,
    "techniqueID": "T1059"
   },
   {
-   "comment": "Web or Database Service Spawns a Shell or Download Tool on Windows",
+   "comment": "Sigma: Web or Database Service Spawns a Shell or Download Tool on Windows",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1059.001"
   },
   {
-   "comment": "SQL Server Spawns a Shell Through xp_cmdshell; Web or Database Service Spawns a Shell or Download Tool on Windows",
+   "comment": "Sigma: SQL Server Spawns a Shell Through xp_cmdshell; Sigma: Web or Database Service Spawns a Shell or Download Tool on Windows",
    "enabled": true,
    "score": 2,
    "showSubtechniques": true,
    "techniqueID": "T1059.003"
   },
   {
-   "comment": "ARTEX agent shell or recording proxy credential on a host; Web or Database Service Spawns a Shell or Download Tool on Linux",
+   "comment": "KQL hunt: ARTEX running on a host you monitor: agent shells, the recording proxy, resolver fan-out and archives; KQL hunt: Bracketed-paste bytes in shell input on a compromised host; Sentinel analytics: ARTEX agent shell or recording proxy credential on a host; Sigma: Web or Database Service Spawns a Shell or Download Tool on Linux",
    "enabled": true,
-   "score": 2,
+   "score": 4,
    "showSubtechniques": true,
    "techniqueID": "T1059.004"
   },
   {
-   "comment": "DNS Query for Reported ARTEX Infrastructure",
+   "comment": "KQL hunt: Scripted Microsoft Graph bursts by an application",
    "enabled": true,
    "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1069.003"
+  },
+  {
+   "comment": "KQL hunt: Indicator sweep; KQL hunt: Indicator sweep with the ARTEX watchlist; Suricata: 3800500 TD ARTEX reported address, ARTEX operators, ARTEX activity in AWS environments (outbound); Suricata: 3800502 TD ARTEX reported address, ARTEX operators, ARTEX-associated address from ThreatDefence intelligence (outbound); Suricata: 3800504 TD ARTEX reported address, ARTEX operators, ARTEX-associated infrastructure (consoles and command and control) (outbound); Suricata: 3800506 TD ARTEX reported address, ARTEX operators, Address active in ARTEX operator toolkits (outbound); Suricata: 3800508 TD ARTEX reported address, ARTEX operators, Hosting range with more than 200 ARTEX-associated addresses in the Cisco Talos and ReversingLabs lists (outbound); Suricata: 3800510 TD ARTEX reported address, ARTEX operators, ftp.zhzy999.net, payload host active in ARTEX operator toolkits (outbound); Suricata: 3800512 TD ARTEX reported address, ARTEX operators, www.zhzy999.net, payload host active in ARTEX operator toolkits (outbound); Suricata: 3800514 TD ARTEX reported address, AntiFox console operators, Exposed AntiFox console (sample list). An exposed console is not proof of malicious use (outbound); Suricata: 3800516 TD ARTEX reported address, AntiFox operators (IIS web shells and AWS secret theft), AntiFox console on Alibaba Cloud, source of IIS web shell activity and AWS enumeration that read a production secret (outbound); Suricata: 3800518 TD ARTEX reported address, Storm-0940, Attacks on IT and software vendors (outbound); Suricata: 3800520 TD ARTEX reported address, Storm-0940, Storm-0940 sign-ins, password spray and Graph activity (outbound); Suricata: 3800522 TD ARTEX reported address, Storm-0940, VPN exits, relevant to October 15 and 16, 2026 only (outbound); Suricata: 3800524 TD ARTEX reported address, Storm-3358, ARTEX servers (outbound); Suricata: 3800526 TD ARTEX reported address, Storm-3358, Command and control server (outbound); Suricata: 3800528 TD ARTEX reported address, Storm-3358, WISP command and control (outbound); Suricata: 3800530 TD ARTEX reported address, Unattributed (Korea finance), ARTEX host used against South Korean financial organizations. Also in Cairn reporting: Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers. Also in ARTEX reporting (outbound); Suricata: 3800532 TD ARTEX reported address, Unattributed (Korea finance), Proxy addresses in the South Korea campaign (outbound); Suricata: 3800534 TD ARTEX reported address, Unattributed console operators, ARTEX and PentAGI consoles on one server, ports 8443 and 8787. An exposed console is not proof of malicious use (outbound); Suricata: 3800536 TD ARTEX reported address, VAPOR PANDA, BLOODALCHEMY command and control (outbound)",
+   "enabled": true,
+   "score": 21,
+   "showSubtechniques": true,
+   "techniqueID": "T1071"
+  },
+  {
+   "comment": "KQL hunt: ARTEX console and side-channel traffic in your outbound proxy logs; KQL hunt: An ARTEX console or a backdoored ARTEX image inside your network; Sigma: DNS Query for Reported ARTEX Infrastructure; Suricata: 3800040 TD ARTEX console page served; Suricata: 3800041 TD ARTEX renamed console page served (ScopeWeaver); Suricata: 3800042 TD ARTEX Basic auth realm; Suricata: 3800043 TD ARTEX renamed console page served (LUCK); Suricata: 3800061 TD VAPOR PANDA BLOODALCHEMY C2 domain in TLS SNI, ARTEX campaign (nginxmysql.com); Suricata: 3800072 TD VAPOR PANDA BLOODALCHEMY C2 domain in TLS SNI, ARTEX campaign (sqlserver-sqlite.com); Suricata: 3800073 TD VAPOR PANDA BLOODALCHEMY C2 domain in TLS SNI, ARTEX campaign (ddduuuppp.com); Suricata: 3800081 TD ARTEX renamed console page served (title ending); Suricata: 3800082 TD ARTEX renamed console page served (Chinese title ending); Suricata: 3800083 TD ARTEX renamed console page served (Korean title ending); YARA: ARTEX_Console_Web_Assets; Zeek notice: ARTEX::Console_Page",
+   "enabled": true,
+   "score": 15,
    "showSubtechniques": true,
    "techniqueID": "T1071.001"
   },
   {
-   "comment": "ARTEX agentic attack framework user agent",
+   "comment": "Suricata: 3800060 TD VAPOR PANDA BLOODALCHEMY C2 domain lookup, ARTEX campaign (nginxmysql.com); Suricata: 3800062 TD Request collection service lookup from a server (webhook.site); Suricata: 3800063 TD DNS callback service lookup with artx label (dnslog.cn); Suricata: 3800064 TD Community-reported ARTEX infrastructure domain lookup (artex.lol); Suricata: 3800070 TD VAPOR PANDA BLOODALCHEMY C2 domain lookup, ARTEX campaign (sqlserver-sqlite.com); Suricata: 3800071 TD VAPOR PANDA BLOODALCHEMY C2 domain lookup, ARTEX campaign (ddduuuppp.com); Suricata: 3800074 TD Community-reported ARTEX infrastructure domain lookup (artex.tokena2b.top); Suricata: 3800075 TD Community-reported ARTEX infrastructure domain lookup (artex.ok7777.eu.cc); Suricata: 3800076 TD Community-reported ARTEX infrastructure domain lookup (artex.noog2infra.site)",
+   "enabled": true,
+   "score": 9,
+   "showSubtechniques": true,
+   "techniqueID": "T1071.004"
+  },
+  {
+   "comment": "Sentinel analytics: ARTEX agentic attack framework user agent",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1078"
   },
   {
-   "comment": "ARTEX User Agent in Entra ID Sign-In Logs; ARTEX User Agent in Okta System Log; Cognito Sign-Up With ARTEX Artifacts",
+   "comment": "KQL hunt: A spray that ends in a successful sign-in; KQL hunt: AWS permission testing and the foothold that follows; KQL hunt: Azure capability checks, validate sweeps and Kudu sign-ins; KQL hunt: CloudWatch log searches with a stolen AWS key; KQL hunt: Headless browsers and ARTEX clients signing in, and the pause while a person relays the MFA code; KQL hunt: One application requesting tokens for many resources in minutes; KQL hunt: Service principal secret guessing followed by a success; Sigma: ARTEX User Agent in Entra ID Sign-In Logs; Sigma: ARTEX User Agent in Okta System Log; Sigma: Cognito Sign-Up With ARTEX Artifacts",
    "enabled": true,
-   "score": 3,
+   "score": 10,
    "showSubtechniques": true,
    "techniqueID": "T1078.004"
   },
   {
-   "comment": "Service principal assigned a role by itself",
+   "comment": "KQL hunt: Scripted Microsoft Graph bursts by an application",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1087.004"
+  },
+  {
+   "comment": "Sentinel analytics: Service principal assigned a role by itself",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1098"
   },
   {
-   "comment": "Credential Added to an Entra ID Application",
+   "comment": "KQL hunt: AWS permission testing and the foothold that follows; KQL hunt: Applications changing their own access; Sigma: Credential Added to an Entra ID Application",
    "enabled": true,
-   "score": 1,
+   "score": 3,
    "showSubtechniques": true,
    "techniqueID": "T1098.001"
   },
   {
-   "comment": "App Role or Directory Role Assigned to a Service Principal",
+   "comment": "KQL hunt: Applications changing their own access; Sigma: App Role or Directory Role Assigned to a Service Principal",
    "enabled": true,
-   "score": 1,
+   "score": 2,
    "showSubtechniques": true,
    "techniqueID": "T1098.003"
   },
   {
-   "comment": "DNS Query to Request Collection or DNS Callback Services",
+   "comment": "Sigma: DNS Query to Request Collection or DNS Callback Services",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1102"
   },
   {
-   "comment": "DNS Query for Payload Hosts Active in ARTEX Operator Toolkits",
+   "comment": "KQL hunt: Payload hosts and fake system binaries from the SQL Server toolkit active in ARTEX operations; KQL hunt: Servers calling webhook and tunnel services, or downloading from a bare address; Sigma: DNS Query for Payload Hosts Active in ARTEX Operator Toolkits; Suricata: 3800065 TD ARTEX toolkit payload host lookup (vietnam852.com); Suricata: 3800066 TD ARTEX toolkit payload download (vietnam852.com); Suricata: 3800067 TD Fake Windows system binary or miner driver downloaded from a /test/ path; Suricata: 3800077 TD ARTEX toolkit payload host lookup (zhzy999.net); Suricata: 3800078 TD ARTEX toolkit payload host lookup (jiancai008.com); Suricata: 3800079 TD ARTEX toolkit payload download (zhzy999.net); Suricata: 3800080 TD ARTEX toolkit payload download (jiancai008.com)",
    "enabled": true,
-   "score": 1,
+   "score": 10,
    "showSubtechniques": true,
    "techniqueID": "T1105"
   },
   {
-   "comment": "Password spray at a fixed one-second rhythm",
+   "comment": "Sentinel analytics: Password spray at a fixed one-second rhythm",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1110"
   },
   {
-   "comment": "ARTEX User Agent in Entra ID Sign-In Logs; Entra ID Sign-In Failure; Password Spray Against Many Entra ID Accounts From One Address",
+   "comment": "KQL hunt: Service principal secret guessing followed by a success",
    "enabled": true,
-   "score": 3,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1110.001"
+  },
+  {
+   "comment": "KQL hunt: A spray that ends in a successful sign-in; KQL hunt: Password spray at a fixed rhythm; Sigma: ARTEX User Agent in Entra ID Sign-In Logs; Sigma: Entra ID Sign-In Failure; Sigma: Password Spray Against Many Entra ID Accounts From One Address",
+   "enabled": true,
+   "score": 5,
    "showSubtechniques": true,
    "techniqueID": "T1110.003"
   },
   {
-   "comment": "ARTEX Artifact Names in Command Lines",
+   "comment": "KQL hunt: Headless browsers and ARTEX clients signing in, and the pause while a person relays the MFA code",
    "enabled": true,
    "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1111"
+  },
+  {
+   "comment": "KQL hunt: Accounts registered by a source that is also probing the application; Sigma: ARTEX Artifact Names in Command Lines",
+   "enabled": true,
+   "score": 2,
    "showSubtechniques": true,
    "techniqueID": "T1136"
   },
   {
-   "comment": "Cognito Sign-Up With ARTEX Artifacts",
+   "comment": "KQL hunt: Cognito sign-up abuse and the discovery sweep after it; Sigma: Cognito Sign-Up With ARTEX Artifacts",
    "enabled": true,
-   "score": 1,
+   "score": 2,
    "showSubtechniques": true,
    "techniqueID": "T1136.003"
   },
   {
-   "comment": "ARTEX Agentic Attack Framework User Agent in Proxy Logs; ARTEX Agentic Attack Framework User Agent in Web Logs; ARTEX OAuth Callback Probe; ARTEX Placeholder Probe Paths; ARTEX Probe Marker in HTTP Request; Unsigned JWT With alg none Sent to a Web Application",
+   "comment": "KQL hunt: Web and database services starting shells and download tools; Sigma: ARTEX Agentic Attack Framework User Agent in Proxy Logs; Sigma: ARTEX Agentic Attack Framework User Agent in Web Logs; Sigma: ARTEX OAuth Callback Probe; Sigma: ARTEX Placeholder Probe Paths; Sigma: ARTEX Probe Marker in HTTP Request; Sigma: Unsigned JWT With alg none Sent to a Web Application; Suricata: 3800022 TD ARTEX OAuth callback probe; Suricata: 3800023 TD Unsigned alg none JWT in URI; Suricata: 3800024 TD Unsigned alg none JWT in Authorization header; Suricata: 3800025 TD ARTEX X-ARTX-KEY request header; Suricata: 3800026 TD ARTEX probe marker in request; Suricata: 3800027 TD ARTEX persistence marker ARTX_PERSIST_OK in request; Suricata: 3800030 TD Unsigned alg none JWT in URI (typ first); Suricata: 3800031 TD Unsigned alg none JWT in Authorization header (typ first); Suricata: 3800032 TD Unsigned alg none JWT in URI (None or NONE); Suricata: 3800033 TD Unsigned alg none JWT in Authorization header (None or NONE); Suricata: 3800062 TD Request collection service lookup from a server (webhook.site); Suricata: 3800063 TD DNS callback service lookup with artx label (dnslog.cn); YARA: ARTEX_Probe_Artifacts_In_Files; Zeek notice: ARTEX::JWT_Alg_None; Zeek notice: ARTEX::Probe_Marker",
    "enabled": true,
-   "score": 6,
+   "score": 22,
    "showSubtechniques": true,
    "techniqueID": "T1190"
   },
   {
-   "comment": "SQL Server Spawns a Shell Through xp_cmdshell",
+   "comment": "YARA: ARTEX_Backdoored_Console_Binary",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1195.002"
+  },
+  {
+   "comment": "KQL hunt: CloudWatch log searches with a stolen AWS key",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1213"
+  },
+  {
+   "comment": "KQL hunt: Payload hosts and fake system binaries from the SQL Server toolkit active in ARTEX operations; Suricata: 3800067 TD Fake Windows system binary or miner driver downloaded from a /test/ path",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1496"
+  },
+  {
+   "comment": "Sigma: SQL Server Spawns a Shell Through xp_cmdshell",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1505.001"
   },
   {
-   "comment": "JSP Web Shell Names Seen in ARTEX Intrusions; Web or Database Service Spawns a Shell or Download Tool on Linux; Web or Database Service Spawns a Shell or Download Tool on Windows",
+   "comment": "KQL hunt: AntiFox intrusion pattern: an IIS web shell, web.config theft, then AWS enumeration from hosting infrastructure; KQL hunt: Scripts written into web directories; KQL hunt: Web and database services starting shells and download tools; Sigma: JSP Web Shell Names Seen in ARTEX Intrusions; Sigma: Web or Database Service Spawns a Shell or Download Tool on Linux; Sigma: Web or Database Service Spawns a Shell or Download Tool on Windows; Suricata: 3800027 TD ARTEX persistence marker ARTX_PERSIST_OK in request",
    "enabled": true,
-   "score": 3,
+   "score": 7,
    "showSubtechniques": true,
    "techniqueID": "T1505.003"
   },
   {
-   "comment": "Remote Process Listing With tasklist; Remote tasklist Fan-Out From One Host",
+   "comment": "Sigma: Remote Process Listing With tasklist; Sigma: Remote tasklist Fan-Out From One Host",
    "enabled": true,
    "score": 2,
    "showSubtechniques": true,
    "techniqueID": "T1518.001"
   },
   {
-   "comment": "CloudWatch Logs Searched for Secrets; CloudWatch logs searched for secrets",
+   "comment": "KQL hunt: Azure capability checks, validate sweeps and Kudu sign-ins; KQL hunt: One application requesting tokens for many resources in minutes",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1526"
+  },
+  {
+   "comment": "KQL hunt: Cognito sign-up abuse and the discovery sweep after it; Suricata: 3800021 TD ARTEX placeholder object name in S3 or storage probe",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1530"
+  },
+  {
+   "comment": "Sentinel analytics: CloudWatch logs searched for secrets; Sigma: CloudWatch Logs Searched for Secrets",
    "enabled": true,
    "score": 2,
    "showSubtechniques": true,
    "techniqueID": "T1552"
   },
   {
-   "comment": "DNS Query to Request Collection or DNS Callback Services",
+   "comment": "KQL hunt: AntiFox intrusion pattern: an IIS web shell, web.config theft, then AWS enumeration from hosting infrastructure",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1552.001"
+  },
+  {
+   "comment": "KQL hunt: Bulk Key Vault secret reads",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1555.006"
+  },
+  {
+   "comment": "KQL hunt: Kerberoasting, DCSync and WinRM fan-out",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1558.003"
+  },
+  {
+   "comment": "Sigma: DNS Query to Request Collection or DNS Callback Services",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1567"
   },
   {
-   "comment": "BLOODALCHEMY Loader Files Written; Svchost Running Outside the Windows System Folder",
+   "comment": "KQL hunt: Servers calling webhook and tunnel services, or downloading from a bare address",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1567.004"
+  },
+  {
+   "comment": "KQL hunt: Servers calling webhook and tunnel services, or downloading from a bare address",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1572"
+  },
+  {
+   "comment": "Sigma: BLOODALCHEMY Loader Files Written; Sigma: Svchost Running Outside the Windows System Folder",
    "enabled": true,
    "score": 2,
    "showSubtechniques": true,
    "techniqueID": "T1574.001"
   },
   {
-   "comment": "ARTEX User Agent in AWS CloudTrail; AWS API Call Denied; AWS Access Denied Sweep Across Many APIs; Azure Resource Manager Deployment Validate Call; Azure Resource Manager Validate Sweep; Burst of EC2 DryRun Calls From One Identity; Burst of EC2 DryRun permission tests; EC2 DryRun Permission Test",
+   "comment": "KQL hunt: AWS permission testing and the foothold that follows; KQL hunt: AntiFox intrusion pattern: an IIS web shell, web.config theft, then AWS enumeration from hosting infrastructure; KQL hunt: Azure capability checks, validate sweeps and Kudu sign-ins; KQL hunt: Cognito sign-up abuse and the discovery sweep after it; Sentinel analytics: Burst of EC2 DryRun permission tests; Sigma: ARTEX User Agent in AWS CloudTrail; Sigma: AWS API Call Denied; Sigma: AWS Access Denied Sweep Across Many APIs; Sigma: Azure Resource Manager Deployment Validate Call; Sigma: Azure Resource Manager Validate Sweep; Sigma: Burst of EC2 DryRun Calls From One Identity; Sigma: EC2 DryRun Permission Test",
    "enabled": true,
-   "score": 8,
+   "score": 12,
    "showSubtechniques": true,
    "techniqueID": "T1580"
   },
   {
-   "comment": "ARTEX code-default user agents (norma WebFetch, update check)",
+   "comment": "KQL hunt: ARTEX names in files, folders and command lines; KQL hunt: ARTEX running on a host you monitor: agent shells, the recording proxy, resolver fan-out and archives; KQL hunt: An ARTEX console or a backdoored ARTEX image inside your network; YARA: ARTEX_Backdoored_Console_Binary; YARA: ARTEX_Console_Web_Assets; YARA: ARTEX_Operator_Binary_Strings",
+   "enabled": true,
+   "score": 6,
+   "showSubtechniques": true,
+   "techniqueID": "T1588.002"
+  },
+  {
+   "comment": "Sentinel analytics: ARTEX code-default user agents (norma WebFetch, update check)",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1592"
   },
   {
-   "comment": "ARTEX agentic attack framework user agent; ARTEX code-default user agents (norma WebFetch, update check)",
+   "comment": "KQL hunt: ARTEX page reads (norma/0.4) and the enrichment probe that follows; KQL hunt: Application reconnaissance in web logs",
    "enabled": true,
    "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1594"
+  },
+  {
+   "comment": "KQL hunt: Indicator sweep; KQL hunt: Indicator sweep with the ARTEX watchlist; Sentinel analytics: ARTEX agentic attack framework user agent; Sentinel analytics: ARTEX code-default user agents (norma WebFetch, update check); Suricata: 3800501 TD ARTEX reported address, ARTEX operators, ARTEX activity in AWS environments (inbound); Suricata: 3800503 TD ARTEX reported address, ARTEX operators, ARTEX-associated address from ThreatDefence intelligence (inbound); Suricata: 3800505 TD ARTEX reported address, ARTEX operators, ARTEX-associated infrastructure (consoles and command and control) (inbound); Suricata: 3800507 TD ARTEX reported address, ARTEX operators, Address active in ARTEX operator toolkits (inbound); Suricata: 3800509 TD ARTEX reported address, ARTEX operators, Hosting range with more than 200 ARTEX-associated addresses in the Cisco Talos and ReversingLabs lists (inbound); Suricata: 3800511 TD ARTEX reported address, ARTEX operators, ftp.zhzy999.net, payload host active in ARTEX operator toolkits (inbound); Suricata: 3800513 TD ARTEX reported address, ARTEX operators, www.zhzy999.net, payload host active in ARTEX operator toolkits (inbound); Suricata: 3800515 TD ARTEX reported address, AntiFox console operators, Exposed AntiFox console (sample list). An exposed console is not proof of malicious use (inbound); Suricata: 3800517 TD ARTEX reported address, AntiFox operators (IIS web shells and AWS secret theft), AntiFox console on Alibaba Cloud, source of IIS web shell activity and AWS enumeration that read a production secret (inbound); Suricata: 3800519 TD ARTEX reported address, Storm-0940, Attacks on IT and software vendors (inbound); Suricata: 3800521 TD ARTEX reported address, Storm-0940, Storm-0940 sign-ins, password spray and Graph activity (inbound); Suricata: 3800523 TD ARTEX reported address, Storm-0940, VPN exits, relevant to October 15 and 16, 2026 only (inbound); Suricata: 3800525 TD ARTEX reported address, Storm-3358, ARTEX servers (inbound); Suricata: 3800527 TD ARTEX reported address, Storm-3358, Command and control server (inbound); Suricata: 3800529 TD ARTEX reported address, Storm-3358, WISP command and control (inbound); Suricata: 3800531 TD ARTEX reported address, Unattributed (Korea finance), ARTEX host used against South Korean financial organizations. Also in Cairn reporting: Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers. Also in ARTEX reporting (inbound); Suricata: 3800533 TD ARTEX reported address, Unattributed (Korea finance), Proxy addresses in the South Korea campaign (inbound); Suricata: 3800535 TD ARTEX reported address, Unattributed console operators, ARTEX and PentAGI consoles on one server, ports 8443 and 8787. An exposed console is not proof of malicious use (inbound); Suricata: 3800537 TD ARTEX reported address, VAPOR PANDA, BLOODALCHEMY command and control (inbound)",
+   "enabled": true,
+   "score": 23,
    "showSubtechniques": true,
    "techniqueID": "T1595"
   },
   {
-   "comment": "ARTEX Agentic Attack Framework User Agent in Proxy Logs; ARTEX Agentic Attack Framework User Agent in Web Logs; ARTEX OAuth Callback Probe; ARTEX Placeholder Probe Paths; ARTEX Probe Marker in HTTP Request",
+   "comment": "KQL hunt: ARTEX page reads (norma/0.4) and the enrichment probe that follows; KQL hunt: Accounts registered by a source that is also probing the application; KQL hunt: Application reconnaissance in web logs; KQL hunt: Metronomic request rates that match the ARTEX noise profiles; KQL hunt: The ARTEX container toolchain seen from one source; KQL hunt: User agent family burst from one source; Sigma: ARTEX Agentic Attack Framework User Agent in Proxy Logs; Sigma: ARTEX Agentic Attack Framework User Agent in Web Logs; Sigma: ARTEX OAuth Callback Probe; Sigma: ARTEX Placeholder Probe Paths; Sigma: ARTEX Probe Marker in HTTP Request; Suricata: 3800001 TD ARTEX user agent artex-<role>/1.0; Suricata: 3800002 TD ARTEX user agent ARTEX-worker; Suricata: 3800003 TD ARTEX user agent ARTeX; Suricata: 3800004 TD ARTEX user agent canary; Suricata: 3800005 TD ARTEX user agent Mozilla/5.0 (ARTEX); Suricata: 3800006 TD ARTEX user agent ArtEx variant; Suricata: 3800007 TD ARTEX ScopeWeaver renamed build user agent; Suricata: 3800008 TD ARTEX spa-api-recon user agent; Suricata: 3800009 TD ARTEX user agent artex-agent or artex-judge-<run>; Suricata: 3800020 TD ARTEX placeholder probe path; Suricata: 3800021 TD ARTEX placeholder object name in S3 or storage probe; Suricata: 3800022 TD ARTEX OAuth callback probe; Suricata: 3800025 TD ARTEX X-ARTX-KEY request header; Suricata: 3800026 TD ARTEX probe marker in request; Zeek notice: ARTEX::Probe_Marker; Zeek notice: ARTEX::Probe_Path; Zeek notice: ARTEX::User_Agent",
    "enabled": true,
-   "score": 5,
+   "score": 28,
    "showSubtechniques": true,
    "techniqueID": "T1595.002"
   },
   {
-   "comment": "Unsigned JWT With alg none Sent to a Web Application",
+   "comment": "Suricata: 3800023 TD Unsigned alg none JWT in URI; Suricata: 3800024 TD Unsigned alg none JWT in Authorization header; Suricata: 3800030 TD Unsigned alg none JWT in URI (typ first); Suricata: 3800031 TD Unsigned alg none JWT in Authorization header (typ first); Suricata: 3800032 TD Unsigned alg none JWT in URI (None or NONE); Suricata: 3800033 TD Unsigned alg none JWT in Authorization header (None or NONE); Zeek notice: ARTEX::JWT_Alg_None",
+   "enabled": true,
+   "score": 7,
+   "showSubtechniques": true,
+   "techniqueID": "T1606"
+  },
+  {
+   "comment": "Sigma: Unsigned JWT With alg none Sent to a Web Application",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
@@ -241,7 +394,7 @@
   }
  ],
  "versions": {
-  "attack": "17",
+  "attack": "20",
   "layer": "4.5",
   "navigator": "5.1.0"
  }

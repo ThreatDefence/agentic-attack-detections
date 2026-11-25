@@ -1,5 +1,6 @@
 // Indicator sweep
 // Agentic attack detections by ThreatDefence (PentAGI). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1595 (Active Scanning), T1071 (Application Layer Protocol)
 // Example hunt for Microsoft Sentinel and Defender XDR advanced hunting. Test and baseline before alerting.
 // Addresses published for PentAGI so far: the PaperCut exploitation host Hunt.io tied to a PentAGI certificate, and
 // exposed or renamed PentAGI consoles RST Cloud verified on November 2, 2026. An exposed console is not proof of malicious

@@ -18,7 +18,7 @@ module AgenticBehaviors;
 
 export {
     redef enum Notice::Type += {
-        ## A server looked up a name under an out-of-band testing service.
+        ## A server looked up a name under an out-of-band testing service. ATT&CK: T1190, T1071.004.
         Out_Of_Band_Lookup,
     };
 

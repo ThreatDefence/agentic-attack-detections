@@ -21,7 +21,7 @@ module AgenticBehaviors;
 
 export {
     redef enum Notice::Type += {
-        ## One address sent AI agent page reads and attack tool traffic or payloads to the same host.
+        ## One address sent AI agent page reads and attack tool traffic or payloads to the same host. ATT&CK: T1594, T1190.
         AI_Agent_Attacking_Site,
     };
 

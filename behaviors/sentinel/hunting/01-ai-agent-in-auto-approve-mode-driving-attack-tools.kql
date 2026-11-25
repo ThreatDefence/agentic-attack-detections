@@ -1,5 +1,6 @@
 // An AI agent driving attack tools
 // Agentic attack detections by ThreatDefence (cross-framework behavior, first written for Cairn). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1059 (Command and Scripting Interpreter), T1046 (Network Service Discovery), T1588.007 (Obtain Capabilities: Artificial Intelligence)
 // Example hunt for Defender XDR advanced hunting. Test and baseline before alerting.
 // Agent CLIs run shell commands for the model. What ties an attack tool to an agent is the process tree:
 //  - Claude Code runs every command through its own shell. On Linux and macOS that is

@@ -1,5 +1,6 @@
 // Headless browsers and ARTEX clients signing in, and the pause while a person relays the MFA code
 // Agentic attack detections by ThreatDefence (ARTEX). Source: https://threatdefence.com/article/artex-agentic-attack-framework-detection-hunting
+// ATT&CK: T1078.004 (Valid Accounts: Cloud Accounts), T1111 (Multi-Factor Authentication Interception)
 // Example hunt for Microsoft Sentinel. Test and baseline before alerting.
 // From the ARTEX source code. ARTEX has no Entra ID or Okta module of its own. When an agent logs in to an application
 // it drives the bundled Playwright MCP server with headless Chromium (Dockerfile:212-220), whose user agent says

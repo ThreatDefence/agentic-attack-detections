@@ -9,6 +9,7 @@ rule Xalgorix_Binary_Or_Source
 {
     meta:
         description = "Xalgorix binary or source: its verifier prompt, shell wrapper, callback answer or calibration header"
+        mitre_att = "T1588.002"
         author = "ThreatDefence"
         date = "2026-11-23"
         reference = "https://github.com/xalgorix/xalgorix"

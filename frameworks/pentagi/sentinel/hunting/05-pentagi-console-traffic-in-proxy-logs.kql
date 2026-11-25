@@ -1,5 +1,6 @@
 // PentAGI console and update traffic in your outbound proxy logs
 // Agentic attack detections by ThreatDefence (PentAGI). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1071.001 (Application Layer Protocol: Web Protocols)
 // Example hunt for Microsoft Sentinel. Needs a proxy that records full URLs (TLS inspection). Test before alerting.
 // From the PentAGI source code. People on your network driving a remote PentAGI console, or a PentAGI host behind your
 // proxy, leave requests a proxy can name:

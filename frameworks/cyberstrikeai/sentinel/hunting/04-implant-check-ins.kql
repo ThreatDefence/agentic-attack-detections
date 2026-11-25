@@ -1,5 +1,6 @@
 // CyberStrikeAI implant check-ins: five seconds, no jitter, fixed headers
 // Agentic attack detections by ThreatDefence (CyberStrikeAI). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1071.001 (Application Layer Protocol: Web Protocols), T1095 (Non-Application Layer Protocol)
 // Example hunt for Defender XDR advanced hunting with proxy logs in Microsoft Sentinel. Test and baseline before alerting.
 // From the CyberStrikeAI source code (internal/c2). The implant is a Go binary the console builds for each listener:
 //  - HTTP and HTTPS implants POST to /check_in, then GET /tasks?session_id=<id>, and send results to /result. Every

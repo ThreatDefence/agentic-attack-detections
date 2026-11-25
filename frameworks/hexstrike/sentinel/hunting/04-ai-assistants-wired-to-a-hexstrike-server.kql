@@ -1,5 +1,6 @@
 // AI assistants wired to a HexStrike server, and its tool API in proxy logs
 // Agentic attack detections by ThreatDefence (HexStrike). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1588.007 (Obtain Capabilities: Artificial Intelligence), T1059 (Command and Scripting Interpreter), T1071.001 (Application Layer Protocol: Web Protocols)
 // Example hunt for Defender XDR advanced hunting and Microsoft Sentinel. Test before alerting.
 // From the HexStrike source code. HexStrike has no model of its own. An AI assistant (Claude Desktop, Claude Code,
 // Cursor, VS Code or any MCP client) starts its MCP client, "python3 hexstrike_mcp.py --server http://<host>:8888"

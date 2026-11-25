@@ -1,30 +1,85 @@
 {
- "description": "7 rules from https://github.com/ThreatDefence/agentic-attack-detections",
+ "description": "7 rules from https://github.com/ThreatDefence/agentic-attack-detections, checked against ATT&CK 20.1. Score: the number of rules that name the technique.",
  "domain": "enterprise-attack",
  "gradient": {
   "colors": [
    "#ffe9e9",
    "#dc2626"
   ],
-  "maxValue": 1,
+  "maxValue": 2,
   "minValue": 0
  },
  "hideDisabled": false,
  "legendItems": [],
+ "links": [
+  {
+   "label": "Rules",
+   "url": "https://github.com/ThreatDefence/agentic-attack-detections"
+  }
+ ],
  "name": "agent-zero",
  "selectTechniquesAcrossTactics": true,
- "showTacticsRow": false,
+ "showTacticsRow": true,
  "techniques": [
   {
-   "comment": "Agent Zero Container, UI or Tunnel Started",
+   "comment": "Sigma: Agent Zero Container, UI or Tunnel Started",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1059"
+  },
+  {
+   "comment": "KQL hunt: Indicator sweep with the agentic watchlist",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1071"
+  },
+  {
+   "comment": "Suricata: 3807001 TD Agent Zero web UI page; Suricata: 3807002 TD Agent Zero login page",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1071.001"
+  },
+  {
+   "comment": "KQL hunt: Agent Zero on a host you monitor, attack tools on that host, or its UI exposed through a tunnel",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1572"
+  },
+  {
+   "comment": "KQL hunt: Agent Zero on a host you monitor, attack tools on that host, or its UI exposed through a tunnel; YARA: AgentZero_Hacker_Profile",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1588.002"
+  },
+  {
+   "comment": "YARA: AgentZero_Hacker_Profile",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1588.007"
+  },
+  {
+   "comment": "KQL hunt: Indicator sweep with the agentic watchlist",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1595"
+  },
+  {
+   "comment": "Suricata: 3807003 TD Agent Zero user agent",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1595.002"
   }
  ],
  "versions": {
-  "attack": "17",
+  "attack": "20",
   "layer": "4.5",
   "navigator": "5.1.0"
  }

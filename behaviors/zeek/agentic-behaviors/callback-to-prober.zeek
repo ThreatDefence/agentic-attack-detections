@@ -22,7 +22,7 @@ module AgenticBehaviors;
 
 export {
     redef enum Notice::Type += {
-        ## A server opened a connection to an outside address that had been sending it payload requests.
+        ## A server opened a connection to an outside address that had been sending it payload requests. ATT&CK: T1190, T1071.
         Callback_To_Prober,
     };
 

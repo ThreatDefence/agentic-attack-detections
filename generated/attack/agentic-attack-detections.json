@@ -1,373 +1,624 @@
 {
- "description": "460 rules from https://github.com/ThreatDefence/agentic-attack-detections",
+ "description": "522 rules from https://github.com/ThreatDefence/agentic-attack-detections, checked against ATT&CK 20.1. Score: the number of rules that name the technique.",
  "domain": "enterprise-attack",
  "gradient": {
   "colors": [
    "#ffe9e9",
    "#dc2626"
   ],
-  "maxValue": 15,
+  "maxValue": 86,
   "minValue": 0
  },
  "hideDisabled": false,
  "legendItems": [],
- "name": "All frameworks",
+ "links": [
+  {
+   "label": "Rules",
+   "url": "https://github.com/ThreatDefence/agentic-attack-detections"
+  }
+ ],
+ "name": "Agentic attack detections: all frameworks",
  "selectTechniquesAcrossTactics": true,
- "showTacticsRow": false,
+ "showTacticsRow": true,
  "techniques": [
   {
-   "comment": "Carbonato Docker worm host escape or persistence; Svchost Running Outside the Windows System Folder; Windows System Binary Name Running From the Wrong Folder",
+   "comment": "KQL hunt: Kerberoasting, DCSync and WinRM fan-out",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1003.006"
+  },
+  {
+   "comment": "Sigma: Hermes Agent Jailbreak, Loot or Carbonato Files Written",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1005"
+  },
+  {
+   "comment": "KQL hunt: Kerberos user enumeration and SMB or WinRM fan-out from one address; Zeek notice: AgenticBehaviors::SMB_WinRM_Fan_Out",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1021.002"
+  },
+  {
+   "comment": "KQL hunt: Kerberoasting, DCSync and WinRM fan-out; KQL hunt: Kerberos user enumeration and SMB or WinRM fan-out from one address; Zeek notice: AgenticBehaviors::SMB_WinRM_Fan_Out",
    "enabled": true,
    "score": 3,
+   "showSubtechniques": true,
+   "techniqueID": "T1021.006"
+  },
+  {
+   "comment": "Suricata: 3801032 TD Skimmer loader new Function(atob(...).slice(7)) in served JavaScript; YARA: Skimmer_Loader_Function_Atob_Slice7",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1027"
+  },
+  {
+   "comment": "KQL hunt: CyberStrikeAI implant persistence and the file names seen in real attacks; KQL hunt: Payload hosts and fake system binaries from the SQL Server toolkit active in ARTEX operations; Sentinel analytics: Carbonato Docker worm host escape or persistence; Sigma: Svchost Running Outside the Windows System Folder; Sigma: Windows System Binary Name Running From the Wrong Folder; Suricata: 3800067 TD Fake Windows system binary or miner driver downloaded from a /test/ path",
+   "enabled": true,
+   "score": 6,
    "showSubtechniques": true,
    "techniqueID": "T1036.005"
   },
   {
-   "comment": "Traffic to or from published Cairn campaign infrastructure",
+   "comment": "Suricata: 3804013 TD CyberStrikeAI implant default user agent (truncated Chrome string); Zeek notice: CyberStrikeAI::Implant_User_Agent",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1036.012"
+  },
+  {
+   "comment": "Sentinel analytics: Traffic to or from published Cairn campaign infrastructure",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1041"
   },
   {
-   "comment": "AI Agent CLI Starts an Attack Tool; ARTEX agent shell or recording proxy credential on a host; HexStrike tool server or MCP client on a host; PentAGI agent command wrapper on a host; PentAGI update check from your network",
+   "comment": "KQL hunt: An AI agent driving attack tools; Sentinel analytics: AI agent CLI starts attack tools; Sentinel analytics: ARTEX agent shell or recording proxy credential on a host; Sentinel analytics: HexStrike tool server or MCP client on a host; Sentinel analytics: PentAGI agent command wrapper on a host; Sentinel analytics: PentAGI update check from your network; Sigma: AI Agent CLI Starts an Attack Tool",
    "enabled": true,
-   "score": 5,
+   "score": 7,
    "showSubtechniques": true,
    "techniqueID": "T1046"
   },
   {
-   "comment": "Carbonato Docker worm host escape or persistence; CyberStrikeAI Implant Linux Persistence or curl Beacon; CyberStrikeAI implant persistence",
+   "comment": "KQL hunt: CyberStrikeAI implant persistence and the file names seen in real attacks; Sentinel analytics: Carbonato Docker worm host escape or persistence; Sentinel analytics: CyberStrikeAI implant persistence; Sigma: CyberStrikeAI Implant Linux Persistence or curl Beacon",
    "enabled": true,
-   "score": 3,
+   "score": 4,
    "showSubtechniques": true,
    "techniqueID": "T1053.003"
   },
   {
-   "comment": "CyberStrikeAI Implant Windows Persistence Named SystemUpdate; CyberStrikeAI implant persistence; Scheduled Task Disguised as Microsoft Edge Update in the SQL Server Toolkit",
+   "comment": "KQL hunt: CyberStrikeAI implant persistence and the file names seen in real attacks; Sentinel analytics: CyberStrikeAI implant persistence; Sigma: CyberStrikeAI Implant Windows Persistence Named SystemUpdate; Sigma: Scheduled Task Disguised as Microsoft Edge Update in the SQL Server Toolkit",
    "enabled": true,
-   "score": 3,
+   "score": 4,
    "showSubtechniques": true,
    "techniqueID": "T1053.005"
   },
   {
-   "comment": "DNS Query for Skimmer or C2 Hosts of the Hermes, Strix and Cairn Card-Theft Campaign",
+   "comment": "Sigma: DNS Query for Skimmer or C2 Hosts of the Hermes, Strix and Cairn Card-Theft Campaign",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1056"
   },
   {
-   "comment": "Remote Process Listing With tasklist; Remote tasklist Fan-Out From One Host",
+   "comment": "Sigma: Remote Process Listing With tasklist; Sigma: Remote tasklist Fan-Out From One Host",
    "enabled": true,
    "score": 2,
    "showSubtechniques": true,
    "techniqueID": "T1057"
   },
   {
-   "comment": "AI Agent CLI Starts an Attack Tool; ARTEX Artifact Names in Command Lines; ARTEX Probe Artifact Created; Agent Zero Container, UI or Tunnel Started; Cairn Task Snapshot, Pi Provider Key or Competition Skill Written; Cairn dispatcher, server or worker artifacts on a host; CyberStrikeAI webshell manager or OS probe; Hermes Agent With Approvals Off or Its Jailbreak Skill; Hermes Agent set up for attack (approvals off, jailbreak skill or attack persona); Pentest Swarm AI Authorization Record Written; Pentest Swarm AI Started on a Host; RedAmon Stack or Reverse Shell Tunnel on a Host",
+   "comment": "KQL hunt: AI assistants wired to a HexStrike server, and its tool API in proxy logs; KQL hunt: An AI agent driving attack tools; KQL hunt: Hermes Agent set up for attack on a host you monitor: yolo mode, jailbreak skill, red-team persona, attack tools; KQL hunt: HexStrike tool server on a host you monitor; KQL hunt: Web and database services starting shells and download tools; Sentinel analytics: AI agent CLI starts attack tools; Sentinel analytics: Cairn dispatcher, server or worker artifacts on a host; Sentinel analytics: CyberStrikeAI webshell manager or OS probe; Sentinel analytics: Hermes Agent set up for attack (approvals off, jailbreak skill or attack persona); Sigma: AI Agent CLI Starts an Attack Tool; Sigma: ARTEX Artifact Names in Command Lines; Sigma: ARTEX Probe Artifact Created; Sigma: Agent Zero Container, UI or Tunnel Started; Sigma: Cairn Task Snapshot, Pi Provider Key or Competition Skill Written; Sigma: Hermes Agent With Approvals Off or Its Jailbreak Skill; Sigma: Pentest Swarm AI Authorization Record Written; Sigma: Pentest Swarm AI Started on a Host; Sigma: RedAmon Stack or Reverse Shell Tunnel on a Host; Suricata: 3803010 TD HexStrike shell command API request; Zeek notice: HexStrike::Tool_API_Request",
    "enabled": true,
-   "score": 12,
+   "score": 20,
    "showSubtechniques": true,
    "techniqueID": "T1059"
   },
   {
-   "comment": "Web or Database Service Spawns a Shell or Download Tool on Windows",
+   "comment": "Sigma: Web or Database Service Spawns a Shell or Download Tool on Windows",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1059.001"
   },
   {
-   "comment": "SQL Server Spawns a Shell Through xp_cmdshell; Web or Database Service Spawns a Shell or Download Tool on Windows",
+   "comment": "Sigma: SQL Server Spawns a Shell Through xp_cmdshell; Sigma: Web or Database Service Spawns a Shell or Download Tool on Windows",
    "enabled": true,
    "score": 2,
    "showSubtechniques": true,
    "techniqueID": "T1059.003"
   },
   {
-   "comment": "ARTEX agent shell or recording proxy credential on a host; Cairn Agent Worker or Dispatcher Command Line; HexStrike Server or MCP Client Process; HexStrike tool server or MCP client on a host; PentAGI Agent Command Wrapper; PentAGI agent command wrapper on a host; Web or Database Service Spawns a Shell or Download Tool on Linux; Xalgorix Agent on a Host",
+   "comment": "KQL hunt: ARTEX running on a host you monitor: agent shells, the recording proxy, resolver fan-out and archives; KQL hunt: Bracketed-paste bytes in shell input on a compromised host; KQL hunt: PentAGI server and worker containers on a host you monitor; Sentinel analytics: ARTEX agent shell or recording proxy credential on a host; Sentinel analytics: HexStrike tool server or MCP client on a host; Sentinel analytics: PentAGI agent command wrapper on a host; Sigma: Cairn Agent Worker or Dispatcher Command Line; Sigma: HexStrike Server or MCP Client Process; Sigma: PentAGI Agent Command Wrapper; Sigma: Web or Database Service Spawns a Shell or Download Tool on Linux; Sigma: Xalgorix Agent on a Host; YARA: CyberStrikeAI_Curl_Beacon_Script; YARA: PentAGI_Agent_Command_Wrapper",
    "enabled": true,
-   "score": 8,
+   "score": 13,
    "showSubtechniques": true,
    "techniqueID": "T1059.004"
   },
   {
-   "comment": "Strix AI pentest agent on a host or reporting from your network",
+   "comment": "Sentinel analytics: Strix AI pentest agent on a host or reporting from your network",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1059.006"
   },
   {
-   "comment": "Traffic to or from published Cairn campaign infrastructure",
+   "comment": "KQL hunt: Uploader web shells and skimmer loaders written by the web server; Suricata: 3801032 TD Skimmer loader new Function(atob(...).slice(7)) in served JavaScript; YARA: Skimmer_Loader_Function_Atob_Slice7",
+   "enabled": true,
+   "score": 3,
+   "showSubtechniques": true,
+   "techniqueID": "T1059.007"
+  },
+  {
+   "comment": "KQL hunt: Scripted Microsoft Graph bursts by an application",
    "enabled": true,
    "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1069.003"
+  },
+  {
+   "comment": "KQL hunt: A server calls back to the address that was probing it; KQL hunt: Indicator sweep; KQL hunt: Indicator sweep with the ARTEX watchlist; KQL hunt: Indicator sweep with the agentic watchlist; Sentinel analytics: Traffic to or from published Cairn campaign infrastructure; Suricata: 3800500 TD ARTEX reported address, ARTEX operators, ARTEX activity in AWS environments (outbound); Suricata: 3800502 TD ARTEX reported address, ARTEX operators, ARTEX-associated address from ThreatDefence intelligence (outbound); Suricata: 3800504 TD ARTEX reported address, ARTEX operators, ARTEX-associated infrastructure (consoles and command and control) (outbound); Suricata: 3800506 TD ARTEX reported address, ARTEX operators, Address active in ARTEX operator toolkits (outbound); Suricata: 3800508 TD ARTEX reported address, ARTEX operators, Hosting range with more than 200 ARTEX-associated addresses in the Cisco Talos and ReversingLabs lists (outbound); Suricata: 3800510 TD ARTEX reported address, ARTEX operators, ftp.zhzy999.net, payload host active in ARTEX operator toolkits (outbound); Suricata: 3800512 TD ARTEX reported address, ARTEX operators, www.zhzy999.net, payload host active in ARTEX operator toolkits (outbound); Suricata: 3800514 TD ARTEX reported address, AntiFox console operators, Exposed AntiFox console (sample list). An exposed console is not proof of malicious use (outbound); Suricata: 3800516 TD ARTEX reported address, AntiFox operators (IIS web shells and AWS secret theft), AntiFox console on Alibaba Cloud, source of IIS web shell activity and AWS enumeration that read a production secret (outbound); Suricata: 3800518 TD ARTEX reported address, Storm-0940, Attacks on IT and software vendors (outbound); Suricata: 3800520 TD ARTEX reported address, Storm-0940, Storm-0940 sign-ins, password spray and Graph activity (outbound); Suricata: 3800522 TD ARTEX reported address, Storm-0940, VPN exits, relevant to October 15 and 16, 2026 only (outbound); Suricata: 3800524 TD ARTEX reported address, Storm-3358, ARTEX servers (outbound); Suricata: 3800526 TD ARTEX reported address, Storm-3358, Command and control server (outbound); Suricata: 3800528 TD ARTEX reported address, Storm-3358, WISP command and control (outbound); Suricata: 3800530 TD ARTEX reported address, Unattributed (Korea finance), ARTEX host used against South Korean financial organizations. Also in Cairn reporting: Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers. Also in ARTEX reporting (outbound); Suricata: 3800532 TD ARTEX reported address, Unattributed (Korea finance), Proxy addresses in the South Korea campaign (outbound); Suricata: 3800534 TD ARTEX reported address, Unattributed console operators, ARTEX and PentAGI consoles on one server, ports 8443 and 8787. An exposed console is not proof of malicious use (outbound); Suricata: 3800536 TD ARTEX reported address, VAPOR PANDA, BLOODALCHEMY command and control (outbound); Suricata: 3801500 TD Cairn reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), C2 (outbound); Suricata: 3801502 TD Cairn reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), DNS exfiltration, catch-all mail, HTTP listeners (outbound); Suricata: 3801504 TD Cairn reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), Skimmer host (outbound); Suricata: 3801506 TD Cairn reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), Staging and command server, AI console (outbound); Suricata: 3801508 TD Cairn reported address, Japanese breach wave AI-agent operators, AI-agent attack source on Japanese sites confirmed by Scutum's WAF, Oct 10-14, 2026. Not attributed to Cairn specifically (outbound); Suricata: 3801510 TD Cairn reported address, Japanese breach wave AI-agent operators, Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Sep 23-Oct 17, 2026 (outbound); Suricata: 3801512 TD Cairn reported address, Japanese breach wave AI-agent operators, Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, from Oct 15, 2026 (outbound); Suricata: 3801514 TD Cairn reported address, NorForge AIA0001 (Chinese-language, e-commerce access), Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Oct 13-19, 2026. Matches the partly redacted address of a NorForge AIA0001 Cairn panel on port 8000 (outbound); Suricata: 3801516 TD Cairn reported address, NorForge AIA0001 (Chinese-language, e-commerce access), Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Oct 3-20, 2026. Matches the partly redacted address of a NorForge AIA0001 Cairn panel on port 8000 (outbound); Suricata: 3801518 TD Cairn reported address, NorForge AIA0001 (Chinese-language, e-commerce access), Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Oct 4-19, 2026. Matches the partly redacted address of a NorForge AIA0001 Cairn panel on port 8000 (outbound); Suricata: 3801520 TD Cairn reported address, NorForge AIA0001 (Chinese-language, e-commerce access), Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Oct 4-20, 2026. Matches the partly redacted address of a NorForge AIA0001 Cairn panel on port 8000 (outbound); Suricata: 3801522 TD Cairn reported address, NorForge AIA0001 (Chinese-language, e-commerce access), Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Sep 27-Oct 19, 2026. Matches the partly redacted address of a NorForge AIA0001 Cairn panel on port 8000 (outbound); Suricata: 3801524 TD Cairn reported address, NorForge AIA0001 (Chinese-language, e-commerce access), Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Sep 27-Oct 20, 2026. Matches the partly redacted address of a NorForge AIA0001 Cairn panel on port 8000 (outbound); Suricata: 3801526 TD Cairn reported address, NorForge AIA0002 (English-language, card and crypto theft), AIA0002 staging server (outbound); Suricata: 3801528 TD Cairn reported address, Unattributed (Korea finance), ARTEX host used against South Korean financial organizations. Also in Cairn reporting: Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers. Also in ARTEX reporting (outbound); Suricata: 3802500 TD PentAGI reported address, PaperCut exploitation operator (Hunt.io), Orchestration host of a PaperCut exploitation operator, presented a PentAGI CA certificate on port 33333 from April 7 to July 6, 2026 (outbound); Suricata: 3802502 TD PentAGI reported address, Unattributed console operators, ARTEX and PentAGI consoles on one server, ports 8443 and 8787. An exposed console is not proof of malicious use (outbound); Suricata: 3802504 TD PentAGI reported address, Unattributed console operators, Exposed PentAGI console renamed xhackai, port 8443. An exposed console is not proof of malicious use (outbound); Suricata: 3802506 TD PentAGI reported address, Unattributed console operators, Exposed PentAGI console, port 8443. An exposed console is not proof of malicious use (outbound); Suricata: 3802508 TD PentAGI reported address, Unattributed console operators, Exposed renamed PentAGI console, port 18089. An exposed console is not proof of malicious use (outbound); Suricata: 3804500 TD CyberStrikeAI reported address, AI-run AWS intrusion from a CyberStrikeAI server, CyberStrikeAI console (CN=CyberStrikeAI certificate, title CyberStrikeAI, port 8080) and source of every AWS API call in an intrusion that used eight AWS identities across four accounts, Sep 30 to Oct 16, 2026 (AS133199, Hong Kong) (outbound); Suricata: 3804502 TD CyberStrikeAI reported address, AI-run AWS intrusion from a CyberStrikeAI server, CyberStrikeAI console in the same /24 serving the same certificate as 43.240.29.11, not seen in the AWS activity (outbound); Suricata: 3804504 TD CyberStrikeAI reported address, CyberStrikeAI attacks on education organizations (Africa, Latin America), C2 for payload delivery and the CyberStrikeAI Linux beacon (outbound); Suricata: 3804506 TD CyberStrikeAI reported address, CyberStrikeAI attacks on education organizations (Africa, Latin America), C2 for the CyberStrikeAI Windows beacon and target of the p1.ps1 reverse shell on port 5501 (outbound); Suricata: 3804508 TD CyberStrikeAI reported address, CyberStrikeAI operators, CyberStrikeAI console seen by ONYPHE (favicon SHA-256 and title match). An exposed console is not proof of malicious use (outbound); Suricata: 3804536 TD CyberStrikeAI reported address, CyberStrikeAI operators, Exposed CyberStrikeAI workspace served on TCP 8010 (/CyberStrikeAI/data/conversations.db) after a session of 221 tool runs with the approval gate turned off, Nov 16, 2026. The operator and authorization are unknown (outbound); Suricata: 3805500 TD Strix reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), C2 (outbound); Suricata: 3805502 TD Strix reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), DNS exfiltration, catch-all mail, HTTP listeners (outbound); Suricata: 3805504 TD Strix reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), Skimmer host (outbound); Suricata: 3805506 TD Strix reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), Staging and command server, AI console (outbound); Suricata: 3806500 TD Hermes Agent reported address, Carbonato Docker botnet (Costa Rica, assessed), Beacon and reverse shell, ports 8080 and 4444 (Contabo) (outbound); Suricata: 3806502 TD Hermes Agent reported address, Carbonato Docker botnet (Costa Rica, assessed), C2 hub (Linode) (outbound); Suricata: 3806504 TD Hermes Agent reported address, Carbonato Docker botnet (Costa Rica, assessed), LLM gateway for the bots (Contabo) (outbound); Suricata: 3806506 TD Hermes Agent reported address, Carbonato Docker botnet (Costa Rica, assessed), Reverse SSH tunnel sink, AS262145 Costa Rica (outbound); Suricata: 3806508 TD Hermes Agent reported address, Carbonato Docker botnet (Costa Rica, assessed), fsociety-era C2 (Hetzner) (outbound); Suricata: 3806510 TD Hermes Agent reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), C2 (outbound); Suricata: 3806512 TD Hermes Agent reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), DNS exfiltration, catch-all mail, HTTP listeners (outbound); Suricata: 3806514 TD Hermes Agent reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), Skimmer host (outbound); Suricata: 3806516 TD Hermes Agent reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), Staging and command server, AI console (outbound); Suricata: 3806518 TD Hermes Agent reported address, Hermes operator against Thailand's Ministry of Finance (Hades, VShell), Hades Linux C2 on 12443, AS134196, Hong Kong (outbound); Suricata: 3806520 TD Hermes Agent reported address, Hermes operator against Thailand's Ministry of Finance (Hades, VShell), SSH client of the Hermes environment, connecting to 43.246.208.207, AS133073, Hong Kong (outbound); Suricata: 3806522 TD Hermes Agent reported address, Hermes operator against Thailand's Ministry of Finance (Hades, VShell), Same CN=www certificate family as the staging server, AS55720, Malaysia (outbound); Suricata: 3806524 TD Hermes Agent reported address, Hermes operator against Thailand's Ministry of Finance (Hades, VShell), Staging server with open directories (Hermes results, Hades and VShell builds), VShell C2 on 21083, Hades Windows C2 on 443, Hermes web UI on 8878, AS132883 TOPIDC, Hong Kong (outbound); Zeek notice: AgenticBehaviors::Callback_To_Prober",
+   "enabled": true,
+   "score": 79,
    "showSubtechniques": true,
    "techniqueID": "T1071"
   },
   {
-   "comment": "AI Agent Client Calling a Chinese Model API or Model Gateway; CyberStrikeAI Implant Linux Persistence or curl Beacon; CyberStrikeAI User Agents or Implant Check-in in Proxy Logs; DNS Query for Reported ARTEX Infrastructure; HexStrike Tool API Requested Through a Proxy; PentAGI Console API Requested Through a Proxy; PentAGI update check from your network",
+   "comment": "KQL hunt: A CyberStrikeAI console on a host you monitor, or behind your proxy; KQL hunt: AI assistants wired to a HexStrike server, and its tool API in proxy logs; KQL hunt: AI model API traffic from servers: an agentic attack tool running on your infrastructure; KQL hunt: ARTEX console and side-channel traffic in your outbound proxy logs; KQL hunt: An ARTEX console or a backdoored ARTEX image inside your network; KQL hunt: Cairn server, dispatcher and worker containers on a host you monitor; KQL hunt: CyberStrikeAI implant check-ins: five seconds, no jitter, fixed headers; KQL hunt: Hermes consoles, Telegram control from servers, and Hermes results left on web servers; KQL hunt: PentAGI console and update traffic in your outbound proxy logs; KQL hunt: Strix telemetry and results viewers seen from your network; Sentinel analytics: PentAGI update check from your network; Sigma: AI Agent Client Calling a Chinese Model API or Model Gateway; Sigma: CyberStrikeAI Implant Linux Persistence or curl Beacon; Sigma: CyberStrikeAI User Agents or Implant Check-in in Proxy Logs; Sigma: DNS Query for Reported ARTEX Infrastructure; Sigma: HexStrike Tool API Requested Through a Proxy; Sigma: PentAGI Console API Requested Through a Proxy; Suricata: 3800040 TD ARTEX console page served; Suricata: 3800041 TD ARTEX renamed console page served (ScopeWeaver); Suricata: 3800042 TD ARTEX Basic auth realm; Suricata: 3800043 TD ARTEX renamed console page served (LUCK); Suricata: 3800061 TD VAPOR PANDA BLOODALCHEMY C2 domain in TLS SNI, ARTEX campaign (nginxmysql.com); Suricata: 3800072 TD VAPOR PANDA BLOODALCHEMY C2 domain in TLS SNI, ARTEX campaign (sqlserver-sqlite.com); Suricata: 3800073 TD VAPOR PANDA BLOODALCHEMY C2 domain in TLS SNI, ARTEX campaign (ddduuuppp.com); Suricata: 3800081 TD ARTEX renamed console page served (title ending); Suricata: 3800082 TD ARTEX renamed console page served (Chinese title ending); Suricata: 3800083 TD ARTEX renamed console page served (Korean title ending); Suricata: 3801001 TD Cairn server OpenAPI description in response; Suricata: 3801002 TD Cairn server project list in response; Suricata: 3801003 TD Cairn dispatcher intent heartbeat; Suricata: 3801031 TD Cairn campaign skimmer or C2 domain in TLS SNI (medbooksource.com); Suricata: 3801110 TD Cairn campaign skimmer or C2 domain in TLS SNI (traffic-analyzer.net); Suricata: 3801111 TD Cairn campaign skimmer or C2 domain in TLS SNI (b8t.shop); Suricata: 3801112 TD Cairn campaign skimmer or C2 domain in TLS SNI (netlfjs.com); Suricata: 3801113 TD Cairn campaign skimmer or C2 domain in TLS SNI (x1opay.co); Suricata: 3801114 TD Cairn campaign skimmer or C2 domain in TLS SNI (static-js.com); Suricata: 3801115 TD Cairn campaign skimmer or C2 domain in TLS SNI (js-static.com); Suricata: 3801116 TD Cairn campaign skimmer or C2 domain in TLS SNI (jsnetlify.com); Suricata: 3801117 TD Cairn campaign skimmer or C2 domain in TLS SNI (netlifyjs.com); Suricata: 3801118 TD Cairn campaign skimmer or C2 domain in TLS SNI (newssjs.com); Suricata: 3802001 TD PentAGI console self-signed certificate (PentAGI CA); Suricata: 3802002 TD PentAGI console certificate subject O=PentAGI; Suricata: 3802004 TD PentAGI update service in TLS SNI; Suricata: 3802010 TD PentAGI Swagger UI served; Suricata: 3802011 TD PentAGI console page title; Suricata: 3802012 TD PentAGI update check request; Suricata: 3803010 TD HexStrike shell command API request; Suricata: 3803011 TD HexStrike tool API request; Suricata: 3803012 TD HexStrike server health response; Suricata: 3804005 TD CyberStrikeAI console user agent; Suricata: 3804006 TD CyberStrikeAI console self-signed certificate; Suricata: 3804010 TD CyberStrikeAI implant token header; Suricata: 3804011 TD CyberStrikeAI implant session header with check-in; Suricata: 3804012 TD CyberStrikeAI implant task poll; Suricata: 3804013 TD CyberStrikeAI implant default user agent (truncated Chrome string); Suricata: 3805002 TD Strix telemetry TLS (strix.gateway.scarf.sh); Suricata: 3805003 TD Strix telemetry finding reported; Suricata: 3805010 TD Strix results viewer page; Suricata: 3805011 TD Strix results viewer agent steering API; Suricata: 3806010 TD Hermes WebUI server header; Suricata: 3806011 TD Hermes Agent dashboard page; Suricata: 3806012 TD Hermes results folder requested from a web server; Suricata: 3806013 TD Hermes Agent sign-in page; Suricata: 3807001 TD Agent Zero web UI page; Suricata: 3807002 TD Agent Zero login page; Suricata: 3808002 TD RedAmon MCP handshake client name; Suricata: 3808008 TD RedAmon console page; Suricata: 3808009 TD RedAmon console theme script (survives a renamed title); Suricata: 3808010 TD RedAmon agent API; Suricata: 3809007 TD Xalgorix callback listener answer; Suricata: 3809008 TD Xalgorix console page; Suricata: 3809009 TD Xalgorix console theme script (survives a renamed title); Suricata: 3809010 TD Xalgorix console session cookie; Suricata: 3810009 TD Pentest Swarm AI dashboard page; Suricata: 3810010 TD Pentest Swarm AI dashboard palette (survives a renamed title); Suricata: 3810011 TD Pentest Swarm AI API health answer; YARA: ARTEX_Console_Web_Assets; YARA: CyberStrikeAI_Curl_Beacon_Script; YARA: CyberStrikeAI_Implant; Zeek notice: ARTEX::Console_Page; Zeek notice: AgenticBehaviors::Model_API_From_Server; Zeek notice: CyberStrikeAI::Console_Certificate; Zeek notice: CyberStrikeAI::Console_User_Agent; Zeek notice: CyberStrikeAI::Implant_Checkin; Zeek notice: CyberStrikeAI::Implant_User_Agent; Zeek notice: HexStrike::Tool_API_Request",
    "enabled": true,
-   "score": 7,
+   "score": 86,
    "showSubtechniques": true,
    "techniqueID": "T1071.001"
   },
   {
-   "comment": "DNS Query for Skimmer or C2 Hosts of the Hermes, Strix and Cairn Card-Theft Campaign; DNS Query for the PentAGI Update Service",
+   "comment": "KQL hunt: Servers resolving out-of-band testing domains: blind bugs being confirmed against you; Sigma: DNS Query for Skimmer or C2 Hosts of the Hermes, Strix and Cairn Card-Theft Campaign; Sigma: DNS Query for the PentAGI Update Service; Suricata: 3800060 TD VAPOR PANDA BLOODALCHEMY C2 domain lookup, ARTEX campaign (nginxmysql.com); Suricata: 3800062 TD Request collection service lookup from a server (webhook.site); Suricata: 3800063 TD DNS callback service lookup with artx label (dnslog.cn); Suricata: 3800064 TD Community-reported ARTEX infrastructure domain lookup (artex.lol); Suricata: 3800070 TD VAPOR PANDA BLOODALCHEMY C2 domain lookup, ARTEX campaign (sqlserver-sqlite.com); Suricata: 3800071 TD VAPOR PANDA BLOODALCHEMY C2 domain lookup, ARTEX campaign (ddduuuppp.com); Suricata: 3800074 TD Community-reported ARTEX infrastructure domain lookup (artex.tokena2b.top); Suricata: 3800075 TD Community-reported ARTEX infrastructure domain lookup (artex.ok7777.eu.cc); Suricata: 3800076 TD Community-reported ARTEX infrastructure domain lookup (artex.noog2infra.site); Suricata: 3801030 TD Cairn campaign skimmer or C2 domain lookup (medbooksource.com); Suricata: 3801050 TD Out-of-band testing domain lookup (oast.fun); Suricata: 3801051 TD Out-of-band testing domain lookup (oast.pro); Suricata: 3801052 TD Out-of-band testing domain lookup (oast.live); Suricata: 3801053 TD Out-of-band testing domain lookup (oast.site); Suricata: 3801054 TD Out-of-band testing domain lookup (oast.online); Suricata: 3801055 TD Out-of-band testing domain lookup (oast.me); Suricata: 3801056 TD Out-of-band testing domain lookup (interact.sh); Suricata: 3801057 TD Out-of-band testing domain lookup (oastify.com); Suricata: 3801058 TD Out-of-band testing domain lookup (burpcollaborator.net); Suricata: 3801059 TD Out-of-band testing domain lookup (dnslog.cn); Suricata: 3801100 TD Cairn campaign skimmer or C2 domain lookup (traffic-analyzer.net); Suricata: 3801101 TD Cairn campaign skimmer or C2 domain lookup (b8t.shop); Suricata: 3801102 TD Cairn campaign skimmer or C2 domain lookup (netlfjs.com); Suricata: 3801103 TD Cairn campaign skimmer or C2 domain lookup (x1opay.co); Suricata: 3801104 TD Cairn campaign skimmer or C2 domain lookup (static-js.com); Suricata: 3801105 TD Cairn campaign skimmer or C2 domain lookup (js-static.com); Suricata: 3801106 TD Cairn campaign skimmer or C2 domain lookup (jsnetlify.com); Suricata: 3801107 TD Cairn campaign skimmer or C2 domain lookup (netlifyjs.com); Suricata: 3801108 TD Cairn campaign skimmer or C2 domain lookup (newssjs.com); Suricata: 3802003 TD PentAGI update service lookup; Suricata: 3805001 TD Strix telemetry DNS query (strix.gateway.scarf.sh); Suricata: 3808007 TD RedAmon ownership check lookup; Zeek notice: AgenticBehaviors::Out_Of_Band_Lookup",
    "enabled": true,
-   "score": 2,
+   "score": 36,
    "showSubtechniques": true,
    "techniqueID": "T1071.004"
   },
   {
-   "comment": "ARTEX agentic attack framework user agent",
+   "comment": "Sentinel analytics: ARTEX agentic attack framework user agent",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1078"
   },
   {
-   "comment": "ARTEX User Agent in Entra ID Sign-In Logs; ARTEX User Agent in Okta System Log; Cognito Sign-Up With ARTEX Artifacts",
+   "comment": "KQL hunt: A spray that ends in a successful sign-in; KQL hunt: AWS credentials used at machine speed from one outside address; KQL hunt: AWS permission testing and the foothold that follows; KQL hunt: Azure capability checks, validate sweeps and Kudu sign-ins; KQL hunt: CloudWatch log searches with a stolen AWS key; KQL hunt: Headless browsers and ARTEX clients signing in, and the pause while a person relays the MFA code; KQL hunt: One application requesting tokens for many resources in minutes; KQL hunt: Service principal secret guessing followed by a success; Sigma: ARTEX User Agent in Entra ID Sign-In Logs; Sigma: ARTEX User Agent in Okta System Log; Sigma: Cognito Sign-Up With ARTEX Artifacts",
    "enabled": true,
-   "score": 3,
+   "score": 11,
    "showSubtechniques": true,
    "techniqueID": "T1078.004"
   },
   {
-   "comment": "CyberStrikeAI Webshell OS Probe Command",
+   "comment": "KQL hunt: CyberStrikeAI webshell manager driving a webshell on your servers; Sigma: CyberStrikeAI Webshell OS Probe Command; Suricata: 3804002 TD CyberStrikeAI webshell OS probe in URI; Suricata: 3804003 TD CyberStrikeAI webshell OS probe in request body; Suricata: 3804004 TD CyberStrikeAI webshell OS probe answered by a Windows server; Zeek notice: CyberStrikeAI::OS_Probe; Zeek notice: CyberStrikeAI::OS_Probe_Answered",
    "enabled": true,
-   "score": 1,
+   "score": 7,
    "showSubtechniques": true,
    "techniqueID": "T1082"
   },
   {
-   "comment": "Service principal assigned a role by itself",
+   "comment": "KQL hunt: Kerberos user enumeration and SMB or WinRM fan-out from one address; Zeek notice: AgenticBehaviors::Kerberos_Enumeration",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1087.002"
+  },
+  {
+   "comment": "KQL hunt: Scripted Microsoft Graph bursts by an application",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1087.004"
+  },
+  {
+   "comment": "KQL hunt: One site probed through hundreds of rotating proxy addresses; Zeek notice: AgenticBehaviors::Rotating_Proxy_Probing",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1090.002"
+  },
+  {
+   "comment": "KQL hunt: CyberStrikeAI implant check-ins: five seconds, no jitter, fixed headers; Suricata: 3804014 TD CyberStrikeAI TCP implant magic CSB1; YARA: CyberStrikeAI_Implant; Zeek notice: CyberStrikeAI::TCP_Implant",
+   "enabled": true,
+   "score": 4,
+   "showSubtechniques": true,
+   "techniqueID": "T1095"
+  },
+  {
+   "comment": "Sentinel analytics: Service principal assigned a role by itself",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1098"
   },
   {
-   "comment": "Credential Added to an Entra ID Application",
+   "comment": "KQL hunt: AWS permission testing and the foothold that follows; KQL hunt: Applications changing their own access; Sigma: Credential Added to an Entra ID Application",
    "enabled": true,
-   "score": 1,
+   "score": 3,
    "showSubtechniques": true,
    "techniqueID": "T1098.001"
   },
   {
-   "comment": "App Role or Directory Role Assigned to a Service Principal",
+   "comment": "KQL hunt: Applications changing their own access; Sigma: App Role or Directory Role Assigned to a Service Principal",
    "enabled": true,
-   "score": 1,
+   "score": 2,
    "showSubtechniques": true,
    "techniqueID": "T1098.003"
   },
   {
-   "comment": "DNS Query to Request Collection or DNS Callback Services",
+   "comment": "Sigma: DNS Query to Request Collection or DNS Callback Services",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1102"
   },
   {
-   "comment": "DNS Query for Payload Hosts Active in ARTEX Operator Toolkits",
+   "comment": "KQL hunt: Carbonato: a Docker worm that turns exposed Docker hosts into Telegram-controlled Hermes agents; KQL hunt: Hermes consoles, Telegram control from servers, and Hermes results left on web servers",
    "enabled": true,
-   "score": 1,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1102.002"
+  },
+  {
+   "comment": "KQL hunt: Payload hosts and fake system binaries from the SQL Server toolkit active in ARTEX operations; KQL hunt: Servers calling webhook and tunnel services, or downloading from a bare address; Sigma: DNS Query for Payload Hosts Active in ARTEX Operator Toolkits; Suricata: 3800065 TD ARTEX toolkit payload host lookup (vietnam852.com); Suricata: 3800066 TD ARTEX toolkit payload download (vietnam852.com); Suricata: 3800067 TD Fake Windows system binary or miner driver downloaded from a /test/ path; Suricata: 3800077 TD ARTEX toolkit payload host lookup (zhzy999.net); Suricata: 3800078 TD ARTEX toolkit payload host lookup (jiancai008.com); Suricata: 3800079 TD ARTEX toolkit payload download (zhzy999.net); Suricata: 3800080 TD ARTEX toolkit payload download (jiancai008.com); Suricata: 3806003 TD Carbonato worm pulls system/resolved",
+   "enabled": true,
+   "score": 11,
    "showSubtechniques": true,
    "techniqueID": "T1105"
   },
   {
-   "comment": "Password spray at a fixed one-second rhythm",
+   "comment": "Sentinel analytics: AI agent CLI starts attack tools; Sentinel analytics: Password spray at a fixed one-second rhythm",
    "enabled": true,
-   "score": 1,
+   "score": 2,
    "showSubtechniques": true,
    "techniqueID": "T1110"
   },
   {
-   "comment": "ARTEX User Agent in Entra ID Sign-In Logs; Entra ID Sign-In Failure; Password Spray Against Many Entra ID Accounts From One Address",
+   "comment": "KQL hunt: Service principal secret guessing followed by a success",
    "enabled": true,
-   "score": 3,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1110.001"
+  },
+  {
+   "comment": "KQL hunt: A spray that ends in a successful sign-in; KQL hunt: Kerberos user enumeration and SMB or WinRM fan-out from one address; KQL hunt: Password spray at a fixed rhythm; Sigma: ARTEX User Agent in Entra ID Sign-In Logs; Sigma: Entra ID Sign-In Failure; Sigma: Password Spray Against Many Entra ID Accounts From One Address; Zeek notice: AgenticBehaviors::Kerberos_Enumeration",
+   "enabled": true,
+   "score": 7,
    "showSubtechniques": true,
    "techniqueID": "T1110.003"
   },
   {
-   "comment": "ARTEX Artifact Names in Command Lines",
+   "comment": "KQL hunt: Headless browsers and ARTEX clients signing in, and the pause while a person relays the MFA code",
    "enabled": true,
    "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1111"
+  },
+  {
+   "comment": "KQL hunt: Accounts registered by a source that is also probing the application; Sigma: ARTEX Artifact Names in Command Lines; Suricata: 3810007 TD Pentest Swarm AI throwaway account sign-up",
+   "enabled": true,
+   "score": 3,
    "showSubtechniques": true,
    "techniqueID": "T1136"
   },
   {
-   "comment": "Cognito Sign-Up With ARTEX Artifacts",
+   "comment": "KQL hunt: Cognito sign-up abuse and the discovery sweep after it; Sigma: Cognito Sign-Up With ARTEX Artifacts",
    "enabled": true,
-   "score": 1,
+   "score": 2,
    "showSubtechniques": true,
    "techniqueID": "T1136.003"
   },
   {
-   "comment": "ARTEX Agentic Attack Framework User Agent in Proxy Logs; ARTEX Agentic Attack Framework User Agent in Web Logs; ARTEX OAuth Callback Probe; ARTEX Placeholder Probe Paths; ARTEX Probe Marker in HTTP Request; Attack Agent Write Test on a Container Registry; DNS Query for an Out-of-Band Testing Domain; HexStrike User Agent or XSS Probe in Web Logs; HexStrike user agent or cross-site scripting probe; Pentest Swarm AI Probe Marker in Web Logs; RedAmon User Agent or Canary in Web Logs; Traffic to or from published Cairn campaign infrastructure; Unsigned JWT With alg none Sent to a Web Application; WSUS Administration or Sync API Requested; Xalgorix Verifier Marker or Canary in Web Logs",
+   "comment": "KQL hunt: A server calls back to the address that was probing it; KQL hunt: An AI agent's page reader on your application, next to attack traffic from the same source; KQL hunt: Configuration and backup file theft, and probes of internet-facing WSUS servers; KQL hunt: HexStrike user agents and its cross-site scripting probe; KQL hunt: Pentest Swarm AI testing you: its negative-control probe and verification markers in web and proxy logs; KQL hunt: RedAmon scanning you: its user agents, canaries and ownership lookup in web, proxy and DNS logs; KQL hunt: Servers resolving out-of-band testing domains: blind bugs being confirmed against you; KQL hunt: Web and database services starting shells and download tools; KQL hunt: Xalgorix testing you: its verifier paths, canary and user agents in web and proxy logs; Sentinel analytics: HexStrike user agent or cross-site scripting probe; Sentinel analytics: Traffic to or from published Cairn campaign infrastructure; Sigma: ARTEX Agentic Attack Framework User Agent in Proxy Logs; Sigma: ARTEX Agentic Attack Framework User Agent in Web Logs; Sigma: ARTEX OAuth Callback Probe; Sigma: ARTEX Placeholder Probe Paths; Sigma: ARTEX Probe Marker in HTTP Request; Sigma: Attack Agent Write Test on a Container Registry; Sigma: DNS Query for an Out-of-Band Testing Domain; Sigma: HexStrike User Agent or XSS Probe in Web Logs; Sigma: Pentest Swarm AI Probe Marker in Web Logs; Sigma: RedAmon User Agent or Canary in Web Logs; Sigma: Unsigned JWT With alg none Sent to a Web Application; Sigma: WSUS Administration or Sync API Requested; Sigma: Xalgorix Verifier Marker or Canary in Web Logs; Suricata: 3800022 TD ARTEX OAuth callback probe; Suricata: 3800023 TD Unsigned alg none JWT in URI; Suricata: 3800024 TD Unsigned alg none JWT in Authorization header; Suricata: 3800025 TD ARTEX X-ARTX-KEY request header; Suricata: 3800026 TD ARTEX probe marker in request; Suricata: 3800027 TD ARTEX persistence marker ARTX_PERSIST_OK in request; Suricata: 3800030 TD Unsigned alg none JWT in URI (typ first); Suricata: 3800031 TD Unsigned alg none JWT in Authorization header (typ first); Suricata: 3800032 TD Unsigned alg none JWT in URI (None or NONE); Suricata: 3800033 TD Unsigned alg none JWT in Authorization header (None or NONE); Suricata: 3800062 TD Request collection service lookup from a server (webhook.site); Suricata: 3800063 TD DNS callback service lookup with artx label (dnslog.cn); Suricata: 3801040 TD WSUS admin or sync web service requested from external address; Suricata: 3801050 TD Out-of-band testing domain lookup (oast.fun); Suricata: 3801051 TD Out-of-band testing domain lookup (oast.pro); Suricata: 3801052 TD Out-of-band testing domain lookup (oast.live); Suricata: 3801053 TD Out-of-band testing domain lookup (oast.site); Suricata: 3801054 TD Out-of-band testing domain lookup (oast.online); Suricata: 3801055 TD Out-of-band testing domain lookup (oast.me); Suricata: 3801056 TD Out-of-band testing domain lookup (interact.sh); Suricata: 3801057 TD Out-of-band testing domain lookup (oastify.com); Suricata: 3801058 TD Out-of-band testing domain lookup (burpcollaborator.net); Suricata: 3801059 TD Out-of-band testing domain lookup (dnslog.cn); Suricata: 3803003 TD HexStrike generated exploit user agent; Suricata: 3803004 TD HexStrike XSS reflection probe; Suricata: 3808004 TD RedAmon cache poisoning canary host; Suricata: 3808005 TD RedAmon XSS canary in URI; Suricata: 3808006 TD RedAmon XSS canary in a header; Suricata: 3809001 TD Xalgorix verifier path marker; Suricata: 3809002 TD Xalgorix XXE verifier marker; Suricata: 3809003 TD Xalgorix reflection canary in URI; Suricata: 3809004 TD Xalgorix reflection canary in request body; Suricata: 3809005 TD Xalgorix CSRF verifier origin; Suricata: 3810001 TD Pentest Swarm AI open redirect check host; Suricata: 3810002 TD Pentest Swarm AI XXE check document; Suricata: 3810003 TD Pentest Swarm AI 403 bypass control path; Suricata: 3810004 TD Pentest Swarm AI template check expression; Suricata: 3810005 TD Pentest Swarm AI control credentials; Suricata: 3810007 TD Pentest Swarm AI throwaway account sign-up; YARA: ARTEX_Probe_Artifacts_In_Files; YARA: HexStrike_Generated_Exploit; Zeek notice: ARTEX::JWT_Alg_None; Zeek notice: ARTEX::Probe_Marker; Zeek notice: AgenticBehaviors::AI_Agent_Attacking_Site; Zeek notice: AgenticBehaviors::Callback_To_Prober; Zeek notice: AgenticBehaviors::Out_Of_Band_Lookup; Zeek notice: AgenticBehaviors::WSUS_Admin_From_Internet; Zeek notice: HexStrike::Exploit_User_Agent; Zeek notice: HexStrike::XSS_Probe",
    "enabled": true,
-   "score": 15,
+   "score": 73,
    "showSubtechniques": true,
    "techniqueID": "T1190"
   },
   {
-   "comment": "Cairn dispatcher, server or worker artifacts on a host",
+   "comment": "YARA: ARTEX_Backdoored_Console_Binary",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1195.002"
+  },
+  {
+   "comment": "KQL hunt: Card data staged, dumped and wiped in e-commerce databases; KQL hunt: CloudWatch log searches with a stolen AWS key; Sentinel analytics: Configuration or backup file served to an external address during probing",
+   "enabled": true,
+   "score": 3,
+   "showSubtechniques": true,
+   "techniqueID": "T1213"
+  },
+  {
+   "comment": "Sentinel analytics: Cairn dispatcher, server or worker artifacts on a host",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1219"
   },
   {
-   "comment": "SQL Server Spawns a Shell Through xp_cmdshell",
+   "comment": "KQL hunt: Card data staged, dumped and wiped in e-commerce databases",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1485"
+  },
+  {
+   "comment": "KQL hunt: Payload hosts and fake system binaries from the SQL Server toolkit active in ARTEX operations; Suricata: 3800067 TD Fake Windows system binary or miner driver downloaded from a /test/ path",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1496"
+  },
+  {
+   "comment": "Sigma: SQL Server Spawns a Shell Through xp_cmdshell",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1505.001"
   },
   {
-   "comment": "CyberStrikeAI Webshell Manager User Agent or OS Probe in Web Logs; CyberStrikeAI Webshell OS Probe Command; CyberStrikeAI webshell manager or OS probe; JSP Web Shell Names Seen in ARTEX Intrusions; Web or Database Service Spawns a Shell or Download Tool on Linux; Web or Database Service Spawns a Shell or Download Tool on Windows",
+   "comment": "KQL hunt: AntiFox intrusion pattern: an IIS web shell, web.config theft, then AWS enumeration from hosting infrastructure; KQL hunt: CyberStrikeAI webshell manager driving a webshell on your servers; KQL hunt: Scripts written into web directories; KQL hunt: Uploader web shells and skimmer loaders written by the web server; KQL hunt: Web and database services starting shells and download tools; Sentinel analytics: CyberStrikeAI webshell manager or OS probe; Sigma: CyberStrikeAI Webshell Manager User Agent or OS Probe in Web Logs; Sigma: CyberStrikeAI Webshell OS Probe Command; Sigma: JSP Web Shell Names Seen in ARTEX Intrusions; Sigma: Web or Database Service Spawns a Shell or Download Tool on Linux; Sigma: Web or Database Service Spawns a Shell or Download Tool on Windows; Suricata: 3800027 TD ARTEX persistence marker ARTX_PERSIST_OK in request; Suricata: 3804001 TD CyberStrikeAI webshell manager user agent; Suricata: 3804002 TD CyberStrikeAI webshell OS probe in URI; Suricata: 3804003 TD CyberStrikeAI webshell OS probe in request body; Suricata: 3804004 TD CyberStrikeAI webshell OS probe answered by a Windows server; YARA: Uploader_Web_Shell_Move_Uploaded_File; Zeek notice: CyberStrikeAI::OS_Probe; Zeek notice: CyberStrikeAI::OS_Probe_Answered; Zeek notice: CyberStrikeAI::Webshell_Manager",
    "enabled": true,
-   "score": 6,
+   "score": 20,
    "showSubtechniques": true,
    "techniqueID": "T1505.003"
   },
   {
-   "comment": "Remote Process Listing With tasklist; Remote tasklist Fan-Out From One Host",
+   "comment": "Sigma: Remote Process Listing With tasklist; Sigma: Remote tasklist Fan-Out From One Host",
    "enabled": true,
    "score": 2,
    "showSubtechniques": true,
    "techniqueID": "T1518.001"
   },
   {
-   "comment": "Attack Agent Write Test on a Container Registry",
+   "comment": "Sigma: Attack Agent Write Test on a Container Registry; Suricata: 3801041 TD Container registry push to a repository named after an attack agent; Suricata: 3801042 TD Container registry push with a write-test repository name",
    "enabled": true,
-   "score": 1,
+   "score": 3,
    "showSubtechniques": true,
    "techniqueID": "T1525"
   },
   {
-   "comment": "CyberStrikeAI Implant LaunchAgent com.apple.systemupdate; CyberStrikeAI implant persistence",
+   "comment": "KQL hunt: Azure capability checks, validate sweeps and Kudu sign-ins; KQL hunt: One application requesting tokens for many resources in minutes",
    "enabled": true,
    "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1526"
+  },
+  {
+   "comment": "KQL hunt: Cognito sign-up abuse and the discovery sweep after it; Suricata: 3800021 TD ARTEX placeholder object name in S3 or storage probe",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1530"
+  },
+  {
+   "comment": "KQL hunt: CyberStrikeAI implant persistence and the file names seen in real attacks; Sentinel analytics: CyberStrikeAI implant persistence; Sigma: CyberStrikeAI Implant LaunchAgent com.apple.systemupdate; YARA: CyberStrikeAI_Persistence_Artifacts",
+   "enabled": true,
+   "score": 4,
    "showSubtechniques": true,
    "techniqueID": "T1543.001"
   },
   {
-   "comment": "Xalgorix Configuration, Service or Scan Data Written",
+   "comment": "Sigma: Xalgorix Configuration, Service or Scan Data Written",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1543.002"
   },
   {
-   "comment": "CyberStrikeAI implant persistence",
+   "comment": "KQL hunt: CyberStrikeAI implant persistence and the file names seen in real attacks; Sentinel analytics: CyberStrikeAI implant persistence; YARA: CyberStrikeAI_Persistence_Artifacts",
    "enabled": true,
-   "score": 1,
+   "score": 3,
    "showSubtechniques": true,
    "techniqueID": "T1546.004"
   },
   {
-   "comment": "CyberStrikeAI Implant Run Key Value SystemUpdate; CyberStrikeAI Implant Windows Persistence Named SystemUpdate; CyberStrikeAI implant persistence",
+   "comment": "KQL hunt: CyberStrikeAI implant persistence and the file names seen in real attacks; Sentinel analytics: CyberStrikeAI implant persistence; Sigma: CyberStrikeAI Implant Run Key Value SystemUpdate; Sigma: CyberStrikeAI Implant Windows Persistence Named SystemUpdate",
    "enabled": true,
-   "score": 3,
+   "score": 4,
    "showSubtechniques": true,
    "techniqueID": "T1547.001"
   },
   {
-   "comment": "CloudWatch Logs Searched for Secrets; CloudWatch logs searched for secrets",
+   "comment": "Sentinel analytics: CloudWatch logs searched for secrets; Sigma: CloudWatch Logs Searched for Secrets",
    "enabled": true,
    "score": 2,
    "showSubtechniques": true,
    "techniqueID": "T1552"
   },
   {
-   "comment": "Hermes Agent set up for attack (approvals off, jailbreak skill or attack persona)",
+   "comment": "KQL hunt: AntiFox intrusion pattern: an IIS web shell, web.config theft, then AWS enumeration from hosting infrastructure; KQL hunt: Configuration and backup file theft, and probes of internet-facing WSUS servers; Sentinel analytics: Configuration or backup file served to an external address during probing; Zeek notice: AgenticBehaviors::Backup_File_Served",
+   "enabled": true,
+   "score": 4,
+   "showSubtechniques": true,
+   "techniqueID": "T1552.001"
+  },
+  {
+   "comment": "KQL hunt: AWS credentials used at machine speed from one outside address; KQL hunt: Bulk Key Vault secret reads",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1555.006"
+  },
+  {
+   "comment": "KQL hunt: Kerberoasting, DCSync and WinRM fan-out",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
-   "techniqueID": "T1562"
+   "techniqueID": "T1558.003"
   },
   {
-   "comment": "DNS Query to Request Collection or DNS Callback Services",
+   "comment": "Sigma: DNS Query to Request Collection or DNS Callback Services",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1567"
   },
   {
-   "comment": "RedAmon Stack or Reverse Shell Tunnel on a Host",
+   "comment": "KQL hunt: Servers calling webhook and tunnel services, or downloading from a bare address",
    "enabled": true,
    "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1567.004"
+  },
+  {
+   "comment": "Suricata: 3802030 TD Outbound connection to PentAGI worker port range 28000-29999",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1571"
+  },
+  {
+   "comment": "KQL hunt: Agent Zero on a host you monitor, attack tools on that host, or its UI exposed through a tunnel; KQL hunt: RedAmon on a host you monitor, and the reverse shell tunnel it opens; KQL hunt: Servers calling webhook and tunnel services, or downloading from a bare address; Sigma: RedAmon Stack or Reverse Shell Tunnel on a Host",
+   "enabled": true,
+   "score": 4,
    "showSubtechniques": true,
    "techniqueID": "T1572"
   },
   {
-   "comment": "BLOODALCHEMY Loader Files Written; Svchost Running Outside the Windows System Folder",
+   "comment": "Sigma: BLOODALCHEMY Loader Files Written; Sigma: Svchost Running Outside the Windows System Folder",
    "enabled": true,
    "score": 2,
    "showSubtechniques": true,
    "techniqueID": "T1574.001"
   },
   {
-   "comment": "ARTEX User Agent in AWS CloudTrail; AWS API Call Denied; AWS Access Denied Sweep Across Many APIs; Azure Resource Manager Deployment Validate Call; Azure Resource Manager Validate Sweep; Burst of EC2 DryRun Calls From One Identity; Burst of EC2 DryRun permission tests; EC2 DryRun Permission Test",
+   "comment": "KQL hunt: AWS credentials used at machine speed from one outside address; KQL hunt: AWS permission testing and the foothold that follows; KQL hunt: AntiFox intrusion pattern: an IIS web shell, web.config theft, then AWS enumeration from hosting infrastructure; KQL hunt: Azure capability checks, validate sweeps and Kudu sign-ins; KQL hunt: Cognito sign-up abuse and the discovery sweep after it; Sentinel analytics: Burst of EC2 DryRun permission tests; Sigma: ARTEX User Agent in AWS CloudTrail; Sigma: AWS API Call Denied; Sigma: AWS Access Denied Sweep Across Many APIs; Sigma: Azure Resource Manager Deployment Validate Call; Sigma: Azure Resource Manager Validate Sweep; Sigma: Burst of EC2 DryRun Calls From One Identity; Sigma: EC2 DryRun Permission Test",
    "enabled": true,
-   "score": 8,
+   "score": 13,
    "showSubtechniques": true,
    "techniqueID": "T1580"
   },
   {
-   "comment": "RedAmon Ownership Check Lookup",
+   "comment": "Suricata: 3802001 TD PentAGI console self-signed certificate (PentAGI CA); Suricata: 3802002 TD PentAGI console certificate subject O=PentAGI; Suricata: 3804006 TD CyberStrikeAI console self-signed certificate; Zeek notice: CyberStrikeAI::Console_Certificate",
+   "enabled": true,
+   "score": 4,
+   "showSubtechniques": true,
+   "techniqueID": "T1587.003"
+  },
+  {
+   "comment": "YARA: HexStrike_Generated_Exploit",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1587.004"
+  },
+  {
+   "comment": "KQL hunt: A CyberStrikeAI console on a host you monitor, or behind your proxy; KQL hunt: ARTEX names in files, folders and command lines; KQL hunt: ARTEX running on a host you monitor: agent shells, the recording proxy, resolver fan-out and archives; KQL hunt: Agent Zero on a host you monitor, attack tools on that host, or its UI exposed through a tunnel; KQL hunt: An ARTEX console or a backdoored ARTEX image inside your network; KQL hunt: Cairn server, dispatcher and worker containers on a host you monitor; KQL hunt: HexStrike tool server on a host you monitor; KQL hunt: PentAGI server and worker containers on a host you monitor; KQL hunt: Pentest Swarm AI on a host you monitor; KQL hunt: RedAmon on a host you monitor, and the reverse shell tunnel it opens; KQL hunt: Strix running on a host you monitor; KQL hunt: Xalgorix on a host you monitor; YARA: ARTEX_Backdoored_Console_Binary; YARA: ARTEX_Console_Web_Assets; YARA: ARTEX_Operator_Binary_Strings; YARA: AgentZero_Hacker_Profile; YARA: Cairn_Dispatcher_Source_Or_Package; YARA: Cairn_Worker_Workspace_Competition_Guide; YARA: CyberStrikeAI_Console; YARA: HexStrike_MCP_Client_Config; YARA: HexStrike_Server_Or_Client; YARA: PentAGI_Server_Binary_Or_Source; YARA: PentestSwarmAI_Prompt_Or_Probe_Markers; YARA: RedAmon_Agent_Prompt_Or_Scanner_Markers; YARA: Strix_Package; YARA: Strix_Run_Record; YARA: Strix_Sandbox_Entrypoint; YARA: Xalgorix_Binary_Or_Source; Zeek notice: HexStrike::Server_Exposed",
+   "enabled": true,
+   "score": 29,
+   "showSubtechniques": true,
+   "techniqueID": "T1588.002"
+  },
+  {
+   "comment": "KQL hunt: AI assistants wired to a HexStrike server, and its tool API in proxy logs; KQL hunt: AI model API traffic from servers: an agentic attack tool running on your infrastructure; KQL hunt: An AI agent driving attack tools; Suricata: 3801020 TD Cairn anti-refusal task prompt in model request; Suricata: 3801021 TD Cairn conclude-phase prompt in model request; Suricata: 3802020 TD PentAGI pre-authorization prompt in model request; Suricata: 3802021 TD PentAGI reflector prompt in model request; YARA: AgentZero_Hacker_Profile; YARA: Cairn_Pi_Worker_Models_Json; YARA: Cairn_Task_Prompt_Templates; YARA: Cairn_Worker_Workspace_Competition_Guide; YARA: HexStrike_MCP_Client_Config; YARA: PentAGI_Prompt_Templates; YARA: RedAmon_Agent_Prompt_Or_Scanner_Markers; Zeek notice: AgenticBehaviors::Model_API_From_Server",
+   "enabled": true,
+   "score": 15,
+   "showSubtechniques": true,
+   "techniqueID": "T1588.007"
+  },
+  {
+   "comment": "Sigma: RedAmon Ownership Check Lookup",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1590.002"
   },
   {
-   "comment": "ARTEX code-default user agents (norma WebFetch, update check)",
+   "comment": "Sentinel analytics: ARTEX code-default user agents (norma WebFetch, update check)",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1592"
   },
   {
-   "comment": "AI Agent Page Reader User Agent in Web Server Logs",
+   "comment": "KQL hunt: ARTEX page reads (norma/0.4) and the enrichment probe that follows; KQL hunt: An AI agent's page reader on your application, next to attack traffic from the same source; KQL hunt: Application reconnaissance in web logs; KQL hunt: Every page fetched twice at once: PentAGI's browser tool reading your application; Sigma: AI Agent Page Reader User Agent in Web Server Logs; Suricata: 3801010 TD Claude Code WebFetch user agent (AI agent page reader, Cairn workers, also legitimate use); Suricata: 3801012 TD Qwen Code user agent (AI agent page reader or search, also legitimate use); Suricata: 3801013 TD Kimi CLI user agent (AI agent page reader or search, also legitimate use); Suricata: 3801014 TD opencode user agent (AI agent page reader or search, also legitimate use); Zeek notice: AgenticBehaviors::AI_Agent_Attacking_Site",
    "enabled": true,
-   "score": 1,
+   "score": 10,
    "showSubtechniques": true,
    "techniqueID": "T1594"
   },
   {
-   "comment": "ARTEX agentic attack framework user agent; ARTEX code-default user agents (norma WebFetch, update check)",
+   "comment": "KQL hunt: Indicator sweep; KQL hunt: Indicator sweep with the ARTEX watchlist; KQL hunt: Indicator sweep with the agentic watchlist; Sentinel analytics: ARTEX agentic attack framework user agent; Sentinel analytics: ARTEX code-default user agents (norma WebFetch, update check); Suricata: 3800501 TD ARTEX reported address, ARTEX operators, ARTEX activity in AWS environments (inbound); Suricata: 3800503 TD ARTEX reported address, ARTEX operators, ARTEX-associated address from ThreatDefence intelligence (inbound); Suricata: 3800505 TD ARTEX reported address, ARTEX operators, ARTEX-associated infrastructure (consoles and command and control) (inbound); Suricata: 3800507 TD ARTEX reported address, ARTEX operators, Address active in ARTEX operator toolkits (inbound); Suricata: 3800509 TD ARTEX reported address, ARTEX operators, Hosting range with more than 200 ARTEX-associated addresses in the Cisco Talos and ReversingLabs lists (inbound); Suricata: 3800511 TD ARTEX reported address, ARTEX operators, ftp.zhzy999.net, payload host active in ARTEX operator toolkits (inbound); Suricata: 3800513 TD ARTEX reported address, ARTEX operators, www.zhzy999.net, payload host active in ARTEX operator toolkits (inbound); Suricata: 3800515 TD ARTEX reported address, AntiFox console operators, Exposed AntiFox console (sample list). An exposed console is not proof of malicious use (inbound); Suricata: 3800517 TD ARTEX reported address, AntiFox operators (IIS web shells and AWS secret theft), AntiFox console on Alibaba Cloud, source of IIS web shell activity and AWS enumeration that read a production secret (inbound); Suricata: 3800519 TD ARTEX reported address, Storm-0940, Attacks on IT and software vendors (inbound); Suricata: 3800521 TD ARTEX reported address, Storm-0940, Storm-0940 sign-ins, password spray and Graph activity (inbound); Suricata: 3800523 TD ARTEX reported address, Storm-0940, VPN exits, relevant to October 15 and 16, 2026 only (inbound); Suricata: 3800525 TD ARTEX reported address, Storm-3358, ARTEX servers (inbound); Suricata: 3800527 TD ARTEX reported address, Storm-3358, Command and control server (inbound); Suricata: 3800529 TD ARTEX reported address, Storm-3358, WISP command and control (inbound); Suricata: 3800531 TD ARTEX reported address, Unattributed (Korea finance), ARTEX host used against South Korean financial organizations. Also in Cairn reporting: Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers. Also in ARTEX reporting (inbound); Suricata: 3800533 TD ARTEX reported address, Unattributed (Korea finance), Proxy addresses in the South Korea campaign (inbound); Suricata: 3800535 TD ARTEX reported address, Unattributed console operators, ARTEX and PentAGI consoles on one server, ports 8443 and 8787. An exposed console is not proof of malicious use (inbound); Suricata: 3800537 TD ARTEX reported address, VAPOR PANDA, BLOODALCHEMY command and control (inbound); Suricata: 3801501 TD Cairn reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), C2 (inbound); Suricata: 3801503 TD Cairn reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), DNS exfiltration, catch-all mail, HTTP listeners (inbound); Suricata: 3801505 TD Cairn reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), Skimmer host (inbound); Suricata: 3801507 TD Cairn reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), Staging and command server, AI console (inbound); Suricata: 3801509 TD Cairn reported address, Japanese breach wave AI-agent operators, AI-agent attack source on Japanese sites confirmed by Scutum's WAF, Oct 10-14, 2026. Not attributed to Cairn specifically (inbound); Suricata: 3801511 TD Cairn reported address, Japanese breach wave AI-agent operators, Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Sep 23-Oct 17, 2026 (inbound); Suricata: 3801513 TD Cairn reported address, Japanese breach wave AI-agent operators, Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, from Oct 15, 2026 (inbound); Suricata: 3801515 TD Cairn reported address, NorForge AIA0001 (Chinese-language, e-commerce access), Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Oct 13-19, 2026. Matches the partly redacted address of a NorForge AIA0001 Cairn panel on port 8000 (inbound); Suricata: 3801517 TD Cairn reported address, NorForge AIA0001 (Chinese-language, e-commerce access), Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Oct 3-20, 2026. Matches the partly redacted address of a NorForge AIA0001 Cairn panel on port 8000 (inbound); Suricata: 3801519 TD Cairn reported address, NorForge AIA0001 (Chinese-language, e-commerce access), Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Oct 4-19, 2026. Matches the partly redacted address of a NorForge AIA0001 Cairn panel on port 8000 (inbound); Suricata: 3801521 TD Cairn reported address, NorForge AIA0001 (Chinese-language, e-commerce access), Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Oct 4-20, 2026. Matches the partly redacted address of a NorForge AIA0001 Cairn panel on port 8000 (inbound); Suricata: 3801523 TD Cairn reported address, NorForge AIA0001 (Chinese-language, e-commerce access), Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Sep 27-Oct 19, 2026. Matches the partly redacted address of a NorForge AIA0001 Cairn panel on port 8000 (inbound); Suricata: 3801525 TD Cairn reported address, NorForge AIA0001 (Chinese-language, e-commerce access), Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Sep 27-Oct 20, 2026. Matches the partly redacted address of a NorForge AIA0001 Cairn panel on port 8000 (inbound); Suricata: 3801527 TD Cairn reported address, NorForge AIA0002 (English-language, card and crypto theft), AIA0002 staging server (inbound); Suricata: 3801529 TD Cairn reported address, Unattributed (Korea finance), ARTEX host used against South Korean financial organizations. Also in Cairn reporting: Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers. Also in ARTEX reporting (inbound); Suricata: 3802501 TD PentAGI reported address, PaperCut exploitation operator (Hunt.io), Orchestration host of a PaperCut exploitation operator, presented a PentAGI CA certificate on port 33333 from April 7 to July 6, 2026 (inbound); Suricata: 3802503 TD PentAGI reported address, Unattributed console operators, ARTEX and PentAGI consoles on one server, ports 8443 and 8787. An exposed console is not proof of malicious use (inbound); Suricata: 3802505 TD PentAGI reported address, Unattributed console operators, Exposed PentAGI console renamed xhackai, port 8443. An exposed console is not proof of malicious use (inbound); Suricata: 3802507 TD PentAGI reported address, Unattributed console operators, Exposed PentAGI console, port 8443. An exposed console is not proof of malicious use (inbound); Suricata: 3802509 TD PentAGI reported address, Unattributed console operators, Exposed renamed PentAGI console, port 18089. An exposed console is not proof of malicious use (inbound); Suricata: 3804501 TD CyberStrikeAI reported address, AI-run AWS intrusion from a CyberStrikeAI server, CyberStrikeAI console (CN=CyberStrikeAI certificate, title CyberStrikeAI, port 8080) and source of every AWS API call in an intrusion that used eight AWS identities across four accounts, Sep 30 to Oct 16, 2026 (AS133199, Hong Kong) (inbound); Suricata: 3804503 TD CyberStrikeAI reported address, AI-run AWS intrusion from a CyberStrikeAI server, CyberStrikeAI console in the same /24 serving the same certificate as 43.240.29.11, not seen in the AWS activity (inbound); Suricata: 3804505 TD CyberStrikeAI reported address, CyberStrikeAI attacks on education organizations (Africa, Latin America), C2 for payload delivery and the CyberStrikeAI Linux beacon (inbound); Suricata: 3804507 TD CyberStrikeAI reported address, CyberStrikeAI attacks on education organizations (Africa, Latin America), C2 for the CyberStrikeAI Windows beacon and target of the p1.ps1 reverse shell on port 5501 (inbound); Suricata: 3804509 TD CyberStrikeAI reported address, CyberStrikeAI operators, CyberStrikeAI console seen by ONYPHE (favicon SHA-256 and title match). An exposed console is not proof of malicious use (inbound); Suricata: 3804537 TD CyberStrikeAI reported address, CyberStrikeAI operators, Exposed CyberStrikeAI workspace served on TCP 8010 (/CyberStrikeAI/data/conversations.db) after a session of 221 tool runs with the approval gate turned off, Nov 16, 2026. The operator and authorization are unknown (inbound); Suricata: 3805501 TD Strix reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), C2 (inbound); Suricata: 3805503 TD Strix reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), DNS exfiltration, catch-all mail, HTTP listeners (inbound); Suricata: 3805505 TD Strix reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), Skimmer host (inbound); Suricata: 3805507 TD Strix reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), Staging and command server, AI console (inbound); Suricata: 3806501 TD Hermes Agent reported address, Carbonato Docker botnet (Costa Rica, assessed), Beacon and reverse shell, ports 8080 and 4444 (Contabo) (inbound); Suricata: 3806503 TD Hermes Agent reported address, Carbonato Docker botnet (Costa Rica, assessed), C2 hub (Linode) (inbound); Suricata: 3806505 TD Hermes Agent reported address, Carbonato Docker botnet (Costa Rica, assessed), LLM gateway for the bots (Contabo) (inbound); Suricata: 3806507 TD Hermes Agent reported address, Carbonato Docker botnet (Costa Rica, assessed), Reverse SSH tunnel sink, AS262145 Costa Rica (inbound); Suricata: 3806509 TD Hermes Agent reported address, Carbonato Docker botnet (Costa Rica, assessed), fsociety-era C2 (Hetzner) (inbound); Suricata: 3806511 TD Hermes Agent reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), C2 (inbound); Suricata: 3806513 TD Hermes Agent reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), DNS exfiltration, catch-all mail, HTTP listeners (inbound); Suricata: 3806515 TD Hermes Agent reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), Skimmer host (inbound); Suricata: 3806517 TD Hermes Agent reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), Staging and command server, AI console (inbound); Suricata: 3806519 TD Hermes Agent reported address, Hermes operator against Thailand's Ministry of Finance (Hades, VShell), Hades Linux C2 on 12443, AS134196, Hong Kong (inbound); Suricata: 3806521 TD Hermes Agent reported address, Hermes operator against Thailand's Ministry of Finance (Hades, VShell), SSH client of the Hermes environment, connecting to 43.246.208.207, AS133073, Hong Kong (inbound); Suricata: 3806523 TD Hermes Agent reported address, Hermes operator against Thailand's Ministry of Finance (Hades, VShell), Same CN=www certificate family as the staging server, AS55720, Malaysia (inbound); Suricata: 3806525 TD Hermes Agent reported address, Hermes operator against Thailand's Ministry of Finance (Hades, VShell), Staging server with open directories (Hermes results, Hades and VShell builds), VShell C2 on 21083, Hades Windows C2 on 443, Hermes web UI on 8878, AS132883 TOPIDC, Hong Kong (inbound)",
    "enabled": true,
-   "score": 2,
+   "score": 78,
    "showSubtechniques": true,
    "techniqueID": "T1595"
   },
   {
-   "comment": "ARTEX Agentic Attack Framework User Agent in Proxy Logs; ARTEX Agentic Attack Framework User Agent in Web Logs; ARTEX OAuth Callback Probe; ARTEX Placeholder Probe Paths; ARTEX Probe Marker in HTTP Request; HexStrike User Agent or XSS Probe in Web Logs; HexStrike user agent or cross-site scripting probe; Pentest Swarm AI Probe Marker in Web Logs; RedAmon User Agent or Canary in Web Logs; Strix AI Pentest Agent CLI or Sandbox; Strix AI pentest agent on a host or reporting from your network; Strix Telemetry DNS Query; Strix Telemetry or Results Viewer API in Proxy Logs; Xalgorix Verifier Marker or Canary in Web Logs",
+   "comment": "KQL hunt: ARTEX page reads (norma/0.4) and the enrichment probe that follows; KQL hunt: Accounts registered by a source that is also probing the application; KQL hunt: An AI agent's page reader on your application, next to attack traffic from the same source; KQL hunt: Application reconnaissance in web logs; KQL hunt: HexStrike user agents and its cross-site scripting probe; KQL hunt: Metronomic request rates that match the ARTEX noise profiles; KQL hunt: One site probed through hundreds of rotating proxy addresses; KQL hunt: Pentest Swarm AI testing you: its negative-control probe and verification markers in web and proxy logs; KQL hunt: RedAmon scanning you: its user agents, canaries and ownership lookup in web, proxy and DNS logs; KQL hunt: The ARTEX container toolchain seen from one source; KQL hunt: The Cairn worker toolchain seen from one source; KQL hunt: User agent family burst from one source; KQL hunt: Xalgorix testing you: its verifier paths, canary and user agents in web and proxy logs; Sentinel analytics: HexStrike user agent or cross-site scripting probe; Sentinel analytics: Strix AI pentest agent on a host or reporting from your network; Sigma: ARTEX Agentic Attack Framework User Agent in Proxy Logs; Sigma: ARTEX Agentic Attack Framework User Agent in Web Logs; Sigma: ARTEX OAuth Callback Probe; Sigma: ARTEX Placeholder Probe Paths; Sigma: ARTEX Probe Marker in HTTP Request; Sigma: HexStrike User Agent or XSS Probe in Web Logs; Sigma: Pentest Swarm AI Probe Marker in Web Logs; Sigma: RedAmon User Agent or Canary in Web Logs; Sigma: Strix AI Pentest Agent CLI or Sandbox; Sigma: Strix Telemetry DNS Query; Sigma: Strix Telemetry or Results Viewer API in Proxy Logs; Sigma: Xalgorix Verifier Marker or Canary in Web Logs; Suricata: 3800001 TD ARTEX user agent artex-<role>/1.0; Suricata: 3800002 TD ARTEX user agent ARTEX-worker; Suricata: 3800003 TD ARTEX user agent ARTeX; Suricata: 3800004 TD ARTEX user agent canary; Suricata: 3800005 TD ARTEX user agent Mozilla/5.0 (ARTEX); Suricata: 3800006 TD ARTEX user agent ArtEx variant; Suricata: 3800007 TD ARTEX ScopeWeaver renamed build user agent; Suricata: 3800008 TD ARTEX spa-api-recon user agent; Suricata: 3800009 TD ARTEX user agent artex-agent or artex-judge-<run>; Suricata: 3800020 TD ARTEX placeholder probe path; Suricata: 3800021 TD ARTEX placeholder object name in S3 or storage probe; Suricata: 3800022 TD ARTEX OAuth callback probe; Suricata: 3800025 TD ARTEX X-ARTX-KEY request header; Suricata: 3800026 TD ARTEX probe marker in request; Suricata: 3803001 TD HexStrike HTTP framework user agent; Suricata: 3803002 TD HexStrike browser agent user agent; Suricata: 3803004 TD HexStrike XSS reflection probe; Suricata: 3807003 TD Agent Zero user agent; Suricata: 3808001 TD RedAmon user agent; Suricata: 3808003 TD RedAmon AI endpoint probe body; Suricata: 3808004 TD RedAmon cache poisoning canary host; Suricata: 3808005 TD RedAmon XSS canary in URI; Suricata: 3808006 TD RedAmon XSS canary in a header; Suricata: 3809001 TD Xalgorix verifier path marker; Suricata: 3809002 TD Xalgorix XXE verifier marker; Suricata: 3809003 TD Xalgorix reflection canary in URI; Suricata: 3809004 TD Xalgorix reflection canary in request body; Suricata: 3809005 TD Xalgorix CSRF verifier origin; Suricata: 3809006 TD Xalgorix user agent; Suricata: 3810001 TD Pentest Swarm AI open redirect check host; Suricata: 3810002 TD Pentest Swarm AI XXE check document; Suricata: 3810003 TD Pentest Swarm AI 403 bypass control path; Suricata: 3810004 TD Pentest Swarm AI template check expression; Suricata: 3810005 TD Pentest Swarm AI control credentials; Suricata: 3810006 TD Pentest Swarm AI negative-control probe; Suricata: 3810008 TD Pentest Swarm AI user agent; Zeek notice: ARTEX::Probe_Marker; Zeek notice: ARTEX::Probe_Path; Zeek notice: ARTEX::User_Agent; Zeek notice: AgenticBehaviors::Rotating_Proxy_Probing; Zeek notice: AgenticBehaviors::WSUS_Port_From_Internet; Zeek notice: HexStrike::User_Agent; Zeek notice: HexStrike::XSS_Probe",
    "enabled": true,
-   "score": 14,
+   "score": 70,
    "showSubtechniques": true,
    "techniqueID": "T1595.002"
   },
   {
-   "comment": "Unsigned JWT With alg none Sent to a Web Application",
+   "comment": "KQL hunt: Configuration and backup file theft, and probes of internet-facing WSUS servers; Suricata: 3801011 TD Kali ffuf v2.1.0-dev user agent; Zeek notice: AgenticBehaviors::Backup_Path_Sweep",
+   "enabled": true,
+   "score": 3,
+   "showSubtechniques": true,
+   "techniqueID": "T1595.003"
+  },
+  {
+   "comment": "Suricata: 3800023 TD Unsigned alg none JWT in URI; Suricata: 3800024 TD Unsigned alg none JWT in Authorization header; Suricata: 3800030 TD Unsigned alg none JWT in URI (typ first); Suricata: 3800031 TD Unsigned alg none JWT in Authorization header (typ first); Suricata: 3800032 TD Unsigned alg none JWT in URI (None or NONE); Suricata: 3800033 TD Unsigned alg none JWT in Authorization header (None or NONE); Zeek notice: ARTEX::JWT_Alg_None",
+   "enabled": true,
+   "score": 7,
+   "showSubtechniques": true,
+   "techniqueID": "T1606"
+  },
+  {
+   "comment": "Sigma: Unsigned JWT With alg none Sent to a Web Application",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1606.001"
   },
   {
-   "comment": "Carbonato Docker Worm Host Escape or Persistence; Carbonato Docker worm host escape or persistence",
+   "comment": "Suricata: 3806004 TD Docker API exec into host namespaces with nsenter",
    "enabled": true,
-   "score": 2,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1609"
+  },
+  {
+   "comment": "KQL hunt: Carbonato: a Docker worm that turns exposed Docker hosts into Telegram-controlled Hermes agents; Suricata: 3806001 TD Carbonato privileged host-mount container created through the Docker API; Suricata: 3806002 TD Carbonato container name netns-probe or net-setup; Suricata: 3806003 TD Carbonato worm pulls system/resolved; YARA: Carbonato_Docker_Worm_Script",
+   "enabled": true,
+   "score": 5,
+   "showSubtechniques": true,
+   "techniqueID": "T1610"
+  },
+  {
+   "comment": "KQL hunt: Carbonato: a Docker worm that turns exposed Docker hosts into Telegram-controlled Hermes agents; Sentinel analytics: Carbonato Docker worm host escape or persistence; Sigma: Carbonato Docker Worm Host Escape or Persistence; Suricata: 3806001 TD Carbonato privileged host-mount container created through the Docker API; Suricata: 3806004 TD Docker API exec into host namespaces with nsenter; YARA: Carbonato_Docker_Worm_Script",
+   "enabled": true,
+   "score": 6,
    "showSubtechniques": true,
    "techniqueID": "T1611"
+  },
+  {
+   "comment": "KQL hunt: AWS credentials used at machine speed from one outside address",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1651"
+  },
+  {
+   "comment": "KQL hunt: Hermes Agent set up for attack on a host you monitor: yolo mode, jailbreak skill, red-team persona, attack tools; Sentinel analytics: Hermes Agent set up for attack (approvals off, jailbreak skill or attack persona); Sigma: Hermes Agent Jailbreak, Loot or Carbonato Files Written; Suricata: 3801020 TD Cairn anti-refusal task prompt in model request; Suricata: 3802020 TD PentAGI pre-authorization prompt in model request; YARA: Cairn_Task_Prompt_Templates; YARA: Hermes_Carbonato_GH0ST_Persona; YARA: Hermes_Godmode_Jailbreak_Installed; YARA: Hermes_Red_Team_Operator_Persona; YARA: PentAGI_Prompt_Templates; YARA: PentestSwarmAI_Prompt_Or_Probe_Markers",
+   "enabled": true,
+   "score": 11,
+   "showSubtechniques": true,
+   "techniqueID": "T1699"
   }
  ],
  "versions": {
-  "attack": "17",
+  "attack": "20",
   "layer": "4.5",
   "navigator": "5.1.0"
  }

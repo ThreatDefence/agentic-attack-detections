@@ -9,9 +9,11 @@ references:
     - https://www.fortinet.com/blog/threat-research/t-sql-being-abused-to-deliver-malware-on-compromised-ms-sql-servers
 author: ThreatDefence
 date: 2026-11-20
+modified: 2026-11-25
 tags:
     - attack.execution
     - attack.t1059.003
+    - attack.persistence
     - attack.t1505.001
 logsource:
     category: process_creation

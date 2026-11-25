@@ -16,15 +16,15 @@ module ARTEX;
 
 export {
     redef enum Notice::Type += {
-        ## A request carried a user agent that names ARTEX or a renamed build.
+        ## A request carried a user agent that names ARTEX or a renamed build. ATT&CK: T1595.002.
         User_Agent,
-        ## A request carried an ARTEX header or probe marker.
+        ## A request carried an ARTEX header or probe marker. ATT&CK: T1595.002, T1190.
         Probe_Marker,
-        ## A request asked for a placeholder path ARTEX uses to learn how a site answers.
+        ## A request asked for a placeholder path ARTEX uses to learn how a site answers. ATT&CK: T1595.002.
         Probe_Path,
-        ## A request carried an unsigned JWT with alg none.
+        ## A request carried an unsigned JWT with alg none. ATT&CK: T1606, T1190.
         JWT_Alg_None,
-        ## A server answered with an ARTEX console page.
+        ## A server answered with an ARTEX console page. ATT&CK: T1071.001.
         Console_Page,
     };
 

@@ -10,6 +10,7 @@ rule Cairn_Dispatcher_Source_Or_Package
 {
     meta:
         description = "Cairn server or dispatcher source: the Python package that schedules coding-agent workers"
+        mitre_att = "T1588.002"
         author = "ThreatDefence"
         date = "2026-11-21"
         reference = "https://github.com/oritera/Cairn"
@@ -30,6 +31,7 @@ rule Cairn_Task_Prompt_Templates
 {
     meta:
         description = "Cairn task prompt templates or a prompt rendered from them (bootstrap, reason, explore, conclude)"
+        mitre_att = "T1588.007, T1699"
         author = "ThreatDefence"
         date = "2026-11-21"
         reference = "https://github.com/oritera/Cairn"
@@ -48,6 +50,7 @@ rule Cairn_Worker_Workspace_Competition_Guide
 {
     meta:
         description = "Cairn worker workspace files copied from the Tencent TCH competition setup (AGENTS.md / CLAUDE.md and the tsec-actions skill), which NorForge found on an operator's worker"
+        mitre_att = "T1588.002, T1588.007"
         author = "ThreatDefence"
         date = "2026-11-21"
         reference = "https://norforge.com/blog/inside_cairn"
@@ -68,6 +71,7 @@ rule Cairn_Pi_Worker_Models_Json
 {
     meta:
         description = "Pi worker models.json written by Cairn under /tmp/cairn-pi/<worker>/, carrying the model provider key"
+        mitre_att = "T1588.007"
         author = "ThreatDefence"
         date = "2026-11-21"
         reference = "https://github.com/oritera/Cairn"
@@ -84,6 +88,7 @@ rule Uploader_Web_Shell_Move_Uploaded_File
 {
     meta:
         description = "Minimal PHP uploader shell: an HTML upload form plus move_uploaded_file and nothing else, the goal payload NorForge saw in Cairn tasks"
+        mitre_att = "T1505.003"
         author = "ThreatDefence"
         date = "2026-11-21"
         reference = "https://norforge.com/blog/inside_cairn"
@@ -101,6 +106,7 @@ rule Skimmer_Loader_Function_Atob_Slice7
 {
     meta:
         description = "Skimmer loader appended to a JavaScript library: new Function(atob('<7 junk chars><base64>'.slice(7)))(), reported by Gambit Security in a campaign that used Cairn for exploitation"
+        mitre_att = "T1059.007, T1027"
         author = "ThreatDefence"
         date = "2026-11-21"
         reference = "https://gambit.security/blog-posts/autonomous-ai-agents-online-retailers-25-a-company"

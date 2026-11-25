@@ -1,79 +1,162 @@
 {
- "description": "73 rules from https://github.com/ThreatDefence/agentic-attack-detections",
+ "description": "73 rules from https://github.com/ThreatDefence/agentic-attack-detections, checked against ATT&CK 20.1. Score: the number of rules that name the technique.",
  "domain": "enterprise-attack",
  "gradient": {
   "colors": [
    "#ffe9e9",
    "#dc2626"
   ],
-  "maxValue": 2,
+  "maxValue": 18,
   "minValue": 0
  },
  "hideDisabled": false,
  "legendItems": [],
+ "links": [
+  {
+   "label": "Rules",
+   "url": "https://github.com/ThreatDefence/agentic-attack-detections"
+  }
+ ],
  "name": "cairn",
  "selectTechniquesAcrossTactics": true,
- "showTacticsRow": false,
+ "showTacticsRow": true,
  "techniques": [
   {
-   "comment": "Traffic to or from published Cairn campaign infrastructure",
+   "comment": "Suricata: 3801032 TD Skimmer loader new Function(atob(...).slice(7)) in served JavaScript; YARA: Skimmer_Loader_Function_Atob_Slice7",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1027"
+  },
+  {
+   "comment": "Sentinel analytics: Traffic to or from published Cairn campaign infrastructure",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1041"
   },
   {
-   "comment": "DNS Query for Skimmer or C2 Hosts of the Hermes, Strix and Cairn Card-Theft Campaign",
+   "comment": "Sigma: DNS Query for Skimmer or C2 Hosts of the Hermes, Strix and Cairn Card-Theft Campaign",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1056"
   },
   {
-   "comment": "Cairn Task Snapshot, Pi Provider Key or Competition Skill Written; Cairn dispatcher, server or worker artifacts on a host",
+   "comment": "Sentinel analytics: Cairn dispatcher, server or worker artifacts on a host; Sigma: Cairn Task Snapshot, Pi Provider Key or Competition Skill Written",
    "enabled": true,
    "score": 2,
    "showSubtechniques": true,
    "techniqueID": "T1059"
   },
   {
-   "comment": "Cairn Agent Worker or Dispatcher Command Line",
+   "comment": "Sigma: Cairn Agent Worker or Dispatcher Command Line",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1059.004"
   },
   {
-   "comment": "Traffic to or from published Cairn campaign infrastructure",
+   "comment": "KQL hunt: Uploader web shells and skimmer loaders written by the web server; Suricata: 3801032 TD Skimmer loader new Function(atob(...).slice(7)) in served JavaScript; YARA: Skimmer_Loader_Function_Atob_Slice7",
    "enabled": true,
-   "score": 1,
+   "score": 3,
+   "showSubtechniques": true,
+   "techniqueID": "T1059.007"
+  },
+  {
+   "comment": "KQL hunt: Indicator sweep; KQL hunt: Indicator sweep with the agentic watchlist; Sentinel analytics: Traffic to or from published Cairn campaign infrastructure; Suricata: 3801500 TD Cairn reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), C2 (outbound); Suricata: 3801502 TD Cairn reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), DNS exfiltration, catch-all mail, HTTP listeners (outbound); Suricata: 3801504 TD Cairn reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), Skimmer host (outbound); Suricata: 3801506 TD Cairn reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), Staging and command server, AI console (outbound); Suricata: 3801508 TD Cairn reported address, Japanese breach wave AI-agent operators, AI-agent attack source on Japanese sites confirmed by Scutum's WAF, Oct 10-14, 2026. Not attributed to Cairn specifically (outbound); Suricata: 3801510 TD Cairn reported address, Japanese breach wave AI-agent operators, Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Sep 23-Oct 17, 2026 (outbound); Suricata: 3801512 TD Cairn reported address, Japanese breach wave AI-agent operators, Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, from Oct 15, 2026 (outbound); Suricata: 3801514 TD Cairn reported address, NorForge AIA0001 (Chinese-language, e-commerce access), Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Oct 13-19, 2026. Matches the partly redacted address of a NorForge AIA0001 Cairn panel on port 8000 (outbound); Suricata: 3801516 TD Cairn reported address, NorForge AIA0001 (Chinese-language, e-commerce access), Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Oct 3-20, 2026. Matches the partly redacted address of a NorForge AIA0001 Cairn panel on port 8000 (outbound); Suricata: 3801518 TD Cairn reported address, NorForge AIA0001 (Chinese-language, e-commerce access), Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Oct 4-19, 2026. Matches the partly redacted address of a NorForge AIA0001 Cairn panel on port 8000 (outbound); Suricata: 3801520 TD Cairn reported address, NorForge AIA0001 (Chinese-language, e-commerce access), Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Oct 4-20, 2026. Matches the partly redacted address of a NorForge AIA0001 Cairn panel on port 8000 (outbound); Suricata: 3801522 TD Cairn reported address, NorForge AIA0001 (Chinese-language, e-commerce access), Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Sep 27-Oct 19, 2026. Matches the partly redacted address of a NorForge AIA0001 Cairn panel on port 8000 (outbound); Suricata: 3801524 TD Cairn reported address, NorForge AIA0001 (Chinese-language, e-commerce access), Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Sep 27-Oct 20, 2026. Matches the partly redacted address of a NorForge AIA0001 Cairn panel on port 8000 (outbound); Suricata: 3801526 TD Cairn reported address, NorForge AIA0002 (English-language, card and crypto theft), AIA0002 staging server (outbound); Suricata: 3801528 TD Cairn reported address, Unattributed (Korea finance), ARTEX host used against South Korean financial organizations. Also in Cairn reporting: Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers. Also in ARTEX reporting (outbound)",
+   "enabled": true,
+   "score": 18,
    "showSubtechniques": true,
    "techniqueID": "T1071"
   },
   {
-   "comment": "DNS Query for Skimmer or C2 Hosts of the Hermes, Strix and Cairn Card-Theft Campaign",
+   "comment": "KQL hunt: Cairn server, dispatcher and worker containers on a host you monitor; Suricata: 3801001 TD Cairn server OpenAPI description in response; Suricata: 3801002 TD Cairn server project list in response; Suricata: 3801003 TD Cairn dispatcher intent heartbeat; Suricata: 3801031 TD Cairn campaign skimmer or C2 domain in TLS SNI (medbooksource.com); Suricata: 3801110 TD Cairn campaign skimmer or C2 domain in TLS SNI (traffic-analyzer.net); Suricata: 3801111 TD Cairn campaign skimmer or C2 domain in TLS SNI (b8t.shop); Suricata: 3801112 TD Cairn campaign skimmer or C2 domain in TLS SNI (netlfjs.com); Suricata: 3801113 TD Cairn campaign skimmer or C2 domain in TLS SNI (x1opay.co); Suricata: 3801114 TD Cairn campaign skimmer or C2 domain in TLS SNI (static-js.com); Suricata: 3801115 TD Cairn campaign skimmer or C2 domain in TLS SNI (js-static.com); Suricata: 3801116 TD Cairn campaign skimmer or C2 domain in TLS SNI (jsnetlify.com); Suricata: 3801117 TD Cairn campaign skimmer or C2 domain in TLS SNI (netlifyjs.com); Suricata: 3801118 TD Cairn campaign skimmer or C2 domain in TLS SNI (newssjs.com)",
    "enabled": true,
-   "score": 1,
+   "score": 14,
+   "showSubtechniques": true,
+   "techniqueID": "T1071.001"
+  },
+  {
+   "comment": "Sigma: DNS Query for Skimmer or C2 Hosts of the Hermes, Strix and Cairn Card-Theft Campaign; Suricata: 3801030 TD Cairn campaign skimmer or C2 domain lookup (medbooksource.com); Suricata: 3801100 TD Cairn campaign skimmer or C2 domain lookup (traffic-analyzer.net); Suricata: 3801101 TD Cairn campaign skimmer or C2 domain lookup (b8t.shop); Suricata: 3801102 TD Cairn campaign skimmer or C2 domain lookup (netlfjs.com); Suricata: 3801103 TD Cairn campaign skimmer or C2 domain lookup (x1opay.co); Suricata: 3801104 TD Cairn campaign skimmer or C2 domain lookup (static-js.com); Suricata: 3801105 TD Cairn campaign skimmer or C2 domain lookup (js-static.com); Suricata: 3801106 TD Cairn campaign skimmer or C2 domain lookup (jsnetlify.com); Suricata: 3801107 TD Cairn campaign skimmer or C2 domain lookup (netlifyjs.com); Suricata: 3801108 TD Cairn campaign skimmer or C2 domain lookup (newssjs.com)",
+   "enabled": true,
+   "score": 11,
    "showSubtechniques": true,
    "techniqueID": "T1071.004"
   },
   {
-   "comment": "Traffic to or from published Cairn campaign infrastructure",
+   "comment": "Sentinel analytics: Traffic to or from published Cairn campaign infrastructure",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1190"
   },
   {
-   "comment": "Cairn dispatcher, server or worker artifacts on a host",
+   "comment": "KQL hunt: Card data staged, dumped and wiped in e-commerce databases",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1213"
+  },
+  {
+   "comment": "Sentinel analytics: Cairn dispatcher, server or worker artifacts on a host",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1219"
+  },
+  {
+   "comment": "KQL hunt: Card data staged, dumped and wiped in e-commerce databases",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1485"
+  },
+  {
+   "comment": "KQL hunt: Uploader web shells and skimmer loaders written by the web server; YARA: Uploader_Web_Shell_Move_Uploaded_File",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1505.003"
+  },
+  {
+   "comment": "KQL hunt: Cairn server, dispatcher and worker containers on a host you monitor; YARA: Cairn_Dispatcher_Source_Or_Package; YARA: Cairn_Worker_Workspace_Competition_Guide",
+   "enabled": true,
+   "score": 3,
+   "showSubtechniques": true,
+   "techniqueID": "T1588.002"
+  },
+  {
+   "comment": "Suricata: 3801020 TD Cairn anti-refusal task prompt in model request; Suricata: 3801021 TD Cairn conclude-phase prompt in model request; YARA: Cairn_Pi_Worker_Models_Json; YARA: Cairn_Task_Prompt_Templates; YARA: Cairn_Worker_Workspace_Competition_Guide",
+   "enabled": true,
+   "score": 5,
+   "showSubtechniques": true,
+   "techniqueID": "T1588.007"
+  },
+  {
+   "comment": "KQL hunt: Indicator sweep; KQL hunt: Indicator sweep with the agentic watchlist; Suricata: 3801501 TD Cairn reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), C2 (inbound); Suricata: 3801503 TD Cairn reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), DNS exfiltration, catch-all mail, HTTP listeners (inbound); Suricata: 3801505 TD Cairn reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), Skimmer host (inbound); Suricata: 3801507 TD Cairn reported address, Gambit retail card-theft operator (Hermes, Strix and Cairn), Staging and command server, AI console (inbound); Suricata: 3801509 TD Cairn reported address, Japanese breach wave AI-agent operators, AI-agent attack source on Japanese sites confirmed by Scutum's WAF, Oct 10-14, 2026. Not attributed to Cairn specifically (inbound); Suricata: 3801511 TD Cairn reported address, Japanese breach wave AI-agent operators, Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Sep 23-Oct 17, 2026 (inbound); Suricata: 3801513 TD Cairn reported address, Japanese breach wave AI-agent operators, Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, from Oct 15, 2026 (inbound); Suricata: 3801515 TD Cairn reported address, NorForge AIA0001 (Chinese-language, e-commerce access), Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Oct 13-19, 2026. Matches the partly redacted address of a NorForge AIA0001 Cairn panel on port 8000 (inbound); Suricata: 3801517 TD Cairn reported address, NorForge AIA0001 (Chinese-language, e-commerce access), Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Oct 3-20, 2026. Matches the partly redacted address of a NorForge AIA0001 Cairn panel on port 8000 (inbound); Suricata: 3801519 TD Cairn reported address, NorForge AIA0001 (Chinese-language, e-commerce access), Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Oct 4-19, 2026. Matches the partly redacted address of a NorForge AIA0001 Cairn panel on port 8000 (inbound); Suricata: 3801521 TD Cairn reported address, NorForge AIA0001 (Chinese-language, e-commerce access), Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Oct 4-20, 2026. Matches the partly redacted address of a NorForge AIA0001 Cairn panel on port 8000 (inbound); Suricata: 3801523 TD Cairn reported address, NorForge AIA0001 (Chinese-language, e-commerce access), Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Sep 27-Oct 19, 2026. Matches the partly redacted address of a NorForge AIA0001 Cairn panel on port 8000 (inbound); Suricata: 3801525 TD Cairn reported address, NorForge AIA0001 (Chinese-language, e-commerce access), Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers, Sep 27-Oct 20, 2026. Matches the partly redacted address of a NorForge AIA0001 Cairn panel on port 8000 (inbound); Suricata: 3801527 TD Cairn reported address, NorForge AIA0002 (English-language, card and crypto theft), AIA0002 staging server (inbound); Suricata: 3801529 TD Cairn reported address, Unattributed (Korea finance), ARTEX host used against South Korean financial organizations. Also in Cairn reporting: Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers. Also in ARTEX reporting (inbound)",
+   "enabled": true,
+   "score": 17,
+   "showSubtechniques": true,
+   "techniqueID": "T1595"
+  },
+  {
+   "comment": "KQL hunt: The Cairn worker toolchain seen from one source",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1595.002"
+  },
+  {
+   "comment": "Suricata: 3801020 TD Cairn anti-refusal task prompt in model request; YARA: Cairn_Task_Prompt_Templates",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1699"
   }
  ],
  "versions": {
-  "attack": "17",
+  "attack": "20",
   "layer": "4.5",
   "navigator": "5.1.0"
  }

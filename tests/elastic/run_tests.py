@@ -38,6 +38,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
+import attack  # noqa: E402
 import convert  # noqa: E402
 from sigma.collection import SigmaCollection  # noqa: E402
 from sigma.correlations import SigmaCorrelationRule  # noqa: E402
@@ -381,6 +382,24 @@ def main():
             break
         time.sleep(10)
     print(f"rule runs: {len(status)} of {len(ids)} rules ran")
+    # Kibana keeps the ATT&CK mapping of every rule as imported: same techniques, none outside the pinned release.
+    def techniques(threat):
+        return sorted({t["id"] for th in threat or [] for t in th.get("technique", [])} |
+                      {s["id"] for th in threat or [] for t in th.get("technique", []) for s in t.get("subtechnique", [])})
+    mapped = 0
+    for r in imported:
+        try:
+            stored = kb.call("GET", "/api/detection_engine/rules?rule_id=" + urllib.parse.quote(r["rule_id"]))
+        except RuntimeError:
+            continue
+        want, got = techniques(r.get("threat")), techniques(stored.get("threat"))
+        if not got:
+            fail(f"{r['name']}: no ATT&CK technique in Kibana")
+        elif got != want or attack.problems(got):
+            fail(f"{r['name']}: Kibana has techniques {got}, the import has {want} {attack.problems(got)}")
+        else:
+            mapped += 1
+    print(f"att&ck: {mapped} of {len(imported)} rules keep their techniques in Kibana")
     for rid in rule_ids:
         if rid not in status:
             fail(f"rule {rid}: no run within {args.wait}s")

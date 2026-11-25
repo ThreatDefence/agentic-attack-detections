@@ -18,7 +18,7 @@ module AgenticBehaviors;
 
 export {
     redef enum Notice::Type += {
-        ## Many outside addresses, few requests each, sent payloads or refused login and admin requests to one host.
+        ## Many outside addresses, few requests each, sent payloads or refused login and admin requests to one host. ATT&CK: T1090.002, T1595.002.
         Rotating_Proxy_Probing,
     };
 

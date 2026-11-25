@@ -1,5 +1,6 @@
 // HexStrike tool server on a host you monitor
 // Agentic attack detections by ThreatDefence (HexStrike). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1588.002 (Obtain Capabilities: Tool), T1059 (Command and Scripting Interpreter)
 // Example hunt for Defender XDR advanced hunting. Test before alerting.
 // From the HexStrike source code. The server is one Python script, hexstrike_server.py, with no installer or container.
 //  - It listens on 0.0.0.0:8888 whatever HEXSTRIKE_HOST says (hexstrike_server.py:98-99, 17289), with no authentication.

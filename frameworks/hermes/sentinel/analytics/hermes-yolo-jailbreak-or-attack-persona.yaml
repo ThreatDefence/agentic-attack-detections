@@ -16,10 +16,9 @@ triggerOperator: gt
 triggerThreshold: 0
 tactics:
   - Execution
-  - DefenseEvasion
 relevantTechniques:
   - T1059
-  - T1562
+  - T1699
 query: |
   let HermesProc = @"(^|[/\\\s])hermes(\.exe)?(\s|$)|hermes_cli|run_agent\.py|/\.hermes/|hermes-agent";
   union isfuzzy=true

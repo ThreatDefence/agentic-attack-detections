@@ -9,6 +9,7 @@ rule Strix_Package
 {
     meta:
         description = "Strix AI pentest agent package files (pip strix-agent), or a fork that keeps its strings"
+        mitre_att = "T1588.002"
         author = "ThreatDefence"
         date = "2026-11-21"
         reference = "https://github.com/usestrix/strix"
@@ -29,6 +30,7 @@ rule Strix_Sandbox_Entrypoint
 {
     meta:
         description = "Entrypoint of the Strix sandbox container: Caido proxy with guest access and system-wide proxy settings"
+        mitre_att = "T1588.002"
         author = "ThreatDefence"
         date = "2026-11-21"
         reference = "https://github.com/usestrix/strix/blob/main/containers/docker-entrypoint.sh"
@@ -46,6 +48,7 @@ rule Strix_Run_Record
 {
     meta:
         description = "Strix run record run.json from a strix_runs/<run>/ folder (keys written by strix/report/state.py)"
+        mitre_att = "T1588.002"
         author = "ThreatDefence"
         date = "2026-11-21"
         reference = "https://github.com/usestrix/strix"

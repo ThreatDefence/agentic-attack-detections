@@ -1,5 +1,6 @@
 // Indicator sweep with the agentic watchlist
 // Agentic attack detections by ThreatDefence (Xalgorix). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1595 (Active Scanning), T1071 (Application Layer Protocol)
 // Upload feeds/sentinel-watchlist.csv as a Microsoft Sentinel watchlist with the alias AGENTIC_IOCs and the search key
 // "value". A match needs investigation. Addresses are reassigned, so check the reported date and review_by.
 // No Xalgorix infrastructure has been published, so these rows are fingerprints of the software and its exposed consoles.

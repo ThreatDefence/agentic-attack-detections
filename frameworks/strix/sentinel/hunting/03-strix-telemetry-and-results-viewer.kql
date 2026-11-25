@@ -1,5 +1,6 @@
 // Strix telemetry and results viewers seen from your network
 // Agentic attack detections by ThreatDefence (Strix). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1071.001 (Application Layer Protocol: Web Protocols)
 // Example hunt for Microsoft Sentinel. DNS works everywhere; URL paths need a proxy that records full URLs. Test before alerting.
 // From the Strix source code. Every scan reports itself unless the operator sets STRIX_TELEMETRY=false:
 //  - POST https://strix.gateway.scarf.sh/scan_started/<version>?..., /finding_reported/<version>?severity=<level>&cwe=...

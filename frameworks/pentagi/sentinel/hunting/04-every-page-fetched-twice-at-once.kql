@@ -1,5 +1,6 @@
 // Every page fetched twice at once: PentAGI's browser tool reading your application
 // Agentic attack detections by ThreatDefence (PentAGI). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1594 (Search Victim-Owned Websites)
 // Example hunt for Microsoft Sentinel. Test and baseline before alerting.
 // From the PentAGI source code. The browser tool hands each page to the scraper service twice in parallel: once for the
 // content (/html, /markdown or /links) and once for a full-page screenshot (/screenshot?fullPage=true), started together

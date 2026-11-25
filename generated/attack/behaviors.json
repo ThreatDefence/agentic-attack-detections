@@ -1,65 +1,190 @@
 {
- "description": "6 rules from https://github.com/ThreatDefence/agentic-attack-detections",
+ "description": "46 rules from https://github.com/ThreatDefence/agentic-attack-detections, checked against ATT&CK 20.1. Score: the number of rules that name the technique.",
  "domain": "enterprise-attack",
  "gradient": {
   "colors": [
    "#ffe9e9",
    "#dc2626"
   ],
-  "maxValue": 3,
+  "maxValue": 22,
   "minValue": 0
  },
  "hideDisabled": false,
  "legendItems": [],
+ "links": [
+  {
+   "label": "Rules",
+   "url": "https://github.com/ThreatDefence/agentic-attack-detections"
+  }
+ ],
  "name": "behaviors",
  "selectTechniquesAcrossTactics": true,
- "showTacticsRow": false,
+ "showTacticsRow": true,
  "techniques": [
   {
-   "comment": "AI Agent CLI Starts an Attack Tool",
+   "comment": "KQL hunt: Kerberos user enumeration and SMB or WinRM fan-out from one address; Zeek notice: AgenticBehaviors::SMB_WinRM_Fan_Out",
    "enabled": true,
-   "score": 1,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1021.002"
+  },
+  {
+   "comment": "KQL hunt: Kerberos user enumeration and SMB or WinRM fan-out from one address; Zeek notice: AgenticBehaviors::SMB_WinRM_Fan_Out",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1021.006"
+  },
+  {
+   "comment": "KQL hunt: An AI agent driving attack tools; Sentinel analytics: AI agent CLI starts attack tools; Sigma: AI Agent CLI Starts an Attack Tool",
+   "enabled": true,
+   "score": 3,
    "showSubtechniques": true,
    "techniqueID": "T1046"
   },
   {
-   "comment": "AI Agent CLI Starts an Attack Tool",
+   "comment": "KQL hunt: An AI agent driving attack tools; Sentinel analytics: AI agent CLI starts attack tools; Sigma: AI Agent CLI Starts an Attack Tool",
    "enabled": true,
-   "score": 1,
+   "score": 3,
    "showSubtechniques": true,
    "techniqueID": "T1059"
   },
   {
-   "comment": "AI Agent Client Calling a Chinese Model API or Model Gateway",
+   "comment": "KQL hunt: A server calls back to the address that was probing it; Zeek notice: AgenticBehaviors::Callback_To_Prober",
    "enabled": true,
-   "score": 1,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1071"
+  },
+  {
+   "comment": "KQL hunt: AI model API traffic from servers: an agentic attack tool running on your infrastructure; Sigma: AI Agent Client Calling a Chinese Model API or Model Gateway; Zeek notice: AgenticBehaviors::Model_API_From_Server",
+   "enabled": true,
+   "score": 3,
    "showSubtechniques": true,
    "techniqueID": "T1071.001"
   },
   {
-   "comment": "Attack Agent Write Test on a Container Registry; DNS Query for an Out-of-Band Testing Domain; WSUS Administration or Sync API Requested",
+   "comment": "KQL hunt: Servers resolving out-of-band testing domains: blind bugs being confirmed against you; Suricata: 3801050 TD Out-of-band testing domain lookup (oast.fun); Suricata: 3801051 TD Out-of-band testing domain lookup (oast.pro); Suricata: 3801052 TD Out-of-band testing domain lookup (oast.live); Suricata: 3801053 TD Out-of-band testing domain lookup (oast.site); Suricata: 3801054 TD Out-of-band testing domain lookup (oast.online); Suricata: 3801055 TD Out-of-band testing domain lookup (oast.me); Suricata: 3801056 TD Out-of-band testing domain lookup (interact.sh); Suricata: 3801057 TD Out-of-band testing domain lookup (oastify.com); Suricata: 3801058 TD Out-of-band testing domain lookup (burpcollaborator.net); Suricata: 3801059 TD Out-of-band testing domain lookup (dnslog.cn); Zeek notice: AgenticBehaviors::Out_Of_Band_Lookup",
    "enabled": true,
-   "score": 3,
+   "score": 12,
+   "showSubtechniques": true,
+   "techniqueID": "T1071.004"
+  },
+  {
+   "comment": "KQL hunt: AWS credentials used at machine speed from one outside address",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1078.004"
+  },
+  {
+   "comment": "KQL hunt: Kerberos user enumeration and SMB or WinRM fan-out from one address; Zeek notice: AgenticBehaviors::Kerberos_Enumeration",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1087.002"
+  },
+  {
+   "comment": "KQL hunt: One site probed through hundreds of rotating proxy addresses; Zeek notice: AgenticBehaviors::Rotating_Proxy_Probing",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1090.002"
+  },
+  {
+   "comment": "Sentinel analytics: AI agent CLI starts attack tools",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1110"
+  },
+  {
+   "comment": "KQL hunt: Kerberos user enumeration and SMB or WinRM fan-out from one address; Zeek notice: AgenticBehaviors::Kerberos_Enumeration",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1110.003"
+  },
+  {
+   "comment": "KQL hunt: A server calls back to the address that was probing it; KQL hunt: An AI agent's page reader on your application, next to attack traffic from the same source; KQL hunt: Configuration and backup file theft, and probes of internet-facing WSUS servers; KQL hunt: Servers resolving out-of-band testing domains: blind bugs being confirmed against you; Sigma: Attack Agent Write Test on a Container Registry; Sigma: DNS Query for an Out-of-Band Testing Domain; Sigma: WSUS Administration or Sync API Requested; Suricata: 3801040 TD WSUS admin or sync web service requested from external address; Suricata: 3801050 TD Out-of-band testing domain lookup (oast.fun); Suricata: 3801051 TD Out-of-band testing domain lookup (oast.pro); Suricata: 3801052 TD Out-of-band testing domain lookup (oast.live); Suricata: 3801053 TD Out-of-band testing domain lookup (oast.site); Suricata: 3801054 TD Out-of-band testing domain lookup (oast.online); Suricata: 3801055 TD Out-of-band testing domain lookup (oast.me); Suricata: 3801056 TD Out-of-band testing domain lookup (interact.sh); Suricata: 3801057 TD Out-of-band testing domain lookup (oastify.com); Suricata: 3801058 TD Out-of-band testing domain lookup (burpcollaborator.net); Suricata: 3801059 TD Out-of-band testing domain lookup (dnslog.cn); Zeek notice: AgenticBehaviors::AI_Agent_Attacking_Site; Zeek notice: AgenticBehaviors::Callback_To_Prober; Zeek notice: AgenticBehaviors::Out_Of_Band_Lookup; Zeek notice: AgenticBehaviors::WSUS_Admin_From_Internet",
+   "enabled": true,
+   "score": 22,
    "showSubtechniques": true,
    "techniqueID": "T1190"
   },
   {
-   "comment": "Attack Agent Write Test on a Container Registry",
+   "comment": "Sentinel analytics: Configuration or backup file served to an external address during probing",
    "enabled": true,
    "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1213"
+  },
+  {
+   "comment": "Sigma: Attack Agent Write Test on a Container Registry; Suricata: 3801041 TD Container registry push to a repository named after an attack agent; Suricata: 3801042 TD Container registry push with a write-test repository name",
+   "enabled": true,
+   "score": 3,
    "showSubtechniques": true,
    "techniqueID": "T1525"
   },
   {
-   "comment": "AI Agent Page Reader User Agent in Web Server Logs",
+   "comment": "KQL hunt: Configuration and backup file theft, and probes of internet-facing WSUS servers; Sentinel analytics: Configuration or backup file served to an external address during probing; Zeek notice: AgenticBehaviors::Backup_File_Served",
+   "enabled": true,
+   "score": 3,
+   "showSubtechniques": true,
+   "techniqueID": "T1552.001"
+  },
+  {
+   "comment": "KQL hunt: AWS credentials used at machine speed from one outside address",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
+   "techniqueID": "T1555.006"
+  },
+  {
+   "comment": "KQL hunt: AWS credentials used at machine speed from one outside address",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1580"
+  },
+  {
+   "comment": "KQL hunt: AI model API traffic from servers: an agentic attack tool running on your infrastructure; KQL hunt: An AI agent driving attack tools; Zeek notice: AgenticBehaviors::Model_API_From_Server",
+   "enabled": true,
+   "score": 3,
+   "showSubtechniques": true,
+   "techniqueID": "T1588.007"
+  },
+  {
+   "comment": "KQL hunt: An AI agent's page reader on your application, next to attack traffic from the same source; Sigma: AI Agent Page Reader User Agent in Web Server Logs; Suricata: 3801010 TD Claude Code WebFetch user agent (AI agent page reader, Cairn workers, also legitimate use); Suricata: 3801012 TD Qwen Code user agent (AI agent page reader or search, also legitimate use); Suricata: 3801013 TD Kimi CLI user agent (AI agent page reader or search, also legitimate use); Suricata: 3801014 TD opencode user agent (AI agent page reader or search, also legitimate use); Zeek notice: AgenticBehaviors::AI_Agent_Attacking_Site",
+   "enabled": true,
+   "score": 7,
+   "showSubtechniques": true,
    "techniqueID": "T1594"
+  },
+  {
+   "comment": "KQL hunt: An AI agent's page reader on your application, next to attack traffic from the same source; KQL hunt: One site probed through hundreds of rotating proxy addresses; Zeek notice: AgenticBehaviors::Rotating_Proxy_Probing; Zeek notice: AgenticBehaviors::WSUS_Port_From_Internet",
+   "enabled": true,
+   "score": 4,
+   "showSubtechniques": true,
+   "techniqueID": "T1595.002"
+  },
+  {
+   "comment": "KQL hunt: Configuration and backup file theft, and probes of internet-facing WSUS servers; Suricata: 3801011 TD Kali ffuf v2.1.0-dev user agent; Zeek notice: AgenticBehaviors::Backup_Path_Sweep",
+   "enabled": true,
+   "score": 3,
+   "showSubtechniques": true,
+   "techniqueID": "T1595.003"
+  },
+  {
+   "comment": "KQL hunt: AWS credentials used at machine speed from one outside address",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1651"
   }
  ],
  "versions": {
-  "attack": "17",
+  "attack": "20",
   "layer": "4.5",
   "navigator": "5.1.0"
  }

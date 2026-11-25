@@ -17,7 +17,7 @@ module AgenticBehaviors;
 
 export {
     redef enum Notice::Type += {
-        ## A server opened TLS to a model API or model gateway.
+        ## A server opened TLS to a model API or model gateway. ATT&CK: T1588.007, T1071.001.
         Model_API_From_Server,
     };
 

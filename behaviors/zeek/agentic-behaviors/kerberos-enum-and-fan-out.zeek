@@ -14,9 +14,9 @@ module AgenticBehaviors;
 
 export {
     redef enum Notice::Type += {
-        ## One address asked the KDC about many accounts, most of them unknown or with bad passwords.
+        ## One address asked the KDC about many accounts, most of them unknown or with bad passwords. ATT&CK: T1087.002, T1110.003.
         Kerberos_Enumeration,
-        ## One address opened SMB or WinRM to many hosts.
+        ## One address opened SMB or WinRM to many hosts. ATT&CK: T1021.002, T1021.006.
         SMB_WinRM_Fan_Out,
     };
 

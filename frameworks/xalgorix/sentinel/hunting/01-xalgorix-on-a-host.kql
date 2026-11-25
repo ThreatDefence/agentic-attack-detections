@@ -1,5 +1,6 @@
 // Xalgorix on a host you monitor
 // Agentic attack detections by ThreatDefence (Xalgorix). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1588.002 (Obtain Capabilities: Tool)
 // Example hunt for Defender XDR advanced hunting. Test and baseline before alerting.
 // Xalgorix (xalgorix/xalgorix) is a Go binary with a web dashboard on port 9137 whose agent runs a penetration test
 // without asking for approval. No report of its use in a real intrusion was found on November 23, 2026, so this hunt

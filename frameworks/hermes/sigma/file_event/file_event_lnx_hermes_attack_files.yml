@@ -12,9 +12,12 @@ references:
     - https://github.com/ThreatDefence/agentic-attack-detections
 author: ThreatDefence
 date: 2026-11-21
+modified: 2026-11-25
 tags:
-    - attack.defense-impairment
+    - attack.execution
+    - attack.t1699
     - attack.collection
+    - attack.t1005
 logsource:
     category: file_event
     product: linux

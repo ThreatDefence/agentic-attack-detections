@@ -1,5 +1,6 @@
 // Hermes Agent set up for attack on a host you monitor: yolo mode, jailbreak skill, red-team persona, attack tools
 // Agentic attack detections by ThreatDefence (Hermes Agent). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1699 (Direct Prompt Injection), T1059 (Command and Scripting Interpreter)
 // Example hunt for Defender XDR advanced hunting. Test and baseline before alerting.
 // Hermes Agent (NousResearch/hermes-agent) is a legitimate general-purpose agent, so its presence is not the finding.
 // Attackers change it in ways ordinary users rarely do:

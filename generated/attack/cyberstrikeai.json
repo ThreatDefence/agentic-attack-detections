@@ -1,86 +1,148 @@
 {
- "description": "41 rules from https://github.com/ThreatDefence/agentic-attack-detections",
+ "description": "49 rules from https://github.com/ThreatDefence/agentic-attack-detections, checked against ATT&CK 20.1. Score: the number of rules that name the technique.",
  "domain": "enterprise-attack",
  "gradient": {
   "colors": [
    "#ffe9e9",
    "#dc2626"
   ],
-  "maxValue": 3,
+  "maxValue": 16,
   "minValue": 0
  },
  "hideDisabled": false,
  "legendItems": [],
+ "links": [
+  {
+   "label": "Rules",
+   "url": "https://github.com/ThreatDefence/agentic-attack-detections"
+  }
+ ],
  "name": "cyberstrikeai",
  "selectTechniquesAcrossTactics": true,
- "showTacticsRow": false,
+ "showTacticsRow": true,
  "techniques": [
   {
-   "comment": "CyberStrikeAI Implant Linux Persistence or curl Beacon; CyberStrikeAI implant persistence",
+   "comment": "KQL hunt: CyberStrikeAI implant persistence and the file names seen in real attacks",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1036.005"
+  },
+  {
+   "comment": "Suricata: 3804013 TD CyberStrikeAI implant default user agent (truncated Chrome string); Zeek notice: CyberStrikeAI::Implant_User_Agent",
    "enabled": true,
    "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1036.012"
+  },
+  {
+   "comment": "KQL hunt: CyberStrikeAI implant persistence and the file names seen in real attacks; Sentinel analytics: CyberStrikeAI implant persistence; Sigma: CyberStrikeAI Implant Linux Persistence or curl Beacon",
+   "enabled": true,
+   "score": 3,
    "showSubtechniques": true,
    "techniqueID": "T1053.003"
   },
   {
-   "comment": "CyberStrikeAI Implant Windows Persistence Named SystemUpdate; CyberStrikeAI implant persistence",
+   "comment": "KQL hunt: CyberStrikeAI implant persistence and the file names seen in real attacks; Sentinel analytics: CyberStrikeAI implant persistence; Sigma: CyberStrikeAI Implant Windows Persistence Named SystemUpdate",
    "enabled": true,
-   "score": 2,
+   "score": 3,
    "showSubtechniques": true,
    "techniqueID": "T1053.005"
   },
   {
-   "comment": "CyberStrikeAI webshell manager or OS probe",
+   "comment": "Sentinel analytics: CyberStrikeAI webshell manager or OS probe",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1059"
   },
   {
-   "comment": "CyberStrikeAI Implant Linux Persistence or curl Beacon; CyberStrikeAI User Agents or Implant Check-in in Proxy Logs",
+   "comment": "YARA: CyberStrikeAI_Curl_Beacon_Script",
    "enabled": true,
-   "score": 2,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1059.004"
+  },
+  {
+   "comment": "KQL hunt: Indicator sweep with the agentic watchlist; Suricata: 3804500 TD CyberStrikeAI reported address, AI-run AWS intrusion from a CyberStrikeAI server, CyberStrikeAI console (CN=CyberStrikeAI certificate, title CyberStrikeAI, port 8080) and source of every AWS API call in an intrusion that used eight AWS identities across four accounts, Sep 30 to Oct 16, 2026 (AS133199, Hong Kong) (outbound); Suricata: 3804502 TD CyberStrikeAI reported address, AI-run AWS intrusion from a CyberStrikeAI server, CyberStrikeAI console in the same /24 serving the same certificate as 43.240.29.11, not seen in the AWS activity (outbound); Suricata: 3804504 TD CyberStrikeAI reported address, CyberStrikeAI attacks on education organizations (Africa, Latin America), C2 for payload delivery and the CyberStrikeAI Linux beacon (outbound); Suricata: 3804506 TD CyberStrikeAI reported address, CyberStrikeAI attacks on education organizations (Africa, Latin America), C2 for the CyberStrikeAI Windows beacon and target of the p1.ps1 reverse shell on port 5501 (outbound); Suricata: 3804508 TD CyberStrikeAI reported address, CyberStrikeAI operators, CyberStrikeAI console seen by ONYPHE (favicon SHA-256 and title match). An exposed console is not proof of malicious use (outbound); Suricata: 3804536 TD CyberStrikeAI reported address, CyberStrikeAI operators, Exposed CyberStrikeAI workspace served on TCP 8010 (/CyberStrikeAI/data/conversations.db) after a session of 221 tool runs with the approval gate turned off, Nov 16, 2026. The operator and authorization are unknown (outbound)",
+   "enabled": true,
+   "score": 7,
+   "showSubtechniques": true,
+   "techniqueID": "T1071"
+  },
+  {
+   "comment": "KQL hunt: A CyberStrikeAI console on a host you monitor, or behind your proxy; KQL hunt: CyberStrikeAI implant check-ins: five seconds, no jitter, fixed headers; Sigma: CyberStrikeAI Implant Linux Persistence or curl Beacon; Sigma: CyberStrikeAI User Agents or Implant Check-in in Proxy Logs; Suricata: 3804005 TD CyberStrikeAI console user agent; Suricata: 3804006 TD CyberStrikeAI console self-signed certificate; Suricata: 3804010 TD CyberStrikeAI implant token header; Suricata: 3804011 TD CyberStrikeAI implant session header with check-in; Suricata: 3804012 TD CyberStrikeAI implant task poll; Suricata: 3804013 TD CyberStrikeAI implant default user agent (truncated Chrome string); YARA: CyberStrikeAI_Curl_Beacon_Script; YARA: CyberStrikeAI_Implant; Zeek notice: CyberStrikeAI::Console_Certificate; Zeek notice: CyberStrikeAI::Console_User_Agent; Zeek notice: CyberStrikeAI::Implant_Checkin; Zeek notice: CyberStrikeAI::Implant_User_Agent",
+   "enabled": true,
+   "score": 16,
    "showSubtechniques": true,
    "techniqueID": "T1071.001"
   },
   {
-   "comment": "CyberStrikeAI Webshell OS Probe Command",
+   "comment": "KQL hunt: CyberStrikeAI webshell manager driving a webshell on your servers; Sigma: CyberStrikeAI Webshell OS Probe Command; Suricata: 3804002 TD CyberStrikeAI webshell OS probe in URI; Suricata: 3804003 TD CyberStrikeAI webshell OS probe in request body; Suricata: 3804004 TD CyberStrikeAI webshell OS probe answered by a Windows server; Zeek notice: CyberStrikeAI::OS_Probe; Zeek notice: CyberStrikeAI::OS_Probe_Answered",
    "enabled": true,
-   "score": 1,
+   "score": 7,
    "showSubtechniques": true,
    "techniqueID": "T1082"
   },
   {
-   "comment": "CyberStrikeAI Webshell Manager User Agent or OS Probe in Web Logs; CyberStrikeAI Webshell OS Probe Command; CyberStrikeAI webshell manager or OS probe",
+   "comment": "KQL hunt: CyberStrikeAI implant check-ins: five seconds, no jitter, fixed headers; Suricata: 3804014 TD CyberStrikeAI TCP implant magic CSB1; YARA: CyberStrikeAI_Implant; Zeek notice: CyberStrikeAI::TCP_Implant",
    "enabled": true,
-   "score": 3,
+   "score": 4,
+   "showSubtechniques": true,
+   "techniqueID": "T1095"
+  },
+  {
+   "comment": "KQL hunt: CyberStrikeAI webshell manager driving a webshell on your servers; Sentinel analytics: CyberStrikeAI webshell manager or OS probe; Sigma: CyberStrikeAI Webshell Manager User Agent or OS Probe in Web Logs; Sigma: CyberStrikeAI Webshell OS Probe Command; Suricata: 3804001 TD CyberStrikeAI webshell manager user agent; Suricata: 3804002 TD CyberStrikeAI webshell OS probe in URI; Suricata: 3804003 TD CyberStrikeAI webshell OS probe in request body; Suricata: 3804004 TD CyberStrikeAI webshell OS probe answered by a Windows server; Zeek notice: CyberStrikeAI::OS_Probe; Zeek notice: CyberStrikeAI::OS_Probe_Answered; Zeek notice: CyberStrikeAI::Webshell_Manager",
+   "enabled": true,
+   "score": 11,
    "showSubtechniques": true,
    "techniqueID": "T1505.003"
   },
   {
-   "comment": "CyberStrikeAI Implant LaunchAgent com.apple.systemupdate; CyberStrikeAI implant persistence",
+   "comment": "KQL hunt: CyberStrikeAI implant persistence and the file names seen in real attacks; Sentinel analytics: CyberStrikeAI implant persistence; Sigma: CyberStrikeAI Implant LaunchAgent com.apple.systemupdate; YARA: CyberStrikeAI_Persistence_Artifacts",
    "enabled": true,
-   "score": 2,
+   "score": 4,
    "showSubtechniques": true,
    "techniqueID": "T1543.001"
   },
   {
-   "comment": "CyberStrikeAI implant persistence",
+   "comment": "KQL hunt: CyberStrikeAI implant persistence and the file names seen in real attacks; Sentinel analytics: CyberStrikeAI implant persistence; YARA: CyberStrikeAI_Persistence_Artifacts",
    "enabled": true,
-   "score": 1,
+   "score": 3,
    "showSubtechniques": true,
    "techniqueID": "T1546.004"
   },
   {
-   "comment": "CyberStrikeAI Implant Run Key Value SystemUpdate; CyberStrikeAI Implant Windows Persistence Named SystemUpdate; CyberStrikeAI implant persistence",
+   "comment": "KQL hunt: CyberStrikeAI implant persistence and the file names seen in real attacks; Sentinel analytics: CyberStrikeAI implant persistence; Sigma: CyberStrikeAI Implant Run Key Value SystemUpdate; Sigma: CyberStrikeAI Implant Windows Persistence Named SystemUpdate",
    "enabled": true,
-   "score": 3,
+   "score": 4,
    "showSubtechniques": true,
    "techniqueID": "T1547.001"
+  },
+  {
+   "comment": "Suricata: 3804006 TD CyberStrikeAI console self-signed certificate; Zeek notice: CyberStrikeAI::Console_Certificate",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1587.003"
+  },
+  {
+   "comment": "KQL hunt: A CyberStrikeAI console on a host you monitor, or behind your proxy; YARA: CyberStrikeAI_Console",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1588.002"
+  },
+  {
+   "comment": "KQL hunt: Indicator sweep with the agentic watchlist; Suricata: 3804501 TD CyberStrikeAI reported address, AI-run AWS intrusion from a CyberStrikeAI server, CyberStrikeAI console (CN=CyberStrikeAI certificate, title CyberStrikeAI, port 8080) and source of every AWS API call in an intrusion that used eight AWS identities across four accounts, Sep 30 to Oct 16, 2026 (AS133199, Hong Kong) (inbound); Suricata: 3804503 TD CyberStrikeAI reported address, AI-run AWS intrusion from a CyberStrikeAI server, CyberStrikeAI console in the same /24 serving the same certificate as 43.240.29.11, not seen in the AWS activity (inbound); Suricata: 3804505 TD CyberStrikeAI reported address, CyberStrikeAI attacks on education organizations (Africa, Latin America), C2 for payload delivery and the CyberStrikeAI Linux beacon (inbound); Suricata: 3804507 TD CyberStrikeAI reported address, CyberStrikeAI attacks on education organizations (Africa, Latin America), C2 for the CyberStrikeAI Windows beacon and target of the p1.ps1 reverse shell on port 5501 (inbound); Suricata: 3804509 TD CyberStrikeAI reported address, CyberStrikeAI operators, CyberStrikeAI console seen by ONYPHE (favicon SHA-256 and title match). An exposed console is not proof of malicious use (inbound); Suricata: 3804537 TD CyberStrikeAI reported address, CyberStrikeAI operators, Exposed CyberStrikeAI workspace served on TCP 8010 (/CyberStrikeAI/data/conversations.db) after a session of 221 tool runs with the approval gate turned off, Nov 16, 2026. The operator and authorization are unknown (inbound)",
+   "enabled": true,
+   "score": 7,
+   "showSubtechniques": true,
+   "techniqueID": "T1595"
   }
  ],
  "versions": {
-  "attack": "17",
+  "attack": "20",
   "layer": "4.5",
   "navigator": "5.1.0"
  }

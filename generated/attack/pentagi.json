@@ -1,51 +1,113 @@
 {
- "description": "33 rules from https://github.com/ThreatDefence/agentic-attack-detections",
+ "description": "33 rules from https://github.com/ThreatDefence/agentic-attack-detections, checked against ATT&CK 20.1. Score: the number of rules that name the technique.",
  "domain": "enterprise-attack",
  "gradient": {
   "colors": [
    "#ffe9e9",
    "#dc2626"
   ],
-  "maxValue": 2,
+  "maxValue": 9,
   "minValue": 0
  },
  "hideDisabled": false,
  "legendItems": [],
+ "links": [
+  {
+   "label": "Rules",
+   "url": "https://github.com/ThreatDefence/agentic-attack-detections"
+  }
+ ],
  "name": "pentagi",
  "selectTechniquesAcrossTactics": true,
- "showTacticsRow": false,
+ "showTacticsRow": true,
  "techniques": [
   {
-   "comment": "PentAGI agent command wrapper on a host; PentAGI update check from your network",
+   "comment": "Sentinel analytics: PentAGI agent command wrapper on a host; Sentinel analytics: PentAGI update check from your network",
    "enabled": true,
    "score": 2,
    "showSubtechniques": true,
    "techniqueID": "T1046"
   },
   {
-   "comment": "PentAGI Agent Command Wrapper; PentAGI agent command wrapper on a host",
+   "comment": "KQL hunt: PentAGI server and worker containers on a host you monitor; Sentinel analytics: PentAGI agent command wrapper on a host; Sigma: PentAGI Agent Command Wrapper; YARA: PentAGI_Agent_Command_Wrapper",
    "enabled": true,
-   "score": 2,
+   "score": 4,
    "showSubtechniques": true,
    "techniqueID": "T1059.004"
   },
   {
-   "comment": "PentAGI Console API Requested Through a Proxy; PentAGI update check from your network",
+   "comment": "KQL hunt: Indicator sweep; KQL hunt: Indicator sweep with the agentic watchlist; Suricata: 3802500 TD PentAGI reported address, PaperCut exploitation operator (Hunt.io), Orchestration host of a PaperCut exploitation operator, presented a PentAGI CA certificate on port 33333 from April 7 to July 6, 2026 (outbound); Suricata: 3802502 TD PentAGI reported address, Unattributed console operators, ARTEX and PentAGI consoles on one server, ports 8443 and 8787. An exposed console is not proof of malicious use (outbound); Suricata: 3802504 TD PentAGI reported address, Unattributed console operators, Exposed PentAGI console renamed xhackai, port 8443. An exposed console is not proof of malicious use (outbound); Suricata: 3802506 TD PentAGI reported address, Unattributed console operators, Exposed PentAGI console, port 8443. An exposed console is not proof of malicious use (outbound); Suricata: 3802508 TD PentAGI reported address, Unattributed console operators, Exposed renamed PentAGI console, port 18089. An exposed console is not proof of malicious use (outbound)",
    "enabled": true,
-   "score": 2,
+   "score": 7,
+   "showSubtechniques": true,
+   "techniqueID": "T1071"
+  },
+  {
+   "comment": "KQL hunt: PentAGI console and update traffic in your outbound proxy logs; Sentinel analytics: PentAGI update check from your network; Sigma: PentAGI Console API Requested Through a Proxy; Suricata: 3802001 TD PentAGI console self-signed certificate (PentAGI CA); Suricata: 3802002 TD PentAGI console certificate subject O=PentAGI; Suricata: 3802004 TD PentAGI update service in TLS SNI; Suricata: 3802010 TD PentAGI Swagger UI served; Suricata: 3802011 TD PentAGI console page title; Suricata: 3802012 TD PentAGI update check request",
+   "enabled": true,
+   "score": 9,
    "showSubtechniques": true,
    "techniqueID": "T1071.001"
   },
   {
-   "comment": "DNS Query for the PentAGI Update Service",
+   "comment": "Sigma: DNS Query for the PentAGI Update Service; Suricata: 3802003 TD PentAGI update service lookup",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1071.004"
+  },
+  {
+   "comment": "Suricata: 3802030 TD Outbound connection to PentAGI worker port range 28000-29999",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
-   "techniqueID": "T1071.004"
+   "techniqueID": "T1571"
+  },
+  {
+   "comment": "Suricata: 3802001 TD PentAGI console self-signed certificate (PentAGI CA); Suricata: 3802002 TD PentAGI console certificate subject O=PentAGI",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1587.003"
+  },
+  {
+   "comment": "KQL hunt: PentAGI server and worker containers on a host you monitor; YARA: PentAGI_Server_Binary_Or_Source",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1588.002"
+  },
+  {
+   "comment": "Suricata: 3802020 TD PentAGI pre-authorization prompt in model request; Suricata: 3802021 TD PentAGI reflector prompt in model request; YARA: PentAGI_Prompt_Templates",
+   "enabled": true,
+   "score": 3,
+   "showSubtechniques": true,
+   "techniqueID": "T1588.007"
+  },
+  {
+   "comment": "KQL hunt: Every page fetched twice at once: PentAGI's browser tool reading your application",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1594"
+  },
+  {
+   "comment": "KQL hunt: Indicator sweep; KQL hunt: Indicator sweep with the agentic watchlist; Suricata: 3802501 TD PentAGI reported address, PaperCut exploitation operator (Hunt.io), Orchestration host of a PaperCut exploitation operator, presented a PentAGI CA certificate on port 33333 from April 7 to July 6, 2026 (inbound); Suricata: 3802503 TD PentAGI reported address, Unattributed console operators, ARTEX and PentAGI consoles on one server, ports 8443 and 8787. An exposed console is not proof of malicious use (inbound); Suricata: 3802505 TD PentAGI reported address, Unattributed console operators, Exposed PentAGI console renamed xhackai, port 8443. An exposed console is not proof of malicious use (inbound); Suricata: 3802507 TD PentAGI reported address, Unattributed console operators, Exposed PentAGI console, port 8443. An exposed console is not proof of malicious use (inbound); Suricata: 3802509 TD PentAGI reported address, Unattributed console operators, Exposed renamed PentAGI console, port 18089. An exposed console is not proof of malicious use (inbound)",
+   "enabled": true,
+   "score": 7,
+   "showSubtechniques": true,
+   "techniqueID": "T1595"
+  },
+  {
+   "comment": "Suricata: 3802020 TD PentAGI pre-authorization prompt in model request; YARA: PentAGI_Prompt_Templates",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1699"
   }
  ],
  "versions": {
-  "attack": "17",
+  "attack": "20",
   "layer": "4.5",
   "navigator": "5.1.0"
  }

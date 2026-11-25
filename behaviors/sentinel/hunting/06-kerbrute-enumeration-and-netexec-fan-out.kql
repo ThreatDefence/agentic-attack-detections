@@ -1,5 +1,6 @@
 // Kerberos user enumeration and SMB or WinRM fan-out from one address
 // Agentic attack detections by ThreatDefence (cross-framework behavior, first written for Cairn). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1087.002 (Account Discovery: Domain Account), T1110.003 (Brute Force: Password Spraying), T1021.002 (Remote Services: SMB/Windows Admin Shares), T1021.006 (Remote Services: Windows Remote Management)
 // Example hunt for Microsoft Sentinel. Test and baseline before alerting.
 // From the Cairn source code. The worker image ships kerbrute 1.0.3, netexec, bloodyAD, coercer, enum4linux-ng,
 // Impacket and chisel, and the workspace guide tells the agent that "level 4" targets are Active Directory networks

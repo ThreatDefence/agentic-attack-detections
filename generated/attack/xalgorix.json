@@ -1,51 +1,85 @@
 {
- "description": "17 rules from https://github.com/ThreatDefence/agentic-attack-detections",
+ "description": "17 rules from https://github.com/ThreatDefence/agentic-attack-detections, checked against ATT&CK 20.1. Score: the number of rules that name the technique.",
  "domain": "enterprise-attack",
  "gradient": {
   "colors": [
    "#ffe9e9",
    "#dc2626"
   ],
-  "maxValue": 1,
+  "maxValue": 8,
   "minValue": 0
  },
  "hideDisabled": false,
  "legendItems": [],
+ "links": [
+  {
+   "label": "Rules",
+   "url": "https://github.com/ThreatDefence/agentic-attack-detections"
+  }
+ ],
  "name": "xalgorix",
  "selectTechniquesAcrossTactics": true,
- "showTacticsRow": false,
+ "showTacticsRow": true,
  "techniques": [
   {
-   "comment": "Xalgorix Agent on a Host",
+   "comment": "Sigma: Xalgorix Agent on a Host",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1059.004"
   },
   {
-   "comment": "Xalgorix Verifier Marker or Canary in Web Logs",
+   "comment": "KQL hunt: Indicator sweep with the agentic watchlist",
    "enabled": true,
    "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1071"
+  },
+  {
+   "comment": "Suricata: 3809007 TD Xalgorix callback listener answer; Suricata: 3809008 TD Xalgorix console page; Suricata: 3809009 TD Xalgorix console theme script (survives a renamed title); Suricata: 3809010 TD Xalgorix console session cookie",
+   "enabled": true,
+   "score": 4,
+   "showSubtechniques": true,
+   "techniqueID": "T1071.001"
+  },
+  {
+   "comment": "KQL hunt: Xalgorix testing you: its verifier paths, canary and user agents in web and proxy logs; Sigma: Xalgorix Verifier Marker or Canary in Web Logs; Suricata: 3809001 TD Xalgorix verifier path marker; Suricata: 3809002 TD Xalgorix XXE verifier marker; Suricata: 3809003 TD Xalgorix reflection canary in URI; Suricata: 3809004 TD Xalgorix reflection canary in request body; Suricata: 3809005 TD Xalgorix CSRF verifier origin",
+   "enabled": true,
+   "score": 7,
    "showSubtechniques": true,
    "techniqueID": "T1190"
   },
   {
-   "comment": "Xalgorix Configuration, Service or Scan Data Written",
+   "comment": "Sigma: Xalgorix Configuration, Service or Scan Data Written",
    "enabled": true,
    "score": 1,
    "showSubtechniques": true,
    "techniqueID": "T1543.002"
   },
   {
-   "comment": "Xalgorix Verifier Marker or Canary in Web Logs",
+   "comment": "KQL hunt: Xalgorix on a host you monitor; YARA: Xalgorix_Binary_Or_Source",
+   "enabled": true,
+   "score": 2,
+   "showSubtechniques": true,
+   "techniqueID": "T1588.002"
+  },
+  {
+   "comment": "KQL hunt: Indicator sweep with the agentic watchlist",
    "enabled": true,
    "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1595"
+  },
+  {
+   "comment": "KQL hunt: Xalgorix testing you: its verifier paths, canary and user agents in web and proxy logs; Sigma: Xalgorix Verifier Marker or Canary in Web Logs; Suricata: 3809001 TD Xalgorix verifier path marker; Suricata: 3809002 TD Xalgorix XXE verifier marker; Suricata: 3809003 TD Xalgorix reflection canary in URI; Suricata: 3809004 TD Xalgorix reflection canary in request body; Suricata: 3809005 TD Xalgorix CSRF verifier origin; Suricata: 3809006 TD Xalgorix user agent",
+   "enabled": true,
+   "score": 8,
    "showSubtechniques": true,
    "techniqueID": "T1595.002"
   }
  ],
  "versions": {
-  "attack": "17",
+  "attack": "20",
   "layer": "4.5",
   "navigator": "5.1.0"
  }

@@ -1,5 +1,6 @@
 // RedAmon scanning you: its user agents, canaries and ownership lookup in web, proxy and DNS logs
 // Agentic attack detections by ThreatDefence (RedAmon). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1595.002 (Active Scanning: Vulnerability Scanning), T1190 (Exploit Public-Facing Application)
 // Example hunt for Microsoft Sentinel. Test and baseline before alerting.
 // From the RedAmon source code (samugit83/redamon, reviewed at 73ca9d38):
 //  - User agents that name it: RedAmon-AISurfaceRecon/1.0 (on by default, probes model API and MCP paths),

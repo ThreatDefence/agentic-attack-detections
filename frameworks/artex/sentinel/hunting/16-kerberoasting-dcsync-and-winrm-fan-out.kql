@@ -1,5 +1,6 @@
 // Kerberoasting, DCSync and WinRM fan-out
 // Agentic attack detections by ThreatDefence (ARTEX). Source: https://threatdefence.com/article/artex-agentic-attack-framework-detection-hunting
+// ATT&CK: T1558.003 (Steal or Forge Kerberos Tickets: Kerberoasting), T1003.006 (OS Credential Dumping: DCSync), T1021.006 (Remote Services: Windows Remote Management)
 // Example hunt for Microsoft Sentinel and Defender XDR advanced hunting. Test and baseline before alerting.
 // Event 4662 is only written where directory service access auditing is turned on. Add your directory synchronization accounts to the exclusion in the second query.
 // ## Detection rules to keep

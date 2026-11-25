@@ -9,6 +9,7 @@ rule AgentZero_Hacker_Profile
 {
     meta:
         description = "Agent Zero hacker agent profile prompts (agents/hacker), or a copy that keeps them"
+        mitre_att = "T1588.002, T1588.007"
         author = "ThreatDefence"
         date = "2026-11-21"
         reference = "https://github.com/agent0ai/agent-zero/tree/main/agents/hacker"

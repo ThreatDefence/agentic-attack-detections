@@ -10,6 +10,7 @@ rule Hermes_Carbonato_GH0ST_Persona
 {
     meta:
         description = "SOUL.md persona the Carbonato botnet writes over /root/.hermes/SOUL.md"
+        mitre_att = "T1699"
         author = "ThreatDefence"
         date = "2026-11-21"
         reference = "https://www.threatdown.com/blog/carbonato/"
@@ -27,6 +28,7 @@ rule Hermes_Red_Team_Operator_Persona
 {
     meta:
         description = "Hermes SOUL.md persona titled SOUL - Red Team Operator, as in the Gambit retail card-theft campaign"
+        mitre_att = "T1699"
         author = "ThreatDefence"
         date = "2026-11-21"
         reference = "https://gambit.security/blog-posts/autonomous-ai-agents-online-retailers-25-a-company"
@@ -41,6 +43,7 @@ rule Hermes_Godmode_Jailbreak_Installed
 {
     meta:
         description = "Hermes godmode jailbreak skill installed or made persistent. Scan ~/.hermes (installed skills, config.yaml, prefill.json); the skill ships in the Hermes source under optional-skills, which matches by design"
+        mitre_att = "T1699"
         author = "ThreatDefence"
         date = "2026-11-21"
         reference = "https://github.com/NousResearch/hermes-agent/tree/main/optional-skills/security/godmode"
@@ -60,6 +63,7 @@ rule Carbonato_Docker_Worm_Script
 {
     meta:
         description = "Carbonato worm or entry script: privileged host-mount container through the Docker API and nsenter into the host"
+        mitre_att = "T1610, T1611"
         author = "ThreatDefence"
         date = "2026-11-21"
         reference = "https://www.threatdown.com/blog/carbonato/"

@@ -1,5 +1,6 @@
 // Carbonato: a Docker worm that turns exposed Docker hosts into Telegram-controlled Hermes agents
 // Agentic attack detections by ThreatDefence (Hermes Agent). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1610 (Deploy Container), T1611 (Escape to Host), T1102.002 (Web Service: Bidirectional Communication)
 // Example hunt for Defender XDR advanced hunting with proxy or firewall logs. Test before alerting.
 // ThreatDown (September 22, 2026). Carbonato finds Docker APIs open on 2375, then:
 //  - POST /containers/create?name=netns-probe with alpine, Privileged true, Binds /:/host, PidMode and NetworkMode host,

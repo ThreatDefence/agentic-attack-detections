@@ -1,5 +1,6 @@
 // A CyberStrikeAI console on a host you monitor, or behind your proxy
 // Agentic attack detections by ThreatDefence (CyberStrikeAI). Source: https://github.com/ThreatDefence/agentic-attack-detections
+// ATT&CK: T1588.002 (Obtain Capabilities: Tool), T1071.001 (Application Layer Protocol: Web Protocols)
 // Example hunt for Defender XDR advanced hunting with proxy logs in Microsoft Sentinel. Test before alerting.
 // From the CyberStrikeAI source code. The console is one Go binary, cyberstrike-ai (run.sh:93), that:
 //  - listens on 0.0.0.0:8080 with a self-signed certificate CN=CyberStrikeAI made at every start (config.example.yaml,
