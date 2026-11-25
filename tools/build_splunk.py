@@ -244,6 +244,18 @@ def annotations(techniques):
     return json.dumps({"mitre_attack": techniques}, separators=(", ", ": "))
 
 
+def fix_or_with_regex(spl):
+    """Repair the Splunk backend's output for an OR whose first branch is a plain term and a later one a regex.
+
+    The backend keeps the plain term as the base search and starts the final `search` with a bare OR, which
+    Splunk refuses, and which would drop the other branches anyway. Move the term into that `search`.
+    """
+    head, nl, rest = spl.partition("\n")
+    if not nl or head.lstrip().startswith("|") or "\n| search OR " not in rest:
+        return spl
+    return rest.replace("\n| search OR ", f"\n| search ({head.strip()}) OR ", 1)
+
+
 def sigma_searches():
     from sigma.backends.splunk import SplunkBackend
     from sigma.collection import SigmaCollection
@@ -290,6 +302,7 @@ def sigma_searches():
         if not spl:
             raise SystemExit(f"{path}: the Splunk backend returned no query")
         spl = str(spl[-1]) if isinstance(rule, SigmaCorrelationRule) else "\n".join(map(str, spl))
+        spl = fix_or_with_regex(spl)
         key = logsource.category if logsource.category in SOURCE_MACRO else (logsource.product, logsource.service)
         macro = SOURCE_MACRO.get(key)
         if not macro:
