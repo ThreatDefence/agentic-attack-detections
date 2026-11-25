@@ -64,9 +64,16 @@ def pipelines():
             ProcessingItem(identifier=f"ecs_{category}_fields", transformation=FieldMappingTransformation(fields),
                            rule_conditions=[LogsourceCondition(category=category)])
             for category, fields in network_fields.items()])
+        # Elasticsearch regexes and keyword fields differ from Sigma's: see elastic_values.py.
+        from sigma.processing.conditions import IncludeFieldCondition
+        from elastic_values import HOST_FIELDS, CaseFoldTransformation, LuceneRegexTransformation
+        values_pipeline = ProcessingPipeline(name="Sigma regexes and host name case in Elasticsearch", priority=40, items=[
+            ProcessingItem(identifier="ecs_lucene_regex", transformation=LuceneRegexTransformation()),
+            ProcessingItem(identifier="ecs_host_case", transformation=CaseFoldTransformation(),
+                           field_name_conditions=[IncludeFieldCondition(fields=HOST_FIELDS)])])
         return ecs_windows() + ProcessingPipeline(name="ECS process fields for non-Windows rules", priority=30, items=[
             ProcessingItem(identifier="ecs_process_fields", transformation=FieldMappingTransformation(process_fields),
-                           rule_conditions=[LogsourceCondition(category="process_creation")])]) + network_pipeline
+                           rule_conditions=[LogsourceCondition(category="process_creation")])]) + network_pipeline + values_pipeline
 
     return {
         "splunk": (SplunkBackend, [("splunk_windows", splunk_windows_pipeline()), ("raw fields", None)]),

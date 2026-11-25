@@ -1,3 +1,3 @@
 # DNS Query for Payload Hosts Active in ARTEX Operator Toolkits
 # Sigma id bfe42b74-3709-50d9-ab8c-33f20bd53185, pipeline ecs
-(dns.question.name:(vietnam852.com OR zhzy999.net OR jiancai008.com)) OR (dns.question.name:(*.vietnam852.com OR *.zhzy999.net OR *.jiancai008.com))
+(dns.question.name:/[vV][iI][eE][tT][nN][aA][mM]852\.[cC][oO][mM]/ OR dns.question.name:/[zZ][hH][zZ][yY]999\.[nN][eE][tT]/ OR dns.question.name:/[jJ][iI][aA][nN][cC][aA][iI]008\.[cC][oO][mM]/) OR (dns.question.name:/.*\.[vV][iI][eE][tT][nN][aA][mM]852\.[cC][oO][mM]/ OR dns.question.name:/.*\.[zZ][hH][zZ][yY]999\.[nN][eE][tT]/ OR dns.question.name:/.*\.[jJ][iI][aA][nN][cC][aA][iI]008\.[cC][oO][mM]/)

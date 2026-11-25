@@ -1,3 +1,3 @@
 # Strix AI Pentest Agent CLI or Sandbox
 # Sigma id f15a6887-4f5c-590b-bfe3-829a57781f3b, pipeline ecs
-process.command_line:/(^|[\/\\\s])strix(\.exe)?["']?\s(.*\s)?(--target|-t|--target-list|--scan-mode|--resume)[\s=]/ OR process.command_line:/((pip|pip3|pipx)\s+install|uv\s+(tool\s+install|tool\s+run|pip\s+install)|uvx)\s(.*\s)?[\"']?strix-agent/ OR process.command_line:*usestrix\/strix\-sandbox* OR (process.command_line:*caido\-cli* AND process.command_line:*\-\-allow\-guests*)
+process.command_line:/(.*([\/\\ ]))?strix(\.exe)?["']?[ ](.*[ ])?(--target|-t|--target-list|--scan-mode|--resume)[ =].*/ OR process.command_line:/.*((pip|pip3|pipx)[ ]+install|uv[ ]+(tool[ ]+install|tool[ ]+run|pip[ ]+install)|uvx)[ ](.*[ ])?[\"']?strix-agent.*/ OR process.command_line:*usestrix\/strix\-sandbox* OR (process.command_line:*caido\-cli* AND process.command_line:*\-\-allow\-guests*)

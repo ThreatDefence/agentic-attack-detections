@@ -1,3 +1,3 @@
 # DNS Query for Payload Hosts Active in ARTEX Operator Toolkits
 # Sigma id bfe42b74-3709-50d9-ab8c-33f20bd53185, pipeline ecs
-from * metadata _id, _index, _version | where dns.question.name in ("vietnam852.com", "zhzy999.net", "jiancai008.com") or ends_with(dns.question.name, ".vietnam852.com") or ends_with(dns.question.name, ".zhzy999.net") or ends_with(dns.question.name, ".jiancai008.com")
+from * metadata _id, _index, _version | where dns.question.name rlike "[vV][iI][eE][tT][nN][aA][mM]852\\.[cC][oO][mM]" or dns.question.name rlike "[zZ][hH][zZ][yY]999\\.[nN][eE][tT]" or dns.question.name rlike "[jJ][iI][aA][nN][cC][aA][iI]008\\.[cC][oO][mM]" or dns.question.name rlike ".*\\.[vV][iI][eE][tT][nN][aA][mM]852\\.[cC][oO][mM]" or dns.question.name rlike ".*\\.[zZ][hH][zZ][yY]999\\.[nN][eE][tT]" or dns.question.name rlike ".*\\.[jJ][iI][aA][nN][cC][aA][iI]008\\.[cC][oO][mM]"

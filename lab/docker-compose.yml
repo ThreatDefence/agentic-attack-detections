@@ -1,0 +1,67 @@
+# Splunk, Elasticsearch and Kibana for trying the detections by hand. Start it with lab/lab.sh up, not directly:
+# the script writes lab/.env (passwords, HEC token) and packages the Splunk apps first.
+name: aad-lab
+
+services:
+  splunk:
+    image: ${SPLUNK_IMAGE:-splunk/splunk:10.6.2}
+    platform: linux/amd64          # Splunk publishes amd64 only; on Apple silicon Docker runs it under emulation
+    container_name: aad-splunk
+    environment:
+      SPLUNK_START_ARGS: --accept-license
+      SPLUNK_GENERAL_TERMS: --accept-sgt-current-at-splunk-com
+      SPLUNK_PASSWORD: ${SPLUNK_PASSWORD:?run lab/lab.sh up}
+      SPLUNK_HEC_TOKEN: ${SPLUNK_HEC_TOKEN:?run lab/lab.sh up}
+      SPLUNK_APPS_URL: /tmp/apps/agentic-attack-detections-splunk.tgz,/tmp/apps/aad-test.tgz
+    ports:
+      - "127.0.0.1:8000:8000"      # web UI
+      - "127.0.0.1:8088:8088"      # HTTP Event Collector
+      - "127.0.0.1:8089:8089"      # REST API
+    volumes:
+      - ./.build/splunk:/tmp/apps:ro
+      - splunk-etc:/opt/splunk/etc
+      - splunk-var:/opt/splunk/var
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION:-9.5.5}
+    container_name: aad-elasticsearch
+    environment:
+      discovery.type: single-node
+      ELASTIC_PASSWORD: ${ELASTIC_PASSWORD:?run lab/lab.sh up}
+      xpack.security.enabled: "true"
+      xpack.security.http.ssl.enabled: "false"   # local lab on 127.0.0.1 only
+      xpack.license.self_generated.type: basic
+      ES_JAVA_OPTS: -Xms1g -Xmx1g
+    ports:
+      - "127.0.0.1:9200:9200"
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s -u elastic:$$ELASTIC_PASSWORD http://localhost:9200/_cluster/health | grep -qE '\"status\":\"(green|yellow)\"'"]
+      interval: 10s
+      retries: 60
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:${ELASTIC_VERSION:-9.5.5}
+    container_name: aad-kibana
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    environment:
+      ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+      ELASTICSEARCH_USERNAME: kibana_system
+      ELASTICSEARCH_PASSWORD: ${KIBANA_PASSWORD:?run lab/lab.sh up}
+      XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY: ${KIBANA_ENCRYPTION_KEY:?run lab/lab.sh up}
+      XPACK_SECURITY_ENCRYPTIONKEY: ${KIBANA_ENCRYPTION_KEY}
+      XPACK_REPORTING_ENCRYPTIONKEY: ${KIBANA_ENCRYPTION_KEY}
+      TELEMETRY_OPTIN: "false"
+    ports:
+      - "127.0.0.1:5601:5601"
+    volumes:
+      - kibana-data:/usr/share/kibana/data
+
+volumes:
+  splunk-etc:
+  splunk-var:
+  es-data:
+  kibana-data:

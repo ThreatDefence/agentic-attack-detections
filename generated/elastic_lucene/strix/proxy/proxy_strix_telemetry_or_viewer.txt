@@ -1,3 +1,3 @@
 # Strix Telemetry or Results Viewer API in Proxy Logs
 # Sigma id f1843b28-3a9b-53c5-9f55-ca93f9d46d01, pipeline ecs
-(url.domain:(strix.gateway.scarf.sh OR *.strix.gateway.scarf.sh)) OR url.original:*\/api\/agents\/steer*
+(url.domain:/[sS][tT][rR][iI][xX]\.[gG][aA][tT][eE][wW][aA][yY]\.[sS][cC][aA][rR][fF]\.[sS][hH]/ OR url.domain:/.*\.[sS][tT][rR][iI][xX]\.[gG][aA][tT][eE][wW][aA][yY]\.[sS][cC][aA][rR][fF]\.[sS][hH]/) OR url.original:*\/api\/agents\/steer*

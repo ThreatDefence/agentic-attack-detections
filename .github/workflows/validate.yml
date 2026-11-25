@@ -22,6 +22,8 @@ jobs:
           echo /opt/zeek/bin >> "$GITHUB_PATH"
       - name: Test IOC confidence, expiry and SID policy
         run: python3 -m unittest discover -s tests/feeds -p 'test_*.py' -v
+      - name: Test the Elastic regex and case rewrites
+        run: python3 -m unittest discover -s tests/elastic -p 'test_*.py' -v
       - name: Validate rules, queries and feeds
         run: python tools/validate.py
       - name: Check Sigma rules against test events
@@ -96,6 +98,25 @@ jobs:
           docker inspect -f '{{.State.Health.Status}}' splunk | grep -qx healthy || { docker logs splunk | tail -50; exit 1; }
       - name: Run the searches against test events
         run: python tests/splunk/run_tests.py --url https://localhost:8089 --hec https://localhost:8088
+
+  elastic:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Install tools
+        run: pip install -r tools/requirements.txt
+      - name: Start Elasticsearch and Kibana
+        run: lab/lab.sh up elastic
+      - name: Run the rules against test events and import them into Kibana
+        run: |
+          set -a; . lab/.env; set +a
+          python tests/elastic/run_tests.py
+      - name: Kibana log on failure
+        if: failure()
+        run: docker logs aad-kibana 2>&1 | tail -80
 
   waf-iac:
     runs-on: ubuntu-24.04

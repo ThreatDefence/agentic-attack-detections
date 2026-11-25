@@ -202,6 +202,7 @@ python3 tools/validate.py                              # Sigma, KQL, ES|QL, TOML
 python3 -m unittest discover -s tests/feeds            # indicator confidence, expiry and SID policy
 python3 tests/sigma/run_tests.py                       # Sigma rules against test events
 python3 tests/kql/run_tests.py                         # hunts and analytics against sample rows; needs the Kusto emulator
+lab/lab.sh up && lab/lab.sh test                       # Splunk and Elastic in Docker, every rule against test events: lab/README.md
 python3 tools/convert.py                               # regenerate generated/
 python3 tools/build_waf.py                             # regenerate waf/
 python3 tests/waf/run_tests.py                         # offline checks of the WAF rules on every platform
