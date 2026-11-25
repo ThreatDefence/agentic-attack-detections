@@ -8,6 +8,14 @@ Open-source detection rules, hunting queries and indicators for security teams. 
 
 Free to use under the MIT license. Fixes, false-positive reports and new indicators are welcome.
 
+## Status as of 25 Nov 2026
+
+This project now tracks exposure as well as detection: which of these frameworks have consoles reachable on the internet, how many there are, and how the numbers move over time.
+
+![Active offensive agents by framework on 25 November 2026](docs/images/exposure-status-2026-11-25.png)
+
+The image counts every agent found since 21 October 2026, across 25 public frameworks. The [table below](#exposed-consoles) is stricter: it counts hosts seen in the last seven days and leaves out honeypots, so its numbers are lower. An exposed console is not proof of an attack.
+
 ## What is here
 
 - **Framework folders.** ARTEX and its AntiFox fork, Cairn, PentAGI, HexStrike, CyberStrikeAI, Strix, Hermes Agent, Agent Zero, RedAmon, Xalgorix and Pentest Swarm AI. Each folder is built from a review of the framework's source code and the public reporting on its use. Fourteen more frameworks whose consoles were found on the internet have smaller folders that say what the console and the tool look like, with the code behind each signal: AutoCVE, CyberStrike, Vulnerator AI, Decepticon, AIDA, BugTraceAI, Z3r0, AIRecon, LuaN1aoAgent, open-kritt, REDCELL, T3MP3ST, WormXGPT and Chufeng Agent Core.
