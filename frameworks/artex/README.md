@@ -38,7 +38,7 @@ See [`CHANGELOG.md`](../../CHANGELOG.md) for the full list.
 | [`feeds/`](../../feeds) | Generated from the CSV: STIX 2.1 bundle, Sentinel watchlist and plain lists of addresses, domains, URLs, user agents and hashes |
 | [`sigma/`](sigma) | 16 Sigma rules for web, proxy, process, file, DNS, AWS, Entra ID and Okta logs. The general ones moved to [`behaviors/`](#moved-to-shared-behaviors) |
 | [`generated/`](../../generated) | The Sigma rules converted to Splunk SPL, Sentinel ASIM KQL and Elastic ES\|QL and Lucene. [`SUMMARY.md`](../../generated/SUMMARY.md) shows which rule converted to which backend |
-| [`sentinel/hunting/`](sentinel/hunting) | 16 KQL hunts for Microsoft Sentinel and Defender XDR advanced hunting. Hunts 23 to 30 come from a review of the ARTEX source code ([`docs/source-code-signals.md`](source-code-signals.md)) |
+| [`sentinel/hunting/`](sentinel/hunting) | 15 KQL hunts for Microsoft Sentinel and Defender XDR advanced hunting. Hunts 23 to 30 come from a review of the ARTEX source code ([`docs/source-code-signals.md`](source-code-signals.md)) |
 | [`sentinel/analytics/`](sentinel/analytics) | 3 scheduled analytics rules in the Sentinel template format. Four more moved to [`behaviors/`](#moved-to-shared-behaviors) |
 | [`splunk/`](splunk) | The hand-written ARTEX Splunk searches and macros. They ship in the [Splunk app](../../deploy/splunk) with the searches for every other framework |
 | [`elastic/`](elastic) | 9 ES\|QL hunts and 5 detection rules in the Elastic detection-rules TOML format |
@@ -59,6 +59,7 @@ Many of the ARTEX rules never looked for ARTEX itself. They look for things any 
 | Hunt 02, `02-password-spray-at-a-fixed-rhythm.kql` | [Hunt 10](../../behaviors/sentinel/hunting/10-password-spray-at-a-fixed-rhythm.kql) |
 | Hunt 03, `03-a-spray-that-ends-in-a-successful-sign-in.kql` | [Hunt 11](../../behaviors/sentinel/hunting/11-a-spray-that-ends-in-a-successful-sign-in.kql) |
 | Hunt 05, `05-applications-changing-their-own-access.kql` | [Hunt 13](../../behaviors/sentinel/hunting/13-applications-changing-their-own-access.kql) |
+| Hunt 06, `06-scripted-microsoft-graph-bursts-by-an-application.kql` | [Hunt 25](../../behaviors/sentinel/hunting/25-scripted-microsoft-graph-bursts-by-an-application.kql) |
 | Hunt 07, `07-bulk-key-vault-secret-reads.kql` | [Hunt 15](../../behaviors/sentinel/hunting/15-bulk-key-vault-secret-reads.kql) |
 | Hunt 08, `08-cloudwatch-log-searches-with-a-stolen-aws-key.kql` | [Hunt 18](../../behaviors/sentinel/hunting/18-cloudwatch-log-searches-with-a-stolen-aws-key.kql) |
 | Hunt 09, `09-cognito-sign-up-abuse-and-the-discovery-sweep-after-it.kql` | [Hunt 19](../../behaviors/sentinel/hunting/19-cognito-sign-up-abuse-and-the-discovery-sweep-after-it.kql) |

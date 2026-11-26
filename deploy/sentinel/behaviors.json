@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "metadata": {
     "title": "Agentic attack detections for Microsoft Sentinel: behaviors",
-    "description": "6 analytics rules, 30 hunting queries and the AGENTIC_IOCs watchlist. Built by tools/build_sentinel.py from https://github.com/ThreatDefence/agentic-attack-detections"
+    "description": "6 analytics rules, 31 hunting queries and the AGENTIC_IOCs watchlist. Built by tools/build_sentinel.py from https://github.com/ThreatDefence/agentic-attack-detections"
   },
   "parameters": {
     "workspace": {
@@ -1145,6 +1145,35 @@
       }
     },
     {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2020-08-01",
+      "name": "[concat(parameters('workspace'), '/baeefcb4-b854-56d7-87f7-8225be4636bb')]",
+      "properties": {
+        "category": "Hunting Queries",
+        "displayName": "Scripted Microsoft Graph bursts by an application (behaviors)",
+        "query": "// Scripted Microsoft Graph bursts by an application\n// Agentic attack detections by ThreatDefence (cross-framework behavior, first written for ARTEX). Source: https://threatdefence.com/article/artex-agentic-attack-framework-detection-hunting\n// ATT&CK: T1087.004 (Account Discovery: Cloud Account), T1069.003 (Permission Groups Discovery: Cloud Groups)\n// Example hunt for Microsoft Sentinel and Defender XDR advanced hunting. Test and baseline before alerting.\n// This needs Microsoft Graph activity logs sent to your workspace. Graph reads are not in the Entra audit log.\n\n// Example: service principals calling Graph with scripted clients, at volume or with many denials\nMicrosoftGraphActivityLogs\n| where TimeGenerated > ago(30d)\n| where isnotempty(ServicePrincipalId)\n| where UserAgent has \"urllib\" or UserAgent has \"python-requests\" or UserAgent startswith \"curl/\"\n    or UserAgent startswith \"azure-toolkit/\" or UserAgent has \"artex\"\n| summarize Requests=count(), Denied=countif(ResponseStatusCode in (401, 403)),\n    Endpoints=dcount(tostring(split(RequestUri, \"?\")[0])), IPs=make_set(IPAddress, 10)\n    by AppId, ServicePrincipalId, UserAgent, bin(TimeGenerated, 1h)\n| where Requests >= 100 or Denied >= 20\n| order by Requests desc",
+        "version": 2,
+        "tags": [
+          {
+            "name": "description",
+            "value": "Example hunt for Microsoft Sentinel and Defender XDR advanced hunting. Test and baseline before alerting. This needs Microsoft Graph activity logs sent to your workspace. Graph reads are not in the Entra audit log."
+          },
+          {
+            "name": "tactics",
+            "value": "Discovery"
+          },
+          {
+            "name": "techniques",
+            "value": "T1069,T1087"
+          },
+          {
+            "name": "source",
+            "value": "https://github.com/ThreatDefence/agentic-attack-detections/blob/main/behaviors/sentinel/hunting/25-scripted-microsoft-graph-bursts-by-an-application.kql"
+          }
+        ]
+      }
+    },
+    {
       "type": "Microsoft.SecurityInsights/watchlists",
       "apiVersion": "2024-03-01",
       "scope": "[format('Microsoft.OperationalInsights/workspaces/{0}', parameters('workspace'))]",
@@ -1168,7 +1197,7 @@
     },
     "huntingQueries": {
       "type": "int",
-      "value": 30
+      "value": 31
     },
     "watchlistAlias": {
       "type": "string",

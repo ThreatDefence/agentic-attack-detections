@@ -1,5 +1,5 @@
 {
- "description": "133 rules from https://github.com/ThreatDefence/agentic-attack-detections, checked against ATT&CK 20.1. Score: the number of rules that name the technique.",
+ "description": "132 rules from https://github.com/ThreatDefence/agentic-attack-detections, checked against ATT&CK 20.1. Score: the number of rules that name the technique.",
  "domain": "enterprise-attack",
  "gradient": {
   "colors": [
@@ -57,13 +57,6 @@
    "techniqueID": "T1059.004"
   },
   {
-   "comment": "KQL hunt: Scripted Microsoft Graph bursts by an application",
-   "enabled": true,
-   "score": 1,
-   "showSubtechniques": true,
-   "techniqueID": "T1069.003"
-  },
-  {
    "comment": "KQL hunt: Indicator sweep; KQL hunt: Indicator sweep with the ARTEX watchlist; Suricata: 3800500 TD ARTEX reported address, ARTEX operators, ARTEX activity in AWS environments (outbound); Suricata: 3800502 TD ARTEX reported address, ARTEX operators, ARTEX-associated address from ThreatDefence intelligence (outbound); Suricata: 3800504 TD ARTEX reported address, ARTEX operators, ARTEX-associated infrastructure (consoles and command and control) (outbound); Suricata: 3800506 TD ARTEX reported address, ARTEX operators, Address active in ARTEX operator toolkits (outbound); Suricata: 3800508 TD ARTEX reported address, ARTEX operators, Hosting range with more than 200 ARTEX-associated addresses in the Cisco Talos and ReversingLabs lists (outbound); Suricata: 3800510 TD ARTEX reported address, ARTEX operators, ftp.zhzy999.net, payload host active in ARTEX operator toolkits (outbound); Suricata: 3800512 TD ARTEX reported address, ARTEX operators, www.zhzy999.net, payload host active in ARTEX operator toolkits (outbound); Suricata: 3800514 TD ARTEX reported address, AntiFox console operators, Exposed AntiFox console (sample list). An exposed console is not proof of malicious use (outbound); Suricata: 3800516 TD ARTEX reported address, AntiFox operators (IIS web shells and AWS secret theft), AntiFox console on Alibaba Cloud, source of IIS web shell activity and AWS enumeration that read a production secret (outbound); Suricata: 3800518 TD ARTEX reported address, Storm-0940, Attacks on IT and software vendors (outbound); Suricata: 3800520 TD ARTEX reported address, Storm-0940, Storm-0940 sign-ins, password spray and Graph activity (outbound); Suricata: 3800522 TD ARTEX reported address, Storm-0940, VPN exits, relevant to October 15 and 16, 2026 only (outbound); Suricata: 3800524 TD ARTEX reported address, Storm-3358, ARTEX servers (outbound); Suricata: 3800526 TD ARTEX reported address, Storm-3358, Command and control server (outbound); Suricata: 3800528 TD ARTEX reported address, Storm-3358, WISP command and control (outbound); Suricata: 3800530 TD ARTEX reported address, Unattributed (Korea finance), ARTEX host used against South Korean financial organizations. Also in Cairn reporting: Case E: attacks with AI pentest platforms (Cairn, CyberStrikeAI, ARTEX) on Japanese web apps and WSUS servers. Also in ARTEX reporting (outbound); Suricata: 3800532 TD ARTEX reported address, Unattributed (Korea finance), Proxy addresses in the South Korea campaign (outbound); Suricata: 3800534 TD ARTEX reported address, Unattributed console operators, ARTEX and PentAGI consoles on one server, ports 8443 and 8787. An exposed console is not proof of malicious use (outbound); Suricata: 3800536 TD ARTEX reported address, VAPOR PANDA, BLOODALCHEMY command and control (outbound)",
    "enabled": true,
    "score": 21,
@@ -97,13 +90,6 @@
    "score": 4,
    "showSubtechniques": true,
    "techniqueID": "T1078.004"
-  },
-  {
-   "comment": "KQL hunt: Scripted Microsoft Graph bursts by an application",
-   "enabled": true,
-   "score": 1,
-   "showSubtechniques": true,
-   "techniqueID": "T1087.004"
   },
   {
    "comment": "KQL hunt: Payload hosts and fake system binaries from the SQL Server toolkit active in ARTEX operations; Sigma: DNS Query for Payload Hosts Active in ARTEX Operator Toolkits; Suricata: 3800065 TD ARTEX toolkit payload host lookup (vietnam852.com); Suricata: 3800066 TD ARTEX toolkit payload download (vietnam852.com); Suricata: 3800067 TD Fake Windows system binary or miner driver downloaded from a /test/ path; Suricata: 3800077 TD ARTEX toolkit payload host lookup (zhzy999.net); Suricata: 3800078 TD ARTEX toolkit payload host lookup (jiancai008.com); Suricata: 3800079 TD ARTEX toolkit payload download (zhzy999.net); Suricata: 3800080 TD ARTEX toolkit payload download (jiancai008.com)",

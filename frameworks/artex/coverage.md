@@ -17,7 +17,7 @@ A row marked shared has its rules in [`behaviors/`](../../behaviors), where they
 | Service principal secret guessing then success (shared) | Entra ID SP sign-ins | | N | | | | |
 | One application hitting many resources (shared) | Entra ID SP sign-ins | | N | | | | |
 | Application adds credentials or assigns itself a role (shared) | Entra ID audit | S | N | N | | | |
-| Scripted Microsoft Graph bursts | Graph activity logs | | N | | | | |
+| Scripted Microsoft Graph bursts (shared) | Graph activity logs | | N | | | | |
 | Bulk Key Vault secret reads (shared) | Key Vault diagnostics | | N | N | | | |
 | CloudWatch secret search (shared) | CloudTrail | S | N | N | N | | |
 | EC2 DryRun burst (shared) | CloudTrail | S (correlation) | N | N | N | | |

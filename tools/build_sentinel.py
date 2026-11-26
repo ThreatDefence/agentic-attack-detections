@@ -187,6 +187,7 @@ MOVED_HUNTS = {_B + new: _A + old for new, old in [
     ("22-scripts-written-into-web-directories.kql", "13-scripts-written-into-web-directories.kql"),
     ("23-servers-calling-webhook-and-tunnel-services.kql", "12-servers-calling-webhook-and-tunnel-services-or-downloading-f.kql"),
     ("24-kerberoasting-dcsync-and-winrm-fan-out.kql", "16-kerberoasting-dcsync-and-winrm-fan-out.kql"),
+    ("25-scripted-microsoft-graph-bursts-by-an-application.kql", "06-scripted-microsoft-graph-bursts-by-an-application.kql"),
 ]}
 
 

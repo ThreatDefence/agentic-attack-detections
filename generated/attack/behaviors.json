@@ -1,5 +1,5 @@
 {
- "description": "87 rules from https://github.com/ThreatDefence/agentic-attack-detections, checked against ATT&CK 20.1. Score: the number of rules that name the technique.",
+ "description": "88 rules from https://github.com/ThreatDefence/agentic-attack-detections, checked against ATT&CK 20.1. Score: the number of rules that name the technique.",
  "domain": "enterprise-attack",
  "gradient": {
   "colors": [
@@ -92,6 +92,13 @@
    "techniqueID": "T1059.004"
   },
   {
+   "comment": "KQL hunt: Scripted Microsoft Graph bursts by an application",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1069.003"
+  },
+  {
    "comment": "KQL hunt: A server calls back to the address that was probing it; Zeek notice: AgenticBehaviors::Callback_To_Prober",
    "enabled": true,
    "score": 2,
@@ -125,6 +132,13 @@
    "score": 2,
    "showSubtechniques": true,
    "techniqueID": "T1087.002"
+  },
+  {
+   "comment": "KQL hunt: Scripted Microsoft Graph bursts by an application",
+   "enabled": true,
+   "score": 1,
+   "showSubtechniques": true,
+   "techniqueID": "T1087.004"
   },
   {
    "comment": "KQL hunt: One site probed through hundreds of rotating proxy addresses; Zeek notice: AgenticBehaviors::Rotating_Proxy_Probing",
