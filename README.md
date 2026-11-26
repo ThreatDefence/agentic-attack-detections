@@ -224,11 +224,11 @@ The other eleven console-level folders (CyberStrike, Vulnerator AI, AIDA, BugTra
 
 Each folder has a README, the hunts and rules, and a `source-code-signals.md` that explains what the framework leaves behind and where in its code each signal comes from.
 
-## Exposure tracking as of 25 Nov 2026
+## Exposure tracking as of 26 Nov 2026
 
 This project now tracks exposure as well as detection: which of these frameworks have consoles reachable on the internet, how many there are, and how the numbers move over time.
 
-![Active offensive agents by framework on 25 November 2026](docs/images/exposure-status-2026-11-25.png)
+![Active autonomous offensive frameworks: live consoles for the top 30 on 26 November 2026](docs/images/exposure-status-2026-11-26.png)
 
 ## Exposed consoles
 
